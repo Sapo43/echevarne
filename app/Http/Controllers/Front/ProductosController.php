@@ -21,6 +21,10 @@ class ProductosController extends Controller {
      * @return Response
      */
     public function index(Request $request) {
+        $scripts = array(
+            ('/assets/js/precioslistacompraventa.js') 
+        );
+
         
         $title = "Listado de Productos";
         $meta_description = "";
@@ -33,7 +37,7 @@ class ProductosController extends Controller {
         $links = $productos->links();        
         $links = str_replace("<a", "<a class='page-link' ", $links);
    
-        return view('front.producto.productos', compact('productos', 'rubros', 'marcas', 'title', 'meta_description', 'h_image','total'));
+        return view('front.producto.productos', compact('productos', 'rubros', 'marcas', 'title', 'meta_description', 'h_image','total','scripts'));
     }
 
     // public function show($slug,Request $request) {
@@ -61,11 +65,10 @@ class ProductosController extends Controller {
     // }
     
     public function show($slug,Request $request) {
+    
         $scripts = array(
             ('/assets/js/iziToast.min.js'),
-            ('/assets/js/addToCart.js'),
-
-         
+            ('/assets/js/addToCart.js'),         
         );
         
         $csss=array(

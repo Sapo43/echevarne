@@ -1,10 +1,10 @@
 <div class="row mtn-30">
-                            @foreach($data as $row)
+                            @foreach($data as $producto)
                               <!-- Start Product Item -->
                             <div class="col-sm-6 col-lg-4">
                                 <div class="product-item">
                                     <div class="product-item__thumb">
-                                        <a href="/producto/{{$row->slug}}">
+                                        <a href="/producto/{{$producto->slug}}">
                                             <img class="thumb-primary" src="assets/img/product/product-6.png" alt="Product" />
                                             <img class="thumb-secondary" src="assets/img/product/product-7.png" alt="Product" />
                                         </a>
@@ -20,8 +20,14 @@
 
                                     <div class="product-item__content">
                                         <div class="product-item__info">
-                                            <h4 class="title"><a href="/producto/{{$row->slug}}">{{$row->codigo}}</a></h4>
-                                            <span class="price"><strong>Price:</strong> $165.00</span>
+                                            <h4 class="title"><a href="/producto/{{$producto->slug}}">{{$producto->codigo}}</a></h4>
+                                            <!-- <span class="price"><strong>Price:</strong> $165.00</span> -->
+                                            <h5 class="precioLista"><p>${{number_format( $producto->precio,2, ',','.')}}<p></h5> 
+                            <h5 class="precioCompra"><p >${{number_format($producto->precio- ($producto->precio* Auth::user()->porcentaje_compra  / 100),2, ',','.')}}<p></h5>  
+                            <h5 class="precioVenta"><p >${{number_format($producto->precio- ($producto->precio* Auth::user()->porcentaje_compra  / 100)+( ($producto->precio- ($producto->precio* Auth::user()->porcentaje_compra  / 100)) * Auth::user()->porcentaje_venta  / 100),2, ',','.')}}<p></h5>    
+
+
+
                                         </div>
 
                                         <div class="product-item__action">

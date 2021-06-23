@@ -17,9 +17,18 @@ class FrontController extends Controller {
 
     public function shop(Request $request){
 
-        $scripts=[];
-        $script='<script src="/assets/js/iziToast.min.js" type="text/javascript"></script> ';
-        array_push($scripts,$script);
+        $scripts = array(
+            ('/assets/js/iziToast.min.js'),
+            ('/assets/js/addToCart.js'),
+            ('/assets/js/precioslistacompraventa.js')
+
+         
+        );
+        
+        $csss=array(
+                ('/assets/css/iziToast.css'),
+                ('/assets/css/addtocartanimation.css')
+        );
 
         if($request->ajax())
         {

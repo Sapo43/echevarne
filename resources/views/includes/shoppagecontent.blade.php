@@ -1,10 +1,4 @@
-<style type="text/css">
-		.my-active span{
-			background-color: #5cb85c !important;
-			color: white !important;
-			border-color: #5cb85c !important;
-		}
-	</style>
+
 
 <div class="page-content-wrapper sp-y">
         <div class="container container-wide">
@@ -27,7 +21,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
+                            <div class="col-sm-3">
                                 <div class="sort-by-wrapper">
                                     <label for="sort" class="sr-only">Sort By</label>
                                     <select name="sort" id="sort">
@@ -38,6 +32,18 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-sm-3">
+                                <div class="sort-by-wrapper">
+                                    <label for="sort" class="sr-only">Sort By</label>
+                                    <select name="sort" id="type">
+                                        <option value="Lista">Ver precio lista</option>
+                                        <option value="Compra">Ver precio compra</option>
+                                        <option value="Venta">Ver precio venta</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                     <div class="product-wrapper product-layout layout-grid">
