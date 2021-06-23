@@ -12,14 +12,14 @@ class User extends Authenticatable
     const ESTADO_HABILITADO = "H";
     const ESTADO_INHABILITADO = "I";
     use HasFactory, Notifiable;
-    use AuditTrait;
+    //use AuditTrait;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'nombre', 'apellido', 'email', 'dni', 'telefono', 'password', 'estado', 'cuit', 'operatoria', 'nro_cliente','porcentaje_venta','porcentaje_compra'
+       'username', 'nombre', 'apellido', 'email', 'dni', 'telefono', 'password', 'estado', 'cuit', 'operatoria', 'nro_cliente','porcentaje_venta','porcentaje_compra'
     ];
 
     /**

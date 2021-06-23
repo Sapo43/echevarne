@@ -120,7 +120,7 @@
                             </div>
 
                             <div class="proceed-checkout-btn">
-                                <a href="checkout.html" class="btn btn-brand d-block">Proceed to Checkout</a>
+                                <a href="/checkout" class="btn btn-brand d-block">Proceed to Checkout</a>
                             </div>
                         </div>
                     </div>

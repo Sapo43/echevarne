@@ -33,6 +33,13 @@ class CartController extends Controller {
 
 public function cartForCheckout(){
 
+
+    $scripts = array(
+        ('/assets/js/postConfirmCart.js'),
+      
+     
+    );
+
         $cart= \Session::get('cart');
         $title = "Pedido";
         $cantidadCarrito=sizeof($cart);      
@@ -63,7 +70,7 @@ public function cartForCheckout(){
 
     
           //  return view('front.carrito.carrito',compact('cantidadCarrito','cart','title','meta_description','h_image','totalsi','totalid','totaliv','totalci'));
-            return view('pages.cart.index',compact('cantidadCarrito','cart','title','meta_description','h_image','totalsi','totalid','totaliv','totalci'));
+            return view('pages.cart.index',compact('cantidadCarrito','cart','title','meta_description','h_image','totalsi','totalid','totaliv','totalci','scripts'));
         }
 
 
@@ -125,6 +132,9 @@ public function cartForCheckout(){
 
 
     public function confirm(Request $request){
+
+
+       
         // $validator = Validator::make($request->all(), [
         //     'notas' => 'required',
             

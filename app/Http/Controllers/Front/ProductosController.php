@@ -61,6 +61,18 @@ class ProductosController extends Controller {
     // }
     
     public function show($slug,Request $request) {
+        $scripts = array(
+            ('/assets/js/iziToast.min.js'),
+            ('/assets/js/addToCart.js'),
+
+         
+        );
+        
+        $csss=array(
+                ('/assets/css/iziToast.css'),
+                ('/assets/css/addtocartanimation.css')
+        );
+        
 
          $p_id = substr($slug, 0, strpos($slug, '-'));
          $producto = Producto::find($p_id);
@@ -87,7 +99,7 @@ class ProductosController extends Controller {
               $codProd = $producto->codigo;
             }
         
-             return view ('pages.product.index',compact('producto','codProd'));
+             return view ('pages.product.index',compact('producto','codProd','scripts','csss'));
     }
 }
 

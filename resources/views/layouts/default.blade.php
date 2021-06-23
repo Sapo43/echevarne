@@ -46,22 +46,78 @@
 <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+	<!-- CSS dinamicos que llegan desde el controlador -->
+	<?php
+	if(isset($csss)){
+		if(is_array($csss)){
+			foreach($csss as $css){
+				echo '<link href="'. $css .' "rel="stylesheet" type="text/css">'.PHP_EOL;
+			}
+		}
+	}
+	?>
+	<!-- fin CSS dinámicos desde controlador -->
 
-<link rel="stylesheet" href="/assets/css/iziToast.min.css"> 
+
+
 
 </head>
 
 <body>
 
-    <!--== Start Header Area ==-->
-    @include('includes.headerarea')
+@if ((\Request::is('login')) || (\Request::is('register'))) 
+ <!--== Start Header Area For login/register==-->
+ @include('includes.headerarealoginregister')
+    <!--== End Header Area For login/register ==-->
+
+@else
+ <!--== Start Header Area ==-->
+ @include('includes.headerarea')
     <!--== End Header Area ==-->
+@endif
+   
 
    @yield('content')
 
-    <!--== Start Footer Area Wrapper ==-->
-    @include('includes.footerarea')
-    <!--== End Footer Area Wrapper ==-->
+
+
+
+   @if ((\Request::is('login')) || (\Request::is('register'))) 
+
+
+   <footer class="footer-area">
+        <div class="footer-widget-area">
+            <div class="container container-wide">
+                <div class="row mtn-40">
+                  
+
+                   
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-copyright-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="copyright-content">
+                            <p>Copyright © 2019 Lukas. All Rights Reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+ 
+@else
+  <!--== Start Footer Area Wrapper ==-->
+  @include('includes.footerarea')
+    <!--== End Footer Area Wrapper ==-->>
+@endif
+
+  
 
     <!-- Scroll Top Button -->
     <button class="btn-scroll-top"><i class="ion-chevron-up"></i></button>
@@ -101,7 +157,29 @@
     <!--=== Active Js ===-->
     <script src="/assets/js/active.js"></script>
     <!-- endbuild -->
-    <script src="/assets/js/iziToast.min.js" type="text/javascript"></script> 
+
+
+
+ 
+
+
+
+
+
+
+	
+<!-- Scripts dinamicos que llegan desde el controlador -->
+<?php
+		if(isset($scripts)){
+			if(is_array($scripts)){
+				foreach($scripts as $script){
+					echo '<script src="' . $script . '"></script>'.PHP_EOL;
+				}
+			}
+		}
+	?>
+<!-- fin Scripts dinámicos desde controlador -->
+
 </body>
 
 </html>
