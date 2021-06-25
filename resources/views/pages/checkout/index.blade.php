@@ -235,7 +235,21 @@
                     <div class="col-lg-6 col-xl-5 ml-auto">
                         <!-- Checkout Page Order Details -->
                         <div class="order-details-area-wrap">
-                            <h2>Your Order</h2>
+                        <div class="row ">
+                            <div class="col-sm-6">
+                                <h2>Your Order</h2>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="sort-by-wrapper">
+                                    <label for="sort" class="sr-only">Sort By</label>
+                                    <select name="sort" id="type">
+                                        <option value="Lista">Ver precio lista</option>
+                                        <option value="Compra">Ver precio compra</option>
+                                        <option value="Venta">Ver precio venta</option>
+                                    </select>
+                                </div>
+                            </div>
+                            </div>
 
                             <div class="order-details-table table-responsive">
                                 <table class="table table-borderless">
@@ -250,7 +264,14 @@
                                         <tr class="cart-item">
                                             <td><span class="product-title">{{$producto->codigo}}</span> <span
                                             class="product-quantity">&#215; {{$producto->cantidad}}</span></td>
-                                            <td>{{$producto->precio}}</td>
+                                            <td>
+
+                                            <h6 class="precioLista"><p>${{number_format( $producto->precio,2, ',','.')}}<p></h6> 
+                            <h6 class="precioCompra"><p >${{number_format($producto->precio- ($producto->precio* Auth::user()->porcentaje_compra  / 100),2, ',','.')}}<p></h6>  
+                            <h6 class="precioVenta"><p >${{number_format($producto->precio- ($producto->precio* Auth::user()->porcentaje_compra  / 100)+( ($producto->precio- ($producto->precio* Auth::user()->porcentaje_compra  / 100)) * Auth::user()->porcentaje_venta  / 100),2, ',','.')}}<p></h6>    
+
+
+                                            </td>
                                         </tr>
                                       @endforeach
                                     </tbody>

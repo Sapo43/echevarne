@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Laratrust\Traits\LaratrustUserTrait;
 use App\Http\Traits\AuditTrait;
 
 class Admin extends Authenticatable {
 
-    use EntrustUserTrait, AuditTrait;
+    use LaratrustUserTrait, AuditTrait;
 
     protected $table = 'admins';
 

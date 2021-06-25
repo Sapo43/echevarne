@@ -17,8 +17,12 @@ class CheckoutController extends Controller {
 
 
 public function index(){
+    $scripts = array(
+        ('/assets/js/precioslistacompraventa.js') 
+    );
+
     $cart= \Session::get('cart');
-    return view ('pages.checkout.index',compact('cart'));
+    return view ('pages.checkout.index',compact('cart','scripts'));
 }
 
 
