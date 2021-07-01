@@ -6,9 +6,9 @@
     @endif
 @else
     @if(str_contains($producto->codigo, '/'))
-        {{--*/ $codProd = str_replace('/', '_', $producto->codigo) /*--}}
+        {{$codProd = str_replace('/', '_', $producto->codigo) }}
     @else
-        {{--*/ $codProd = $producto->codigo /*--}}
+        {{ $codProd = $producto->codigo }}
     @endif
 
     @if(file_exists(public_path().'/img/productos/'.$codProd.'.jpg'))

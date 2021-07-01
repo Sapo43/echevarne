@@ -27,6 +27,7 @@ class NovedadesController extends Controller {
      */
     public function index() {
 
+       
         if (\Auth::guard('admin')->user()->can(['novedades-ver'])) {
             $novedades = Novedad::orderBy('orden')->paginate(30);
             return view('admin.novedades.index', compact('novedades'));

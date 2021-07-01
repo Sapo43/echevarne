@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Admin;
+use App\Models\Admin;
 use App\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -93,8 +93,8 @@ class UserController extends Controller {
         if (\Auth::guard('admin')->user()->can(['usuarios-editar'])) {
             $user = Admin::findOrFail($id);
             $userRol = $user->roles->first();
-            $roles = Role::getRoles()->lists('display_name', 'id')->toArray();
-            return view('admin.usuarios.edit', compact('user', 'roles', 'userRol', 'jur'));
+            $roles = Role::getRoles()->pluck('display_name', 'id')->toArray();
+            return view('admin.usuarios.edit', compact('user', 'roles', 'userRol'));
         } else {
             return view('errors.noTienePermisos');
         }

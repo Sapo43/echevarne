@@ -51,7 +51,7 @@
         @endif           
         <div class="row">
             <div class="col-md-12 text-right">
-                {!! Form::open(['action' => 'Admin\Importers\ImporterProductosController@importar', 'method' => 'POST', 'enctype' => 'multipart/form-data'])!!}
+                {!! Form::open(['action' => 'App\Http\Controllers\Admin\Importers\ImporterProductosController@importar', 'method' => 'POST', 'enctype' => 'multipart/form-data'])!!}
                 {!! Form::hidden('archivo', $filename, array('id'=>'archivo')) !!}
                 <a href="{{route('admin.importers.rubros')}}" title="Volver" class="btn btn-danger">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>&nbsp;

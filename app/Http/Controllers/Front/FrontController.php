@@ -29,15 +29,20 @@ class FrontController extends Controller {
                 ('/assets/css/iziToast.css'),
                 ('/assets/css/addtocartanimation.css')
         );
-
+        if(\Auth::user()){
+            $porcentaje_compra=\Auth::user()->porcentaje_compra;
+            $porcentaje_venta=\Auth::user()->porcentaje_venta;
+        }else{$porcentaje_compra=0;
+                $porcentaje_venta=0;
+        };
         if($request->ajax())
         {
          $data = DB::table('productos')->paginate(5);
-         return view('includes.shopgrid', compact('data','scripts'))->render();
+         return view('includes.shopgrid', compact('data','scripts','porcentaje_compra','porcentaje_venta'))->render();
         }
-        
+      
             $data = DB::table('productos')->paginate(5);
-            return view('pages.shop.index', compact('data','scripts'));
+            return view('pages.shop.index', compact('data','scripts','porcentaje_compra','porcentaje_venta'));
            
        
           

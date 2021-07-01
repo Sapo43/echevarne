@@ -72,7 +72,7 @@
     </div>
 </div>
 
-{!! Form::open(['action' => ['Admin\MarcasController@destroy', ':MARCA_ID'], 'method' => 'DELETE', 'id' => 'delete-form'])!!}                
+{!! Form::open(['action' => ['App\Http\Controllers\Admin\MarcasController@destroy', ':MARCA_ID'], 'method' => 'DELETE', 'id' => 'delete-form'])!!}                
 {!! Form::close() !!}
 
 @include('commons.modalProcessing');

@@ -40,7 +40,7 @@
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;
                             Editar
                         </a> 
-                        <a href="{{ action('Admin\UserController@editContraseña', $user->id) }}" title="Cambiar Contraseña" class="btn btn-info">
+                        <a href="{{ action('App\Http\Controllers\Admin\UserController@editContraseña', $user->id) }}" title="Cambiar Contraseña" class="btn btn-info">
                              <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>&nbsp;
                             Cambiar Contraseña
                         </a>
@@ -57,7 +57,7 @@
     </div>
 </div>
 
-{!! Form::open(['action' => ['Admin\UserController@destroy', ':USER_ID'], 'method' => 'DELETE', 'id' => 'delete-form'])!!}                
+{!! Form::open(['action' => ['App\Http\Controllers\Admin\UserController@destroy', ':USER_ID'], 'method' => 'DELETE', 'id' => 'delete-form'])!!}                
 {!! Form::close() !!}
 
 @include('commons.modalProcessing')
@@ -86,6 +86,7 @@
         var form = $("#delete-form");
         var url = form.attr('action').replace(':USER_ID', id);
         var data = form.serialize();
+      
         $("#modalProcessing #mensaje").html('Se esta eliminando el Usuario. <br />Por favor aguarde.');
         $('#modalProcessing').modal();
 

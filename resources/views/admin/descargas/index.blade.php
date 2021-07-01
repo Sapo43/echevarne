@@ -82,14 +82,14 @@
         </div>
     </div>
 
-    {!! Form::open(['action' => ['Admin\DescargasController@destroy', ':DESCARGA_ID'], 'method' => 'DELETE', 'id' => 'delete-form'])!!}
+    {!! Form::open(['action' => ['App\Http\Controllers\Admin\DescargasController@destroy', ':DESCARGA_ID'], 'method' => 'DELETE', 'id' => 'delete-form'])!!}
     {!! Form::close() !!}
 
     @include('commons.modalProcessing');
 
 @endsection
 @section('scripts')
-    {!! HTML::script('js/jquery-ui.min.js?v=2') !!}
+    {!! HTML::script('assetsAdmin/js/jquery-ui.min.js?v=2') !!}
     <script type="text/javascript">
 
         $(document).ready(function () {

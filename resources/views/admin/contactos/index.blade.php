@@ -60,7 +60,7 @@
     </div>
 </div>
 
-{!! Form::open(['action' => ['Admin\ContactosController@destroy', ':CONTACTO_ID'], 'method' => 'DELETE', 'id' => 'delete-form'])!!}                
+{!! Form::open(['action' => ['App\Http\Controllers\Admin\ContactosController@destroy', ':CONTACTO_ID'], 'method' => 'DELETE', 'id' => 'delete-form'])!!}                
 {!! Form::close() !!}
 
 @include('commons.modalProcessing');

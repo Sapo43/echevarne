@@ -2,12 +2,26 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\FrontController;
-use App\Http\Controllers\Front\ProductosController;
+use App\Http\Controllers\Front\ProductosController as FrontProductosController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\CheckoutController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminAuth\AuthController;
+use App\Http\Controllers\Admin\Importers\ImporterEquivalenciasController;
+use App\Http\Controllers\Admin\Importers\ImporterMarcasController;
+use App\Http\Controllers\Admin\Importers\ImporterProductosController;
+use App\Http\Controllers\Admin\Importers\ImporterRubrosController;
+use App\Http\Controllers\Admin\Importers\ImportersController;
+use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ClientesController;
+use App\Http\Controllers\Admin\ContactosController;
+use App\Http\Controllers\Admin\ProcesosController;
+use App\Http\Controllers\Admin\ImageUploadController;
+use App\Http\Controllers\Admin\DescargasController;
+use App\Http\Controllers\Admin\NovedadesController;
+use App\Http\Controllers\Admin\ProductController;
 
 
 // Route::get(
@@ -19,7 +33,7 @@ use App\Http\Controllers\AdminAuth\AuthController;
 
 Route::get('/', [FrontController::class,'home'])->name('home');
 Route::get('/shop', [FrontController::class,'shop'])->name('shop');
-Route::get('/producto/{slug}', [ProductosController::class,'show'])->name('show');
+Route::get('/producto/{slug}', [FrontProductosController::class,'show'])->name('front.productos.show');
 Route::get('/shop/fetch_data', [FrontController::class,'shop'])->name('shop');
 Route::get('/cart',[CartController::class,'cartForCheckout'])->name('cart');
 Route::get('/logout',[LoginController::class,'logout']);
@@ -68,20 +82,74 @@ Route::prefix('admin')->namespace('Admin')->group(static function() {
         Route::resource('menus', '\App\Http\Controllers\Admin\MenuController');
         Route::resource('novedades', '\App\Http\Controllers\Admin\NovedadesController');
         Route::resource('descargas', '\App\Http\Controllers\Admin\DescargasController');
-        Route::resource('productos', '\App\Http\Controllers\Admin\ProductosController');
+        // Route::resource('productos','App\Http\Controllers\Admin\ProductosController');
         Route::resource('rubros', '\App\Http\Controllers\Admin\RubrosController');
         Route::resource('marcas', '\App\Http\Controllers\Admin\MarcasController');
         Route::resource('contactos', '\App\Http\Controllers\Admin\ContactosController');
         Route::resource('clientes', '\App\Http\Controllers\Admin\ClientesController');
         Route::resource('conocenos', '\App\Http\Controllers\Admin\ConocenosController');
         Route::resource('pedidos','\App\Http\Controllers\Admin\PedidosController');
+
+        
+
     });
+    
 });
 
 
+Route::middleware('auth:admin')->group(static function () {
+    
+Route::get('/admin/productos/edit/{id}',[ProductController::class,'edit'])->name('admin.productos.edit');
+Route::get('/admin/productos',[ProductController::class,'index'])->name('admin.productos.index');
+Route::put('/admin/productos/{producto}',[ProductController::class,'index'])->name('admin.productos.update');
+Route::delete('/admin/productos/{id}',[ProductController::class,'destroy'])->name('admin.productos.destroy');
+Route::get('/admin/productos/create',[ProductController::class,'create'])->name('admin.productos.create');
+Route::post('/admin/store',[ProductController::class,'store'])->name('admin.productos.store');
+});
+
 Route::get('/index-equivalencias', [ImporterEquivalenciasController::class,'index'])->name('admin.equivalencias.index');  
-Route::get('/index-imports', [ImportersController::class,'index'])->name('admin.importers.index');
+        Route::get('/index-imports', [ImportersController::class,'index'])->name('admin.importers.index');
+        Route::post('/upload-equivalencias', [ImporterEquivalenciasController::class,'upload'])->name('admin.equivalencias.upload');  
+        Route::post('/importar-equivalencias', [ImporterEquivalenciasController::class,'importar'])->name('admin.equivalencias.importar');    
+
+  //Importer Rubros
+  Route::get('/index-import-rubros', [ ImporterRubrosController::class,'index'])->name('admin.importers.rubros');
+  Route::post('/validar-import-rubros', [ ImporterRubrosController::class,'validar'])->name('admin.importers.rubros.validar');
+  Route::post('/importar-rubros', [ ImporterRubrosController::class,'importar'])->name('admin.importers.rubros.importar');    
+  //Importer Marcas
+  Route::get('/index-import-marcas', [ ImporterMarcasController::class,'index'])->name('admin.importers.marcas');
+  Route::post('/validar-import-marcas', [ ImporterMarcasController::class,'validar'])->name('admin.importers.marcas.validar');
+  Route::post('/importar-marcas', [ImporterMarcasController::class,'importar'])->name('admin.importers.marcas.importar');    
+  //Importer Productos
+  Route::get('/index-import-productos', [ImporterProductosController::class,'index'])->name('admin.importers.productos');
+  Route::post('/validar-import-productos', [ImporterProductosController::class,'validar'])->name('admin.importers.productos.validar');
+  Route::post('/importar-productos', [ImporterProductosController::class,'importar'])->name('admin.importers.productos.importar');   
+  
+    //Menus
+    Route::get('/admin/menus/permisos/{menu_id}', [MenuController::class,'permisosEdit']);
+    Route::put('/admin/menus/permisosUpdate/{menu_id}',  [MenuController::class,'permisosUpdate']);
+
+    //Usuarios
+    Route::get('usuarios/password/{id}', [UserController::class,'editContraseña'])->name('admin.clientes.editPass',);
+    Route::put('usuarios/password/update/{id}', [UserController::class,'updateContraseña'])->name('admin.clientes.updatePass');
+
+    //Proceso
+    Route::get('/update-productos', [ProcesosController::class,'updateProductos'])->name('admin.update.productos');
+    Route::get('/admin/clientes/habilitar/{id}', [ClientesController::class,'habilitar'])->name('admin.clientes.habilitar');
+    
+    Route::get('/admin/clientes/inhabilitar/{id}', [ClientesController::class,'inhabilitar'])->name('admin.clientes.inhabilitar');
 
 
 Route::get('/admin/image-upload', [ImageUploadController::class,'imageUpload'])->name('image.upload');
 Route::post('/admin/image-upload', [ImageUploadController::class,'imageUploadPost'])->name('image.upload.post');
+
+  
+Route::get('novedad/{slug}', [FrontController::class,'showNovedad'])->name('front.novedad.show');
+
+Route::get('/admin/downloadContactos', [ContactosController::class,'downloadFile'])->name('admin.contactos.downloadFile');
+Route::get('/admin/downloadProductos', [ProductosController::class,'downloadFile'])->name('admin.productos.downloadFile');
+
+//Descargas
+Route::post('/admin/descargas/reposition', [DescargasController::class,'reposition'])->name('admin.descargas.reposition');
+//Novedades
+Route::post('/admin/novedades/reposition', [NovedadesController::class,'reposition'])->name('admin.novedades.reposition');

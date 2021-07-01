@@ -23,8 +23,8 @@
                                             <h4 class="title"><a href="/producto/{{$producto->slug}}">{{$producto->codigo}}</a></h4>
                                             <!-- <span class="price"><strong>Price:</strong> $165.00</span> -->
                                             <h5 class="precioLista"><p>${{number_format( $producto->precio,2, ',','.')}}<p></h5> 
-                            <h5 class="precioCompra"><p >${{number_format($producto->precio- ($producto->precio* Auth::user()->porcentaje_compra  / 100),2, ',','.')}}<p></h5>  
-                            <h5 class="precioVenta"><p >${{number_format($producto->precio- ($producto->precio* Auth::user()->porcentaje_compra  / 100)+( ($producto->precio- ($producto->precio* Auth::user()->porcentaje_compra  / 100)) * Auth::user()->porcentaje_venta  / 100),2, ',','.')}}<p></h5>    
+                            <h5 class="precioCompra"><p >${{number_format($producto->precio- ($porcentaje_compra   / 100),2, ',','.')}}<p></h5>  
+                            <h5 class="precioVenta"><p >${{number_format($producto->precio- ($porcentaje_compra  / 100)+( ($producto->precio- ($producto->precio* $porcentaje_compra  / 100)) * $porcentaje_venta  / 100),2, ',','.')}}<p></h5>    
 
 
 

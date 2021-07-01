@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-class ProductosController extends Controller {
+class ProductController extends Controller {
 
     const DESTINATION_PATH = '/productos';
 
@@ -29,8 +29,8 @@ class ProductosController extends Controller {
      */
     public function index(Request $request) {
         if (\Auth::guard('admin')->user()->can(['productos-ver'])) {
-            $rubros = Rubro::getRubros()->lists('nombre', 'id')->toArray();
-            $marcas = Marca::getMarcas()->lists('nombre', 'id')->toArray();
+            $rubros = Rubro::getRubros()->pluck('nombre', 'id')->toArray();
+            $marcas = Marca::getMarcas()->pluck('nombre', 'id')->toArray();
             $productos = Producto::filterAndPaginate($request->get('nombre'), $request->get('rubro'), $request->get('marca'), $request->get('codigo'), $request->get('activo'));
             $productos=$productos->paginate(24);
             return view('admin.productos.index', compact('productos', 'rubros', 'marcas'));
@@ -46,8 +46,8 @@ class ProductosController extends Controller {
      */
     public function create() {
         if (\Auth::guard('admin')->user()->can(['productos-crear'])) {
-            $rubros = Rubro::getRubros()->lists('nombre', 'id')->toArray();
-            $marcas = Marca::getMarcas()->lists('nombre', 'id')->toArray();
+            $rubros = Rubro::getRubros()->pluck('nombre', 'id')->toArray();
+            $marcas = Marca::getMarcas()->pluck('nombre', 'id')->toArray();
             return view('admin.productos.create', compact('rubros', 'marcas'));
         } else {
             return view('errors.noTienePermisos');
@@ -80,6 +80,10 @@ class ProductosController extends Controller {
             $producto->setAudit('admin');
 
             $producto->activo = $this->checkCheckboxValue('activo');
+            $producto->slug ="";
+            $producto->cod_barra ="";
+            $producto->precio=0;
+            $producto->iva=0;
             $producto->save();
             $producto->slug = $producto->id . '-' . str_slug($producto->nombre);
             $producto->save();
@@ -97,10 +101,11 @@ class ProductosController extends Controller {
      * @return Response
      */
     public function edit($id) {
+      
         if (\Auth::guard('admin')->user()->can(['productos-editar'])) {
             $producto = Producto::findOrFail($id);
-            $rubros = Rubro::getRubros()->lists('nombre', 'id')->toArray();
-            $marcas = Marca::getMarcas()->lists('nombre', 'id')->toArray();
+            $rubros = Rubro::getRubros()->pluck('nombre', 'id')->toArray();
+            $marcas = Marca::getMarcas()->pluck('nombre', 'id')->toArray();
             return view('admin.productos.edit', compact('producto', 'rubros', 'marcas'));
         } else {
             return view('errors.noTienePermisos');
@@ -191,8 +196,8 @@ class ProductosController extends Controller {
 
     private function createRegistros($productos) {
 
-        $rubros = Rubro::getRubros()->lists('nombre', 'id')->toArray();
-        $marcas = Marca::getMarcas()->lists('nombre', 'id')->toArray();
+        $rubros = Rubro::getRubros()->pluck('nombre', 'id')->toArray();
+        $marcas = Marca::getMarcas()->pluck('nombre', 'id')->toArray();
         $encabezado = ['Codigo', 'Nombre', 'Rubro', 'Marca', 'Precio', 'I.V.A.', 'Stock', 'Actualizado'];
         $registros = [];
 

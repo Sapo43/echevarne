@@ -1,8 +1,8 @@
 <?php namespace App\Models;
 
-use Laratrust\Models\LaratrustRole;
+use Zizaco\Entrust\EntrustRole;
 
-class Role extends LaratrustRole {
+class Role extends EntrustRole {
  
     protected $fillable = ['name', 'display_name', 'description'];
     

@@ -68,7 +68,7 @@
     </div>
 </div>
 
-{!! Form::open(['action' => ['Admin\RubrosController@destroy', ':RUBRO_ID'], 'method' => 'DELETE', 'id' => 'delete-form'])!!}                
+{!! Form::open(['action' => ['App\Http\Controllers\Admin\RubrosController@destroy', ':RUBRO_ID'], 'method' => 'DELETE', 'id' => 'delete-form'])!!}                
 {!! Form::close() !!}
 
 @include('commons.modalProcessing');

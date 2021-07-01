@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('styles')
-    {{ HTML::style('css/jquery-ui.min.css') }}
+    {{ HTML::style('assetsAdmin/css/jquery-ui.min.css') }}
 @endsection
 @section('content')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -47,7 +47,8 @@
                                             </a>
                             </td>
                             <td>
-                                {{str_limit($novedad->subtitulo, 100)}}
+                            {{ substr(strip_tags($novedad->subtitulo), 0, 100) }}
+                               
                             </td>
                             <td>
                                 {!! HTML::image($novedad->imagen, $novedad->titulo, array('width'=>'100px')) !!}
@@ -79,14 +80,14 @@
         </div>
     </div>
 
-    {!! Form::open(['action' => ['Admin\NovedadesController@destroy', ':NOVEDAD_ID'], 'method' => 'DELETE', 'id' => 'delete-form'])!!}
+    {!! Form::open(['action' => ['App\Http\Controllers\Admin\NovedadesController@destroy', ':NOVEDAD_ID'], 'method' => 'DELETE', 'id' => 'delete-form'])!!}
     {!! Form::close() !!}
 
     @include('commons.modalProcessing');
 
 @endsection
 @section('scripts')
-    {!! HTML::script('js/jquery-ui.min.js?v=2') !!}
+    {!! HTML::script('assetsAdmin/js/jquery-ui.min.js?v=2') !!}
     <script type="text/javascript">
 
         $(document).ready(function () {

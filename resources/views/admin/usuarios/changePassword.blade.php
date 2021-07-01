@@ -22,7 +22,7 @@
                     @endif
                 </div>
             </div>                
-                {!! Form::model($user, ['action' => ['Admin\UserController@updateContraseña', $user->id], 'method' => 'PUT'])!!}
+                {!! Form::model($user, ['action' => ['App\Http\Controllers\Admin\UserController@updateContraseña', $user->id], 'method' => 'PUT'])!!}
                 <div class="row">
                     <div class="col-md-3 form-group">
                         {!! Form::label('contraseña', 'Nueva Contraseña') !!}

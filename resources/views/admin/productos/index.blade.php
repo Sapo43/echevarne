@@ -84,7 +84,7 @@
                                 ${{ number_format($producto->precio, 2, ',', '.') }}
                             </td>
                             <td align="right">
-                                <a href="{{ route('admin.productos.edit', $producto->id) }}" title="Editar Producto"
+                                <a href="/admin/productos/edit/{{$producto->id}}" title="Editar Producto"
                                    class="btn btn-primary">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;
                                     Editar
@@ -114,8 +114,9 @@
         </div>
     </div>
 
-    {!! Form::open(['action' => ['Admin\ProductosController@destroy', ':PRODUCTO_ID'], 'method' => 'DELETE', 'id' => 'delete-form'])!!}
-    {!! Form::close() !!}
+    {{ Form::open(['action' => ['App\Http\Controllers\Admin\ProductController@destroy', ':id'], 'method' => 'DELETE', 'id' => 'delete-form'])}}
+
+    {{ Form::close() }}
 
     @include('commons.modalProcessing');
 
@@ -139,21 +140,24 @@
         function eliminar(element) {
 
             var row = element.parents('tr');
-            var id = row.data('id');
+            var id = row.data('id');         
             var form = $("#delete-form");
-            var url = form.attr('action').replace(':PRODUCTO_ID', id);
+  
+            var url = form.attr('action').replace(':id', id);
+          
             var data = form.serialize();
+      
             $("#modalProcessing #mensaje").html('Se esta eliminando el Producto. <br />Por favor aguarde.');
             $('#modalProcessing').modal();
+         
+            $.post(url, data, function (result) {
 
-            $.post(url, data, function (data) {
-
-                if (data.result !== "ERROR") {
+                if (result.result !== "ERROR") {
                     row.fadeOut();
                     $('#modalProcessing').modal('hide');
                 } else {
                     $('#modalProcessing').modal('hide');
-                    $('#modalError #mensaje').html(data.message);
+                    $('#modalError #mensaje').html(result.message);
                     $('#modalError').modal();
                 }
             }).fail(function () {

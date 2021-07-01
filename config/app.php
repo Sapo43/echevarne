@@ -174,7 +174,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        Zizaco\Entrust\EntrustServiceProvider::class,
     ],
 
     /*
@@ -228,7 +228,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-           
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Form' => Collective\Html\FormFacade::class,
         'HTML' => Collective\Html\HtmlFacade::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,

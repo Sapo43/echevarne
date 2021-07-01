@@ -12,9 +12,9 @@
         <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
         <link rel="icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">           
         
-        <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">        
-        <link href="{{ asset('css/admin.min.css?v=2') }}" rel="stylesheet">
-        <link href="{{ asset('css/fonts.min.css')}}" rel="stylesheet">    
+        <link href="{{ asset('assetsAdmin/css/bootstrap.min.css')}}" rel="stylesheet">        
+        <link href="{{ asset('assetsAdmin/css/admin.min.css?v=2') }}" rel="stylesheet">
+        <link href="{{ asset('assetsAdmin/css/fonts.min.css')}}" rel="stylesheet">    
  
 
         <!-- Fonts -->
@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="{{ url('/admin') }}">
-                        <img src="{{asset('img/logo.png')}}" alt="Echevarne Hermanos" class="img-responsive"/>
+                        <img src="{{asset('assetsAdmin/img/logo.png')}}" alt="Echevarne Hermanos" class="img-responsive"/>
                     </a>
                 </div>
 
@@ -103,12 +103,13 @@
             </div>
         </div>
         <!-- Scripts -->
+  
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-        {!! HTML::script('js/bootstrap-confirmation.js') !!} 
+        {!! HTML::script('assetsAdmin/js/bootstrap-confirmation.js') !!} 
 
-        <script src="{{ asset('js/floating-wpp.min.js')}}"></script>
+        <script src="{{ asset('assetsAdmin/js/floating-wpp.min.js')}}"></script>
         @yield('scripts')        
         @yield('scripts2')        
         @yield('scripts3')        

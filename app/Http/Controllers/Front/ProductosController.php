@@ -36,7 +36,7 @@ class ProductosController extends Controller {
         $productos=$productos->paginate(24);
         $links = $productos->links();        
         $links = str_replace("<a", "<a class='page-link' ", $links);
-   
+       
         return view('front.producto.productos', compact('productos', 'rubros', 'marcas', 'title', 'meta_description', 'h_image','total','scripts'));
     }
 
@@ -101,7 +101,8 @@ class ProductosController extends Controller {
      
               $codProd = $producto->codigo;
             }
-        
+           
+
              return view ('pages.product.index',compact('producto','codProd','scripts','csss'));
     }
 }

@@ -24,7 +24,8 @@
         <br />
         <div class="row">
             <div class="col-md-12">
-                {!! Form::open(['action' => 'Admin\Importers\ImporterEquivalenciasController@upload', 'method' => 'POST', 'enctype' => 'multipart/form-data'])!!}  
+         
+                {!! Form::open(['action' => 'App\Http\Controllers\Admin\Importers\ImporterEquivalenciasController@upload', 'method' => 'POST', 'enctype' => 'multipart/form-data'])!!}  
                 <div class="col-md-3 form-group">
                     {!! Form::label('archivo', 'Archivo') !!}        
                     {!! Form::file('archivo', array('class' => 'form-control')) !!}
