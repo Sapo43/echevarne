@@ -11,33 +11,27 @@
                     <div class="site-navigation">
                         <ul class="main-menu nav">
                             <li class="has-submenu"><a href="/">Home</a>
-                                <ul class="sub-menu">
+                                <!-- <ul class="sub-menu">
                                     <li><a href="index.html">Home 1</a></li>
                                     <li><a href="index-2.html">Home 2</a></li>
                                     <li><a href="index-boxed.html">Home Box Layout</a></li>
-                                </ul>
+                                </ul> -->
                             </li>
                             <li><a href="about.html">About</a></li>
                             <li class="has-submenu"><a href="/shop">Shop</a>
                                 
                             </li>
-                            <li class="has-submenu"><a href="blog.html">blog</a>
-                                <ul class="sub-menu">
+                            <li class="has-submenu"><a href="/servicios">Servicios</a>
+                                <!-- <ul class="sub-menu">
                                     <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
                                     <li><a href="blog.html">Blog Right Sidebar</a></li>
                                     <li><a href="blog-details.html">Single Blog</a></li>
                                     <li><a href="blog-details-sidebar.html">Single Blog Sidebar</a></li>
-                                </ul>
+                                </ul> -->
                             </li>
-                            <li><a href="gallery.html">Gallery</a></li>
-                            <li class="has-submenu"><a href="index.html">Pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="/descargas">Descargas</a></li>
+                           
+                            <li><a href="/contacto">Contacto</a></li>
                         </ul>
                     </div>
                 </div>

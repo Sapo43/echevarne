@@ -9,6 +9,8 @@
         </figure>
     @endif
 @else
+    @if(isset($codProd))
+    
     @if(file_exists(public_path().'/img/productos/'.$codProd.'.jpg'))
     <figure class="pro-thumb-item" data-mfp-src="/img/productos/{{$codProd}}.jpg">
         {{ HTML::image('/img/productos/'.$codProd.'.jpg', $producto->nombre, array('class'=>'img-responsive ', 'title'=>$producto->nombre)) }}
@@ -31,4 +33,33 @@
         </figure>
     @endif
 
-@endif
+    
+
+    @else   
+    
+    @if(file_exists(public_path().'/img/productos/'.$producto->codigo.'.jpg'))
+    <figure class="pro-thumb-item" data-mfp-src="/img/productos/{{$producto->codigo}}.jpg">
+        {{ HTML::image('/img/productos/'.$producto->codigo.'.jpg', $producto->nombre, array('class'=>'img-responsive ', 'title'=>$producto->nombre)) }}
+        </figure>
+    @elseif(file_exists(public_path().'/img/productos/'.$producto->codigo.'.JPG'))
+    <figure class="pro-thumb-item" data-mfp-src="/img/productos/{{$producto->codigo}}.JPG">
+        {{ HTML::image('/img/productos/'.$producto->codigo.'.JPG', $producto->nombre, array('class'=>'img-responsive ', 'title'=>$producto->nombre)) }}
+        </figure>
+    @elseif(file_exists(public_path().'/img/productos/'.$producto->codigo.'.png'))
+    <figure class="pro-thumb-item" data-mfp-src="/img/productos/{{$producto->codigo}}.png">
+        {{ HTML::image('/img/productos/'.$producto->codigo.'.png', $producto->nombre, array('class'=>'img-responsive ', 'title'=>$producto->nombre)) }}
+        </figure>
+    @elseif(file_exists(public_path().'/img/productos/'.$producto->codigo.'.PNG'))
+    <figure class="pro-thumb-item" data-mfp-src="/img/productos/{{$producto->codigo}}.PNG">
+        {{ HTML::image('/img/productos/'.$producto->codigo.'.PNG', $producto->nombre, array('class'=>'img-responsive ', 'title'=>$producto->nombre)) }}
+        </figure>
+    @else
+    <figure class="pro-thumb-item" data-mfp-src="/img/productos/sin-imagen.png">
+        {{ HTML::image('/img/productos/sin-imagen.png', $producto->nombre, array('class'=>'img-responsive ', 'title'=>$producto->nombre)) }}
+        </figure>
+    @endif
+
+    @endif
+    
+
+@endif    

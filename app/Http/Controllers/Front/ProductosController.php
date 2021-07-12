@@ -132,8 +132,15 @@ class ProductosController extends Controller {
         }else{
         $productos = Producto::filterWithoutPaginate($request->get('nombre'), $request->get('rubro'), $request->get('marca'), $request->get('codigo'), "1");      
     }
-        
+    if(\Auth::user()){
+        $porcentaje_compra=\Auth::user()->porcentaje_compra;
+        $porcentaje_venta=\Auth::user()->porcentaje_venta;
+    }else{$porcentaje_compra=0;
+            $porcentaje_venta=0;
+    };
         $data = [
+            'porcentaje_compra'=>$porcentaje_compra,
+            'porcentaje_venta'=>$porcentaje_venta,
             'title' => 'Lista de Precios',
             'heading' => 'Lista de Precios',
             'productos'=>$productos,
@@ -149,6 +156,16 @@ class ProductosController extends Controller {
         return $pdf->download();
         
        // return view('front.producto.productos', compact('productos', 'rubros', 'marcas', 'title', 'meta_description', 'h_image'));
+    }
+
+
+
+
+    public function productDetailModal($slug){
+        $p_id = substr($slug, 0, strpos($slug, '-'));
+        $producto = Producto::find($p_id);
+     
+        return view('includes.productdetailformodal',compact('producto'));
     }
 
 }

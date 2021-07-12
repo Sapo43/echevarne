@@ -4,9 +4,10 @@
                             <div class="col-sm-6 col-lg-4">
                                 <div class="product-item">
                                     <div class="product-item__thumb">
-                                        <a href="/producto/{{$producto->slug}}">
-                                            <img class="thumb-primary" src="assets/img/product/product-6.png" alt="Product" />
-                                            <img class="thumb-secondary" src="assets/img/product/product-7.png" alt="Product" />
+                                        <!-- <a href="/producto/{{$producto->slug}}"> -->
+                                      <a id="amodal"href="#" data-toggle="modal" data-id="{{$producto->slug}}" data-target="#basicModal">
+                                        @include('pages.product.partials')
+                                           
                                         </a>
 
                                         <div class="ratting">
@@ -20,13 +21,16 @@
 
                                     <div class="product-item__content">
                                         <div class="product-item__info">
-                                            <h4 class="title"><a href="/producto/{{$producto->slug}}">{{$producto->codigo}}</a></h4>
+                                       
+                                            <!-- <h4 class="title"><a href="/producto/{{$producto->slug}}">{{$producto->codigo}}</a></h4> -->
                                             <!-- <span class="price"><strong>Price:</strong> $165.00</span> -->
+                                          @if(\Auth::check())  
                                             <h5 class="precioLista"><p>${{number_format( $producto->precio,2, ',','.')}}<p></h5> 
                             <h5 class="precioCompra"><p >${{number_format($producto->precio- ($porcentaje_compra   / 100),2, ',','.')}}<p></h5>  
                             <h5 class="precioVenta"><p >${{number_format($producto->precio- ($porcentaje_compra  / 100)+( ($producto->precio- ($producto->precio* $porcentaje_compra  / 100)) * $porcentaje_venta  / 100),2, ',','.')}}<p></h5>    
-
-
+                                    @else
+                                    <h5 class="precioLista"><p>${{number_format( $producto->precio,2, ',','.')}}<p></h5> 
+                                    @endif
 
                                         </div>
 
@@ -54,6 +58,22 @@
                             <!-- End Product Item -->
                             @endforeach
                             </div>     
-                          
+        <!-- divs de cierre de tabla -->
+                                   
 
-                       
+                       <!-- abro links -->
+                       </div>
+                         </div> 
+                    <div id="linksShopGrid" style="display:none;">   
+                           
+                        <div class="action-bar-inner mt-30">
+                            <div class="row align-items-center">
+                                <div class="col-sm-6">
+                                    <nav class="pagination-wrap mb-10 mb-sm-0">                                            
+                                    {!! $data->links('includes.paginator') !!}                             
+                                    </nav>
+                                </div>                          
+                            </div>
+                        </div>
+                    </div>
+                    <!-- cierro links -->

@@ -10,28 +10,59 @@
     <!--== End Page Header Area ==-->
 
                 <div class="col-lg-9 order-0 order-lg-1">
+              
                     <div class="action-bar-inner mb-30">
-                        <div class="row align-items-center">
-                            <div class="col-sm-6">
-                                <div class="shop-layout-switcher mb-15 mb-sm-0">
-                                    <ul class="layout-switcher nav">
-                                        <li data-layout="grid" class="active"><i class="fa fa-th"></i></li>
-                                        <li data-layout="list"><i class="fa fa-th-list"></i></li>
-                                    </ul>
+                         <!-- Abre row  de filtros--> 
+                       
+                
+                    <div class="row align-items-center">
+                                 <div class="col-sm-3">
+                                 <div class="sort-by-wrapper">
+                 
+                  
+                    {!! Form::select('marca', ['0' => 'Todas']+$marcas, null, array('class' => 'form-control','id'=>'marca')) !!}
+                    </div>
                                 </div>
-                            </div>
-
-                            <div class="col-sm-3">
+                                <div class="col-sm-3">
                                 <div class="sort-by-wrapper">
-                                    <label for="sort" class="sr-only">Sort By</label>
-                                    <select name="sort" id="sort">
-                                        <option value="sbp">Sort By Popularity</option>
-                                        <option value="sbn">Sort By Newest</option>
-                                        <option value="sbt">Sort By Trending</option>
-                                        <option value="sbr">Sort By Rating</option>
-                                    </select>
+              
+                    {!! Form::select('rubro', ['0' => 'Todos']+$rubros, null, array('class' => 'form-control','id'=>'rubro')) !!}
+                    </div>
                                 </div>
-                            </div>
+                                <div class="col-sm-2">
+                                    <div class="sort-by-wrapper">                 
+                                        <input class="form-control" id="equivalencia"name="equivalencia" type="text" placeholder="Equivalencia">
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="sort-by-wrapper">                 
+                                        <input class="form-control" id="nombre"name="nombre" type="text" placeholder="Descripción">
+                                    </div>
+                                </div>
+                                <div class="col-sm-1">
+                                    <div class="sort-by-wrapper">                 
+                                    <a href="#" id="search" name="search" class="btn-echevarne3 form-control">
+              
+              <i class="fa fa-search"></i>  
+              </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1">
+                                    <div class="sort-by-wrapper">                 
+                                    <a href="#" id="search" name="search" class="btn-echevarne3 form-control">
+              
+              <i class="fa fa-times" style="font-size:20px;"></i>  
+              </a>
+                                    </div>
+                                </div>
+                        </div>
+
+                            <!-- Cierro row -->
+                        <div class="row align-items-center">
+                        <div class="col-sm-6">
+                        </div>
+                            
+                            @if(\Auth::check())  
                             <div class="col-sm-3">
                                 <div class="sort-by-wrapper">
                                     <label for="sort" class="sr-only">Sort By</label>
@@ -42,10 +73,39 @@
                                     </select>
                                 </div>
                             </div>
+                               @else       
+                               <div class="col-sm-3"></div>
+                          
+                         @endif
+                         <br>
+                         <div class="col-sm-3">
+                                <div class="row align-items-center">
+                                    <div class="shop-layout-switcher mb-30 mb-sm-0">
+                                        <ul class="layout-switcher nav" style="margin-left:15px">
+                                        <li data-layout="grid" class="active"><i class="fa fa-th"></i></li>
+                                        <li data-layout="list"><i class="fa fa-th-list"></i></li>                                     
+                                        </ul>                                  
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="">
+                                        <ul class="nav" style="margin-left:15px">
+                                            <li><i class="fa fa-download downloadpdf"></i></li>                                                                      
+                                        </ul>                                  
+                                    </div>
+                           
+                                </div>
+                                
+                            </div>
+
+                         </div>
+    
 
 
-                        </div>
+
                     </div>
+
+
                     <div class="product-wrapper product-layout layout-grid">
                     <div id="table_data"> 
                        
@@ -53,81 +113,50 @@
                     
                             @include('includes.shopgrid')
                           
-                            </div>
-                            </div>
+                           
                   
 
-
-                    <div class="action-bar-inner mt-30">
-                        <div class="row align-items-center">
-                            <div class="col-sm-6">
-                                <nav class="pagination-wrap mb-10 mb-sm-0">
-                                  
-                                    {!! $data->links('includes.paginator') !!}
-                                </nav>
-                            </div>
-
-                            <div class="col-sm-6 text-center text-sm-right">
-                                <p>Showing 1–12 of 26 results</p>
+                    <!-- abro links -->
+                    <div id="linksShopContent" >  
+                        <div class="action-bar-inner mt-30">
+                            <div class="row align-items-center">
+                                <div class="col-sm-6">
+                                    <nav class="pagination-wrap mb-10 mb-sm-0">                                            
+                                    {!! $data->links('includes.paginator') !!}                             
+                                    </nav>
+                                </div>                          
                             </div>
                         </div>
                     </div>
+                    <!-- cierro links -->
                 </div>
             </div>
         </div>
     </div>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script>
-$(document).ready(function(){
-
- $(document).on('click', '.pagination a', function(event){
-   
-  event.preventDefault(); 
-  
-  
-  
-  var indexs =$('.pagination li.active').index()
-  $('.pagination li.active').removeClass('active');
- 
-
-
-
-  
- 
-
-  var page = $(this).attr('href').split('page=')[1];
-
-  $('.pagination').parent().find(".pagination li").eq(page).addClass('active');
-  fetch_data(page);
- });
-
- function fetch_data(page)
- {
-  $.ajax({
-   url:"/shop/fetch_data?page="+page,
-   success:function(data)
-   {
+    <div class="modal fade " id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Producto</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
        
-   var activeView=$('.layout-switcher li.active').data("layout");
-   areaWrap = $(".product-layout");
-    $('#table_data').html(data);
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+     
    
-          
-
- 
-
-    $('.layout-switcher li.active').removeClass('active');
-    $('.layout-switcher').find("[data-layout='"+activeView+"']").addClass('active'); 
-        console.log("acv "+activeView)
-             areaWrap.removeClass('layout-grid layout-list').addClass('layout-' + activeView);
-           
-
-  
-   }
-  });
- }
- 
-});
-</script>
+    

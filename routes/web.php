@@ -22,12 +22,8 @@ use App\Http\Controllers\Admin\ImageUploadController;
 use App\Http\Controllers\Admin\DescargasController;
 use App\Http\Controllers\Admin\NovedadesController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\FileController;
 
-
-// Route::get(
-//     '/user/profile',
-//     [UserProfileController::class, 'show']
-// )->name('profile');
 
 
 
@@ -37,6 +33,11 @@ Route::get('/producto/{slug}', [FrontProductosController::class,'show'])->name('
 Route::get('/shop/fetch_data', [FrontController::class,'shop'])->name('shop');
 Route::get('/cart',[CartController::class,'cartForCheckout'])->name('cart');
 Route::get('/logout',[LoginController::class,'logout']);
+Route::get('/about',[FrontController::class,'about'])->name('about');
+Route::get('/descargas',[FrontController::class,'descargas'])->name('descargas');
+Route::get('/contacto',[FrontController::class,'contacto'])->name('contacto');
+Route::get('file/{folder}/{filename}', [FileController::class,'getFile'])->where('filename', '^[^/]+$');
+//Route::get('descargarBase/{filename}', [FileController::class,'getBase'])->where('filename', '^[^/]+$');
 
 
 Route::bind('producto',function($slug){
@@ -58,6 +59,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/checkout', [CheckoutController::class,'index'])->middleware('auth');
 Route::post('/checkout/confirmar', [CartController::class,'confirm'])->middleware('auth');
+Route::post('/downloadPdf',[FrontProductosController::class,'downloadpdf']);
 
 
 
@@ -153,3 +155,6 @@ Route::get('/admin/downloadProductos', [ProductosController::class,'downloadFile
 Route::post('/admin/descargas/reposition', [DescargasController::class,'reposition'])->name('admin.descargas.reposition');
 //Novedades
 Route::post('/admin/novedades/reposition', [NovedadesController::class,'reposition'])->name('admin.novedades.reposition');
+
+
+Route::get('/productoDetail/{slug}',[FrontProductosController::class,'productDetailModal']);
