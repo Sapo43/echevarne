@@ -20,6 +20,7 @@ use Jenssegers\Agent\Agent;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Mail;
+use App\Events\StatusLiked;
 
 class CartController extends Controller {
 
@@ -131,7 +132,7 @@ public function cartForCheckout(){
     }
 
 
-    public function confirm(Request $request){
+    public function confirmarCarrito(Request $request){
 
 
        
@@ -221,7 +222,10 @@ public function cartForCheckout(){
     //   }
       
       
-
+   
+        event(new StatusLiked('Someone'));
+        
+    
 
 
      \Session::forget('cart');

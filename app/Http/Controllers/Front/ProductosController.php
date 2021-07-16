@@ -161,11 +161,12 @@ class ProductosController extends Controller {
 
 
 
-    public function productDetailModal($slug){
+    public function productDetailModal($slug,Request $request){
         $p_id = substr($slug, 0, strpos($slug, '-'));
         $producto = Producto::find($p_id);
-     
-        return view('includes.productdetailformodal',compact('producto'));
+        $productosEquivalencia=Producto::filterAndPaginate1($request->get('nombre'), $request->get('rubro'), $request->get('marca'), $producto->codigo, "1")->get(10);  
+        
+        return view('includes.productdetailformodal',compact('producto','productosEquivalencia'));
     }
 
 }

@@ -1,6 +1,3 @@
-
-
-
 <div class="page-content-wrapper sp-y">
         <div class="product-details-page-content">
             <div class="container container-wide">
@@ -120,48 +117,63 @@
                             </div>
                             <!-- End Product Info Area -->
                         </div>
-               
+               <br>
                         <div class="row">
                             <div class="col-12">
                                  <!-- Start carousel -->
                                  <div class="container">
   <div class="carousel slide multi-item-carousel" id="theCarousel">
+    <!-- <div class="carousel-inner row w-100 mx-auto" style="height:300px"> -->
     <div class="carousel-inner row w-100 mx-auto">
-      <div class="carousel-item active col-md-4">
-        <img src="https://via.placeholder.com/300/f44336/000000?text=1" class="img-fluid mx-auto d-block">
-      </div>
-      <div class="carousel-item col-md-4">
-        <img src="https://via.placeholder.com/300/e91e63/000000?text=2" class="img-fluid mx-auto d-block">
-      </div>
-      <div class="carousel-item col-md-4">
-        <img src="https://via.placeholder.com/300/9c27b0/000000?text=3" class="img-fluid mx-auto d-block">
-      </div>
-      <div class="carousel-item col-md-4">
-        <img src="https://via.placeholder.com/300/673ab7/000000?text=4" class="img-fluid mx-auto d-block">
-      </div>
-      <div class="carousel-item col-md-4">
-        <img src="https://via.placeholder.com/300/4caf50/000000?text=5" class="img-fluid mx-auto d-block">
-      </div>
-      <div class="carousel-item col-md-4">
-        <img src="https://via.placeholder.com/300/8bc34a/000000?text=6" class="img-fluid mx-auto d-block">
-      </div>
-      <div class="carousel-item col-md-4">
-        <img src="https://via.placeholder.com/300/ffffff/000000?text=7" class="img-fluid mx-auto d-block">
-      </div>
-      <div class="carousel-item col-md-4">
-        <img src="https://via.placeholder.com/300/000000/ffffff?text=8" class="img-fluid mx-auto d-block">
-      </div>
+
+
+    @for ($i = 0; $i < 1 ; $i++)
+    <div class="carousel-item col-md-4 active " style="height:auto;">
+    <div class="card" >
+    <input type="hidden" value="{{$producto=$productosEquivalencia[0]}}">
+    @include('pages.product.partials')
+            <div class="card card-body">
+            <h5 class="card-title">{{$producto->codigo}}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+ 
     </div>
-    <a class="carousel-control-prev" href="#theCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
+      </div>
+      </div>
+@endfor  
+    @for ($i = 1; $i < sizeof($productosEquivalencia) ; $i++)
+    <div class="carousel-item col-md-4">
+    <div class="card" >
+    <input type="hidden" value="{{$producto=$productosEquivalencia[$i]}}">
+    @include('pages.product.partials')
+            <div class="card card-body">
+            <h5 class="card-title">{{$producto->codigo}}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+ 
+    </div>
+      </div>
+      </div>
+@endfor  
+    
+    
+  
+
+    </div>
+    <a style="color:red"class="carousel-control-prev" href="#theCarousel" role="button" data-slide="prev">
+      <span style="color:red" class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span  style="color:red" class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#theCarousel" role="button" data-slide="next">
+    <a style="color:red" class="carousel-control-next" href="#theCarousel" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
   </div>
 </div>
+
+
+
+
                         <!-- end carousel -->
                     </div>
                 </div>

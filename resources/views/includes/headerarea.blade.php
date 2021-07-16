@@ -3,7 +3,7 @@
             <div class="row align-items-center">
                 <div class="col-sm-4 col-lg-2">
                     <div class="site-logo text-center text-sm-left">
-                        <a href="index.html"><img src="/assets/img/logo.png" alt="Logo" /></a>
+                        <a href="index.html"><img src="/assets/img/logo.png" alt="Logo" style="max-width: 50%" /></a>
                     </div>
                 </div>
 
@@ -17,7 +17,7 @@
                                     <li><a href="index-boxed.html">Home Box Layout</a></li>
                                 </ul> -->
                             </li>
-                            <li><a href="about.html">About</a></li>
+                            <li><a href="/about">About</a></li>
                             <li class="has-submenu"><a href="/shop">Shop</a>
                                 
                             </li>
@@ -57,47 +57,13 @@
 
                             <div class="mini-cart-content">
                                 <div class="mini-cart-product">
-                                    <div class="mini-product">
-                                        <div class="mini-product__thumb">
-                                            <a href="single-product.html"><img src="/assets/img/product/product-1.png" alt="product" /></a>
-                                        </div>
-                                        <div class="mini-product__info">
-                                            <h2 class="title"><a href="single-product.html">Auto Clutch & Brake</a></h2>
-
-                                            <div class="mini-calculation">
-                                                <p class="price">5 x <span>$20.33</span></p>
-                                                <button class="remove-pro"><i class="ion-trash-b"></i></button>
-                                            </div>
-                                        </div>
+                                   <!--  -->
+                                    <div id="minicart">
+                                    @include('includes.minicart')
                                     </div>
+                             
 
-                                    <div class="mini-product">
-                                        <div class="mini-product__thumb">
-                                            <a href="single-product.html"><img src="/assets/img/product/product-2.png" alt="product" /></a>
-                                        </div>
-                                        <div class="mini-product__info">
-                                            <h2 class="title"><a href="single-product.html">Leather Steering Wheel</a></h2>
-
-                                            <div class="mini-calculation">
-                                                <p class="price">5 x <span>$20.33</span></p>
-                                                <button class="remove-pro"><i class="ion-trash-b"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="mini-product">
-                                        <div class="mini-product__thumb">
-                                            <a href="single-product.html"><img src="/assets/img/product/product-3.png" alt="product" /></a>
-                                        </div>
-                                        <div class="mini-product__info">
-                                            <h2 class="title"><a href="single-product.html">Leather Steering Wheel</a></h2>
-
-                                            <div class="mini-calculation">
-                                                <p class="price">5 x <span>$20.33</span></p>
-                                                <button class="remove-pro"><i class="ion-trash-b"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   <!--  -->
                                 </div>
                             </div>
                         </div>

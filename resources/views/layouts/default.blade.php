@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Home 2 :: Lukas - Car Parts Store eCommerce HTML Template</title>
+    <title>Echevarne Hermanos</title>
 
     <!--== Favicon ==-->
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
@@ -35,66 +35,22 @@
     <link href="/assets/css/font-awesome.min.css" rel="stylesheet" />
     <!--== Bootstrap Min CSS ==-->
      <link href="/assets/css/bootstrap.min.css" rel="stylesheet" /> 
-
-    
-    
-
     <!--== Main Style CSS ==-->
     <link href="/assets/css/style.css" rel="stylesheet" />
     <!--== Helper Min CSS ==-->
     <link href="/assets/css/helper.min.css" rel="stylesheet" />
     <!-- endbuild -->
 
+
+
+
+
     <!--[if lt IE 9]>
 <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<style >
-@media (min-width: 768px) {
-	 .multi-item-carousel .carousel-inner .carousel-item {
-		 margin-right: inherit;
-	}
-	 .multi-item-carousel .carousel-inner .carousel-item.active + .carousel-item, .multi-item-carousel .carousel-inner .carousel-item.active + .carousel-item + .carousel-item {
-		 display: block;
-	}
-	 .multi-item-carousel .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left), .multi-item-carousel .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item, .multi-item-carousel .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
-		 transition: none;
-	}
-	 .multi-item-carousel .carousel-inner .carousel-item.active + .carousel-item + .carousel-item + .carousel-item {
-		 position: absolute;
-		 top: 0;
-		 right: -33.333333333333%;
-		 z-index: -1;
-		 display: block;
-		 visibility: visible;
-	}
-	 .multi-item-carousel .carousel-inner .carousel-item-next, .multi-item-carousel .carousel-inner .carousel-item-prev {
-		 position: relative;
-		 transform: translate3d(0,0,0);
-	}
-	 .multi-item-carousel .carousel-inner .carousel-item-prev.carousel-item-right {
-		 position: absolute;
-		 top: 0;
-		 left: 0;
-		 z-index: -1;
-		 display: block;
-		 visibility: visible;
-	}
-	 .multi-item-carousel .active.carousel-item-left + .carousel-item-next.carousel-item-left, .multi-item-carousel .carousel-item-next.carousel-item-left + .carousel-item, .multi-item-carousel .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item, .multi-item-carousel .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
-		 position: relative;
-		 transform: translate3d(-100%,0,0);
-		 visibility: visible;
-	}
-	 .multi-item-carousel .active.carousel-item-right + .carousel-item-prev.carousel-item-right, .multi-item-carousel .carousel-item-prev.carousel-item-right + .carousel-item, .multi-item-carousel .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item, .multi-item-carousel .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
-		 position: relative;
-		 transform: translate3d(100%,0,0);
-		 display: block;
-		 visibility: visible;
-	}
-}
- 
-</style>
+
 
 
 	<!-- CSS dinamicos que llegan desde el controlador -->
@@ -209,32 +165,10 @@
     <script src="/assets/js/active.js"></script>
     <!-- endbuild -->
 
+    <script src="/assets/js/getminicart.js"></script>
 
 
-
-
-
-
-<script>
-
-$('.multi-item-carousel').on('slide.bs.carousel', function (e) {
-  let $e = $(e.relatedTarget),
-      itemsPerSlide = 3,
-      totalItems = $('.carousel-item', this).length,
-      $itemsContainer = $('.carousel-inner', this),
-      it = itemsPerSlide - (totalItems - $e.index());
-  if (it > 0) {
-    for (var i = 0; i < it; i++) {
-      $('.carousel-item', this).eq(e.direction == "left" ? i : 0).
-        // append slides to the end/beginning
-        appendTo($itemsContainer);
-    }
-  }
-});
-
-</script>
-
-
+  
 	
 <!-- Scripts dinamicos que llegan desde el controlador -->
 <?php

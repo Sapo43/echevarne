@@ -21,8 +21,16 @@ use App\Http\Controllers\Admin\ProcesosController;
 use App\Http\Controllers\Admin\ImageUploadController;
 use App\Http\Controllers\Admin\DescargasController;
 use App\Http\Controllers\Admin\NovedadesController;
+use App\Http\Controllers\Admin\PedidosController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\PusherController;
+
+
+
+
+
+
 
 
 
@@ -84,7 +92,7 @@ Route::prefix('admin')->namespace('Admin')->group(static function() {
         Route::resource('menus', '\App\Http\Controllers\Admin\MenuController');
         Route::resource('novedades', '\App\Http\Controllers\Admin\NovedadesController');
         Route::resource('descargas', '\App\Http\Controllers\Admin\DescargasController');
-        // Route::resource('productos','App\Http\Controllers\Admin\ProductosController');
+        
         Route::resource('rubros', '\App\Http\Controllers\Admin\RubrosController');
         Route::resource('marcas', '\App\Http\Controllers\Admin\MarcasController');
         Route::resource('contactos', '\App\Http\Controllers\Admin\ContactosController');
@@ -92,7 +100,7 @@ Route::prefix('admin')->namespace('Admin')->group(static function() {
         Route::resource('conocenos', '\App\Http\Controllers\Admin\ConocenosController');
         Route::resource('pedidos','\App\Http\Controllers\Admin\PedidosController');
 
-        
+        Route::get('/pedidos/detalle/{id}',[PedidosController::class,'detalle'])->name('pedidos.detalle');
 
     });
     
@@ -149,7 +157,7 @@ Route::post('/admin/image-upload', [ImageUploadController::class,'imageUploadPos
 Route::get('novedad/{slug}', [FrontController::class,'showNovedad'])->name('front.novedad.show');
 
 Route::get('/admin/downloadContactos', [ContactosController::class,'downloadFile'])->name('admin.contactos.downloadFile');
-Route::get('/admin/downloadProductos', [ProductosController::class,'downloadFile'])->name('admin.productos.downloadFile');
+Route::get('/admin/downloadProductos', [ProductController::class,'downloadFile'])->name('admin.productos.downloadFile');
 
 //Descargas
 Route::post('/admin/descargas/reposition', [DescargasController::class,'reposition'])->name('admin.descargas.reposition');
@@ -158,3 +166,8 @@ Route::post('/admin/novedades/reposition', [NovedadesController::class,'repositi
 
 
 Route::get('/productoDetail/{slug}',[FrontProductosController::class,'productDetailModal']);
+
+Route::get('/getminicart',[FrontController::class,'getMiniCart']);
+Route::post('confirmarCarrito',[CartController::class,'confirmarCarrito']);
+
+

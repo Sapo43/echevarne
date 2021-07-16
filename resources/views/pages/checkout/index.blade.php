@@ -327,7 +327,7 @@
                                         and conditions</label>
                                 </div>
 
-                                <button id="confirmar" class="btn btn-bordered mt-40">Place Order</button>
+                                <button id="confirmar" class="btn btn-bordered mt-40">Generar Pedido</button>
                             </div>
                         </div>
                     </div>

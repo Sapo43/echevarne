@@ -44,7 +44,7 @@ $('#cantidadCarrito').addClass('aumentoCarrito')
 });
    }
 
-
+  getminicart()
  
    },
    error: function() {

@@ -22,6 +22,9 @@ class FrontController extends Controller {
 
     public function shop(Request $request){
 
+        
+        
+        
         $scripts = array(
             ('/assets/js/iziToast.min.js'),
             ('/assets/js/addToCart.js'),
@@ -30,13 +33,13 @@ class FrontController extends Controller {
             ('/assets/js/paginatorshop.js'),
             ('/assets/js/searchInShop.js'),
             ('/assets/js/loadDataToModal.js'),
-
-         
+            ('/assets/js/carouselProducto.js')        
         );
         
         $csss=array(
                 ('/assets/css/iziToast.css'),
-                ('/assets/css/addtocartanimation.css')
+                ('/assets/css/addtocartanimation.css'),
+                ('/assets/css/carouselProducto.css')
         );
        
         $rubros = Rubro::getRubros()->pluck('nombre', 'id')->toArray();
@@ -58,13 +61,13 @@ class FrontController extends Controller {
                     \Session::put('productos', $data->get());
                             $data=$data->paginate(5);                           
                    
-                    return view('includes.shopgrid', compact('data','scripts','porcentaje_compra','porcentaje_venta','rubros', 'marcas'))->render();
+                    return view('includes.shopgrid', compact('data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'))->render();
         }
       
         $data = Producto::filterAndPaginate1($request->get('nombre'), $request->get('rubro'), $request->get('marca'), $request->get('codigo'), "1");
         \Session::put('productos', $data->get());
         $data=$data->paginate(5); 
-            return view('pages.shop.index', compact('data','scripts','porcentaje_compra','porcentaje_venta','rubros', 'marcas'));
+            return view('pages.shop.index', compact('data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'));
            
        
           
@@ -126,5 +129,10 @@ public function myPaginator($items, $page )
     return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
 }
 
+
+public function getMiniCart(){
+    $cart= \Session::get('cart');
+    return view('includes.minicart',compact('cart'));
+}   
     
 }

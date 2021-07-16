@@ -6,9 +6,9 @@
                         <div class="col-lg-6 order-1 order-lg-0">
                             <div class="slide-content">
                                 <div class="slide-content-inner">
-                                    <h3>NEW TECHNOLOGY & BUILD</h3>
-                                    <h2>LATEST &amp; POWERFUL ENGINE FOR YOU</h2>
-                                    <a class="btn btn-white" href="shop.html">Shop Now</a>
+                                    <h3>MAS DE 40 AÑOS EN EL SECTOR</h3>
+                                    <h2>REPUESTOS DEL AUTOMOTOR</h2>
+                                    <a class="btn btn-orange" href="shop">Shop</a>
                                 </div>
                             </div>
                         </div>

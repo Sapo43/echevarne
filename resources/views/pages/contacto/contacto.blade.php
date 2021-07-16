@@ -104,7 +104,7 @@
             </div>
 
             <div class="contact-map-wrapper sm-top">
-                <div id="map_content" class="h-100" data-lat="23.7639212" data-lng="90.429871" data-zoom="7"></div>
+                <div id="map_content" class="h-100" data-lat="-34.5862712" data-lng="-60.9336682" data-zoom="1"></div>
             </div>
         </div>
     </div>

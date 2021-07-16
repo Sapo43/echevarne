@@ -15,7 +15,7 @@
         <link href="{{ asset('assetsAdmin/css/bootstrap.min.css')}}" rel="stylesheet">        
         <link href="{{ asset('assetsAdmin/css/admin.min.css?v=2') }}" rel="stylesheet">
         <link href="{{ asset('assetsAdmin/css/fonts.min.css')}}" rel="stylesheet">    
- 
+        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" />
 
         <!-- Fonts -->
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -80,6 +80,13 @@
                         @endforeach
                         @endif
                     </ul>
+                    
+                    <ul class="nav navbar-nav">
+                    <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+          <i class="fa fa-bell"></i>
+          <span id="alerta"class="badge badge-warning navbar-badge">15</span>
+        </a>
+                        </ul>
                     <ul class="nav navbar-nav navbar-right">
                         @if (!Auth::guard('admin')->guest())
                         <li class="dropdown">
@@ -90,6 +97,7 @@
                                 <li><a href="{{ url('admin/logout') }}">Cerrar Sesión</a></li>
                             </ul>
                         </li>
+      
                         @endif
                     </ul>
                 </div>
@@ -110,8 +118,26 @@
         {!! HTML::script('assetsAdmin/js/bootstrap-confirmation.js') !!} 
 
         <script src="{{ asset('assetsAdmin/js/floating-wpp.min.js')}}"></script>
+
         @yield('scripts')        
         @yield('scripts2')        
-        @yield('scripts3')        
+        @yield('scripts3')    
+
+        <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+        <script>
+
+
+
+var pusher = new Pusher('dea20025c24753b253dc', {
+  cluster: 'us2'
+});
+
+var channel = pusher.subscribe('my-channel');
+channel.bind('my-event', function(data) {
+  console.log(data.message);
+  $('#alerta').html('');
+  $('#alerta').html(data.message);
+});
+</script>
     </body>
 </html>

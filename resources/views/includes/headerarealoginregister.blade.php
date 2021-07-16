@@ -36,7 +36,9 @@
 
                             <div class="mini-cart-content">
                                 <div class="mini-cart-product">
-                                    <div class="mini-product">
+                                    <!-- lista de productos en el carrito -->
+                                
+                                <div class="mini-product">
                                         <div class="mini-product__thumb">
                                             <a href="single-product.html"><img src="/assets/img/product/product-1.png" alt="product" /></a>
                                         </div>
@@ -50,33 +52,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="mini-product">
-                                        <div class="mini-product__thumb">
-                                            <a href="single-product.html"><img src="/assets/img/product/product-2.png" alt="product" /></a>
-                                        </div>
-                                        <div class="mini-product__info">
-                                            <h2 class="title"><a href="single-product.html">Leather Steering Wheel</a></h2>
+                                 
 
-                                            <div class="mini-calculation">
-                                                <p class="price">5 x <span>$20.33</span></p>
-                                                <button class="remove-pro"><i class="ion-trash-b"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="mini-product">
-                                        <div class="mini-product__thumb">
-                                            <a href="single-product.html"><img src="/assets/img/product/product-3.png" alt="product" /></a>
-                                        </div>
-                                        <div class="mini-product__info">
-                                            <h2 class="title"><a href="single-product.html">Leather Steering Wheel</a></h2>
-
-                                            <div class="mini-calculation">
-                                                <p class="price">5 x <span>$20.33</span></p>
-                                                <button class="remove-pro"><i class="ion-trash-b"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                  
+                                    <!-- fin productos del carrito -->
                                 </div>
                             </div>
                         </div>

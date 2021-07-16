@@ -48,7 +48,7 @@ class PedidosController extends Controller {
                         ->paginate(20);
 
         
-            return view('admin.pedidos.index', compact('pedidos','status'));
+            return view('admin.pedidos.index', compact('pedidos'));
         } else {
             return view('errors.noTienePermisos');
         }

@@ -5,7 +5,7 @@
                                 <div class="product-item">
                                     <div class="product-item__thumb">
                                         <!-- <a href="/producto/{{$producto->slug}}"> -->
-                                      <a id="amodal"href="#" data-toggle="modal" data-id="{{$producto->slug}}" data-target="#basicModal">
+                                      <a href="#" data-toggle="modal" data-id="{{$producto->slug}}" onclick='loadModal(this)' data-target="#basicModal">
                                         @include('pages.product.partials')
                                            
                                         </a>
