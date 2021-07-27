@@ -1,4 +1,4 @@
-@section('content')
+
 <div class="row descargas">
     <div class="col-sm-2 col-md-2 col-wop-l">
         <div class="banner">
@@ -49,4 +49,3 @@
         </div>
     </div>
 </div>
-@endsection

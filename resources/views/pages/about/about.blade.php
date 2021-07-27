@@ -1,4 +1,4 @@
-@section('content')
+
 <div class="row empresa">
     <div class="col-xs-12 col-sm-2 col-md-2 col-wop-l">
         <div class="banner">
@@ -83,4 +83,3 @@
         </div>
     </div>
 </div>
-@endsection

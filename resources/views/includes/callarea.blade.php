@@ -7,9 +7,8 @@
                             <img src="/assets/img/icons/icon-1.png" alt="fast delivery">
                         </div>
                         <div class="call-to-action-item__info">
-                            <h3>Free Home Delivery</h3>
-                            <p>Provide free home delivery
-                                for all product over $100</p>
+                            <h3>Free Delivery</h3>
+                            <p>Contactate para conocer las promos</p>
                         </div>
                     </div>
                 </div>
@@ -21,8 +20,7 @@
                         </div>
                         <div class="call-to-action-item__info">
                             <h3>Quality Products</h3>
-                            <p>We ensure our product
-                                quality all times</p>
+                            <p>Todos nuestros productos certificados</p>
                         </div>
                     </div>
                 </div>
@@ -33,9 +31,8 @@
                             <img src="/assets/img/icons/icon-3.png" alt="return">
                         </div>
                         <div class="call-to-action-item__info">
-                            <h3>Online Support</h3>
-                            <p>To satisfy our customer we try
-                                to give support online</p>
+                            <h3>Soporte Online</h3>
+                            <p>Para satisfacer las necesidades del cliente</p>
                         </div>
                     </div>
                 </div>

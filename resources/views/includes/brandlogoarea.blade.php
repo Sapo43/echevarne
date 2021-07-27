@@ -4,32 +4,22 @@
                 <div class="col-12">
                     <div class="brand-logo-content">
                         <div class="brand-logo-item">
-                            <a href="#"><img src="/assets/img/brand-logo/brand-1.png" alt="Logo" /></a>
+                            <a href="#"><img src="/assets/img/brand-logo/hut.jpeg" alt="Logo" /></a>
                         </div>
 
                         <div class="brand-logo-item">
-                            <a href="#"><img src="/assets/img/brand-logo/brand-2.png" alt="Logo" /></a>
+                            <a href="#"><img src="/assets/img/brand-logo/mar.jpeg" alt="Logo" /></a>
                         </div>
 
                         <div class="brand-logo-item">
-                            <a href="#"><img src="/assets/img/brand-logo/brand-3.png" alt="Logo" /></a>
+                            <a href="#"><img src="/assets/img/brand-logo/narva.jpeg" alt="Logo" /></a>
                         </div>
 
                         <div class="brand-logo-item">
-                            <a href="#"><img src="/assets/img/brand-logo/brand-4.png" alt="Logo" /></a>
+                            <a href="#"><img src="/assets/img/brand-logo/gulf.jpeg" style="heigth: 80px;" alt="Logo" /></a>
                         </div>
 
-                        <div class="brand-logo-item">
-                            <a href="#"><img src="/assets/img/brand-logo/brand-5.png" alt="Logo" /></a>
-                        </div>
-
-                        <div class="brand-logo-item">
-                            <a href="#"><img src="/assets/img/brand-logo/brand-3.png" alt="Logo" /></a>
-                        </div>
-
-                        <div class="brand-logo-item">
-                            <a href="#"><img src="/assets/img/brand-logo/brand-1.png" alt="Logo" /></a>
-                        </div>
+                      
                     </div>
                 </div>
             </div>

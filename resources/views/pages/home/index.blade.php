@@ -16,8 +16,10 @@
     <!--== End Best Seller Products Area ==-->
 
     <!--== Start Flash Deals Area ==-->
-    @include('includes.flashdealsarea')
+    <!-- @include('includes.flashdealsarea') -->
     <!--== End Flash Deals Area ==-->
+<!-- About Area -->
+   @include('pages.about.abou')
 
     <!--== Start Call to Action Area ==-->
     @include('includes.callarea')
@@ -28,7 +30,7 @@
     <!--== End Promotion Code Banner Area ==-->
 
     <!--== Start Products Area Wrapper ==-->
-    @include('includes.productarea')
+   
     <!--== End Products Area Wrapper ==-->
 
     <!--== Start Call to action Wrapper ==-->

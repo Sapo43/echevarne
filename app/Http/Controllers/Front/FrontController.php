@@ -10,20 +10,28 @@ use App\Models\Novedad;
 use App\Models\Marca;
 use App\Models\Rubro;
 use App\Models\Producto;
+use App\Http\Traits\PTrait;
 
 class FrontController extends Controller {
 
-  
+  use PTrait;
 
     public function home(){
-
-        return view('pages.home.index');
+        $cart= \Session::get('cart');
+        $scripts = array(
+         
+            ('/assets/js/deleteFromCart.js')        
+        );
+      
+        $novedades = Novedad::where('visible', 1)->take(6)->orderBy('orden')->get();
+        return view('pages.home.index', compact('novedades','cart','scripts'));
     }
 
     public function shop(Request $request){
 
         
-        
+        $cart= \Session::get('cart');
+        $seccion="Shop";
         
         $scripts = array(
             ('/assets/js/iziToast.min.js'),
@@ -33,7 +41,8 @@ class FrontController extends Controller {
             ('/assets/js/paginatorshop.js'),
             ('/assets/js/searchInShop.js'),
             ('/assets/js/loadDataToModal.js'),
-            ('/assets/js/carouselProducto.js')        
+            ('/assets/js/carouselProducto.js'),
+            ('/assets/js/deleteFromCart.js')           
         );
         
         $csss=array(
@@ -45,15 +54,9 @@ class FrontController extends Controller {
         $rubros = Rubro::getRubros()->pluck('nombre', 'id')->toArray();
         $marcas = Marca::getMarcas()->pluck('nombre', 'id')->toArray();
        
-        if(\Auth::user()){
-            $porcentaje_compra=\Auth::user()->porcentaje_compra;
-            $porcentaje_venta=\Auth::user()->porcentaje_venta;
-        }else{$porcentaje_compra=0;
-                $porcentaje_venta=0;
-        };
-    // PARA PODER VOLVER A LA PAGINA ANTERIOR EN LA Q
-    
-       
+        $porcentaje_compra=$this->porcentaje_compra();
+        $porcentaje_venta=$this->porcentaje_venta();
+   
       
                  if($request->ajax()){
                    
@@ -61,13 +64,13 @@ class FrontController extends Controller {
                     \Session::put('productos', $data->get());
                             $data=$data->paginate(5);                           
                    
-                    return view('includes.shopgrid', compact('data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'))->render();
+                    return view('includes.shopgrid', compact('cart','seccion','data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'))->render();
         }
       
         $data = Producto::filterAndPaginate1($request->get('nombre'), $request->get('rubro'), $request->get('marca'), $request->get('codigo'), "1");
         \Session::put('productos', $data->get());
         $data=$data->paginate(5); 
-            return view('pages.shop.index', compact('data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'));
+            return view('pages.shop.index', compact('cart','seccion','data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'));
            
        
           
@@ -80,7 +83,12 @@ class FrontController extends Controller {
 
   
    public function about(){
-       return view('pages.about.index');
+    $scripts = array(
+    ('/assets/js/deleteFromCart.js') 
+    );
+    $cart= \Session::get('cart');
+    $seccion="About";
+       return view('pages.about.index',compact('seccion','cart','scripts'));
    }
     
 
@@ -89,18 +97,19 @@ class FrontController extends Controller {
 public function servicios() {
     $title = 'Echevarne Hermanos - Servicios';
     $meta_description = '';
-    $h_image = 'servicios.png';
-    
-    return view('pages.servicios.index', compact('title', 'meta_description', 'h_image'));
+    $h_image = 'servicios.png';    
+    return view('pages.servicios.index', compact('cart','title', 'meta_description', 'h_image'));
 }
 
 public function descargas() {
+    $cart = \Session::get('cart');
+    $seccion="Descargas";
     $title = 'Echevarne Hermanos - Descargas';
     $meta_description = '';
     $h_image = 'descargas.png';
     $descargas = Descarga::where('visible', 1)->orderBy('orden')->get();
     
-    return view('pages.descargas.index', compact('title', 'meta_description', 'descargas', 'h_image'));
+    return view('pages.descargas.index', compact('cart','seccion','title', 'meta_description', 'descargas', 'h_image'));
 }
 
 public function showNovedad($slug){
@@ -110,18 +119,17 @@ public function showNovedad($slug){
     $h_image = 'novedades.png';
     $meta_description = $novedad->texto;  
     
-    return view('front.novedad', compact('title', 'meta_description', 'novedad', 'h_image'));        
+    return view('front.novedad', compact('cart','title', 'meta_description', 'novedad', 'h_image'));        
 }
 
 
 public function contacto(){
-    return view('pages.contacto.index');
+    $seccion="Contacto";
+    return view('pages.contacto.index',compact('seccion','cart'));
 }
 
 
-public function myPaginator($items, $page )
-{
-
+public function myPaginator($items, $page ){
     $perPage = 24;
     $options = [];
     $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
@@ -131,8 +139,12 @@ public function myPaginator($items, $page )
 
 
 public function getMiniCart(){
+    
     $cart= \Session::get('cart');
+    
     return view('includes.minicart',compact('cart'));
+    
+    
 }   
     
 }

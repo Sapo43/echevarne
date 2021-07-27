@@ -12,12 +12,12 @@
                                 </div>
                             </div>
                         </div>
-
+<!-- 
                         <div class="col-lg-6 order-0 order-lg-1">
                             <div class="slide-img">
                                 <img src="/assets/img/slider/slider-2-2.png" alt="Slider" />
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

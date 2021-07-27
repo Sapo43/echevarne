@@ -1,17 +1,27 @@
 $("#search").on('click', function(){
 
 
-    if (sessionStorage.Tipo==undefined){
-        var type = document.getElementById("type");      
-    var type_selected = type.options[type.selectedIndex].value;
-    sessionStorage.Tipo = type_selected;
+    var type_selected="";
+    if(document.getElementById("type")==null){
+        type_selected = "Lista"
+        sessionStorage.Tipo = type_selected; 
     }else{
-        let tipo = document.getElementById("type");
-            tipo.value = sessionStorage.Tipo;
+        if (sessionStorage.Tipo==undefined){
+            var type = document.getElementById("type");   
+            type_selected = type.options[type.selectedIndex].value;
+            sessionStorage.Tipo =  type.options[type.selectedIndex].value;
+            
+        }else{                 
+            let tipo = document.getElementById("type");                      
+                tipo.value = sessionStorage.Tipo;
+                type_selected = sessionStorage.Tipo; 
+
+        }
+        
     }
 
 var type = document.getElementById("type");      
-var type_selected = type.options[type.selectedIndex].value;
+
 var rubro = $('#rubro').val();
 var marca = $('#marca').val();
 var equivalencia = $('#equivalencia').val();
@@ -61,10 +71,16 @@ if (rubro==0&marca==0&equivalencia==""&equiv==""&nombre==""){
 })
 
 }
-})
+});
 
 
 
 
 
-   
+$("#clear").on('click', function(){
+    
+    $("select.form-control").val(0);
+    $("select").niceSelect('update');
+    $("input.form-control").val('');          
+             
+});

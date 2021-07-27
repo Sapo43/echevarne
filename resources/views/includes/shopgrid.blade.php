@@ -23,7 +23,10 @@
                                         <div class="product-item__info">
                                        
                                             <!-- <h4 class="title"><a href="/producto/{{$producto->slug}}">{{$producto->codigo}}</a></h4> -->
-                                            <!-- <span class="price"><strong>Price:</strong> $165.00</span> -->
+                                            
+                                            <span><strong>{{$producto->nombre}}</strong></span>
+                                            <br>
+                                            <span><strong>COD: </strong>{{$producto->codigo}}</span>
                                           @if(\Auth::check())  
                                             <h5 class="precioLista"><p>${{number_format( $producto->precio,2, ',','.')}}<p></h5> 
                             <h5 class="precioCompra"><p >${{number_format($producto->precio- ($porcentaje_compra   / 100),2, ',','.')}}<p></h5>  

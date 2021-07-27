@@ -34,8 +34,8 @@ use App\Http\Controllers\PusherController;
 
 
 
-
-Route::get('/', [FrontController::class,'home'])->name('home');
+Route::get('/', [FrontController::class,'home']);
+Route::get('/home', [FrontController::class,'home'])->name('home');
 Route::get('/shop', [FrontController::class,'shop'])->name('shop');
 Route::get('/producto/{slug}', [FrontProductosController::class,'show'])->name('front.productos.show');
 Route::get('/shop/fetch_data', [FrontController::class,'shop'])->name('shop');
@@ -55,14 +55,14 @@ Route::bind('producto',function($slug){
 
 
 Route::get('/cart/add/{producto}',[CartController::class,'add'])->name('addToCart');
-
+Route::get('cart/delete/{producto}',[CartController::class,'delete'])->name('cart-delete');
 
 
 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 
 Route::get('/checkout', [CheckoutController::class,'index'])->middleware('auth');

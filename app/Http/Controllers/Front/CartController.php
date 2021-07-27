@@ -21,10 +21,10 @@ use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Mail;
 use App\Events\StatusLiked;
-
+use App\Http\Traits\PTrait;
 class CartController extends Controller {
 
-
+    use PTrait;
 
     public function __construct()
     {
@@ -41,6 +41,10 @@ public function cartForCheckout(){
      
     );
 
+    $porcentaje_compra=$this->porcentaje_compra();
+    $porcentaje_venta=$this->porcentaje_venta();
+    $isAuthZero=$this->ifAuthZero();
+   
         $cart= \Session::get('cart');
         $title = "Pedido";
         $cantidadCarrito=sizeof($cart);      
@@ -71,7 +75,7 @@ public function cartForCheckout(){
 
     
           //  return view('front.carrito.carrito',compact('cantidadCarrito','cart','title','meta_description','h_image','totalsi','totalid','totaliv','totalci'));
-            return view('pages.cart.index',compact('cantidadCarrito','cart','title','meta_description','h_image','totalsi','totalid','totaliv','totalci','scripts'));
+            return view('pages.cart.index',compact('isAuthZero','porcentaje_compra','porcentaje_venta','cantidadCarrito','cart','title','meta_description','h_image','totalsi','totalid','totaliv','totalci','scripts'));
         }
 
 
@@ -108,9 +112,11 @@ public function cartForCheckout(){
 
     public function delete(Producto $producto){
         $cart = \Session::get('cart');
-        unset($cart[$producto ->slug]);
+                unset($cart[$producto->slug]);
         \Session::put('cart',$cart); 
-        return redirect()->route('cart-show')    ;
+        // return redirect()->route('cart-show')    ;
+
+        return response()->json(['msg'=>'ok ']);
     }
 
     //Update item

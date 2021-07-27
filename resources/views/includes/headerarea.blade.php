@@ -17,7 +17,7 @@
                                     <li><a href="index-boxed.html">Home Box Layout</a></li>
                                 </ul> -->
                             </li>
-                            <li><a href="/about">About</a></li>
+                            <li><a href="#about">About</a></li>
                             <li class="has-submenu"><a href="/shop">Shop</a>
                                 
                             </li>
@@ -50,22 +50,40 @@
                         </ul>
 
                         <div class="mini-cart-wrap">
+                       @if(isset($cart))     
+                        @if(sizeof($cart)>0)
                             <a href="/cart" class="btn-mini-cart">
                                 <i class="ion-bag"></i>
                                 <span id ="qtyCart" class="cart-total"></span>
                             </a>
-
+                            @else
+                            <a href="/shop" class="btn-mini-cart">
+                                <i class="ion-bag"></i>
+                                <span id ="qtyCart" class="cart-total"></span>
+                            </a>
+                            @endif
+                            @if(sizeof($cart)>0)
                             <div class="mini-cart-content">
                                 <div class="mini-cart-product">
                                    <!--  -->
                                     <div id="minicart">
+                                
                                     @include('includes.minicart')
+                                    
                                     </div>
                              
 
                                    <!--  -->
                                 </div>
                             </div>
+                            @endif
+                            @else
+                            <a href="/shop" class="btn-mini-cart">
+                                <i class="ion-bag"></i>
+                                <span id ="qtyCart" class="cart-total"></span>
+                            </a>
+
+                         @endif   
                         </div>
 
                         <div class="responsive-menu d-lg-none">

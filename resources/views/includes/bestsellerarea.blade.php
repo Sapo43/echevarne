@@ -3,7 +3,7 @@
             <div class="row">
                 <div class="col-lg-5 m-auto text-center">
                     <div class="section-title">
-                        <h2 class="h3">Best Seller</h2>
+                        <h2 class="h3">MAS VENDIDOS</h2>
                         <p>All best seller product are now available for you and your can buy
                             this product from here any time any where so sop now</p>
                     </div>

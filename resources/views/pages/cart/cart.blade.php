@@ -47,23 +47,82 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <span class="price">{{number_format($totalci,2, ',','.')}}</span>
+                                                <span class="price">{{number_format($producto->precio,2, ',','.')}}</span>
                                             </td>
                                         </tr>
 
                                        @endforeach
+                                        <tr>
+                                            <td>
+                                                
+                                            </td>
+                                            <td>
+                                                
+                                            </td>
+                                            <td>
+                                                c1
+                                            </td>
+                                            <td>
+                                              {{$totalsi}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                a2
+                                            </td>
+                                            <td>
+                                                b2
+                                            </td>
+                                            <td>
+                                                c2
+                                            </td>
+                                            <td>
+                                            {{$totalid}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                a3
+                                            </td>
+                                            <td>
+                                                b3
+                                            </td>
+                                            <td>
+                                                c3
+                                            </td>
+                                            <td>
+                                            {{$totaliv}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                a3
+                                            </td>
+                                            <td>
+                                                b3
+                                            </td>
+                                            <td>
+                                                c3
+                                            </td>
+                                            <td>
+                                            {{$totalci}}
+                                            </td>
+                                        </tr>
+
                                     </tbody>
                                 </table>
                             </div>
 
                             <div class="cart-coupon-update-area d-sm-flex justify-content-between align-items-center">
-                                <div class="coupon-form-wrap">
+                                <!-- <div class="coupon-form-wrap">
                                     <form action="#" method="post">
                                         <label for="coupon" class="sr-only">Coupon Code</label>
                                         <input type="text" id="coupon" placeholder="Coupon Code" />
                                         <button class="btn-apply">Apply Button</button>
                                     </form>
-                                </div>
+                                </div> -->
+
+                              
 
                                 <div class="cart-update-buttons mt-15 mt-sm-0">
                                     <button class="btn-clear-cart">Clear Cart</button>
@@ -120,7 +179,7 @@
                             </div>
 
                             <div class="proceed-checkout-btn">
-                                <a href="/checkout" class="btn btn-brand d-block">Proceed to Checkout</a>
+                                <a href="/checkout" class="btn btn-brand d-block">Checkout</a>
                             </div>
                         </div>
                     </div>

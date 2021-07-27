@@ -7,6 +7,6 @@
     <!--== End Page Header Area ==-->
 
     <!--== Start Page Content Wrapper ==-->
-    @include('pages.about.about')
+    @include('pages.about.abou')
     <!--== End Page Content Wrapper ==-->
 @endsection

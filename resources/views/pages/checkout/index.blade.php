@@ -17,9 +17,9 @@
                             <!-- Checkout Coupon Accordion Start -->
                             <div class="checkoutAccordion" id="checkOutAccordion">
                                 <div class="card">
-                                    <h3><i class="fa fa-info-circle"></i> Have a Coupon? <span data-toggle="collapse" data-target="#couponaccordion">
+                                    <!-- <h3><i class="fa fa-info-circle"></i> Have a Coupon? <span data-toggle="collapse" data-target="#couponaccordion">
                                     Click here to Enter your Code</span>
-                                    </h3>
+                                    </h3> -->
                                     <div id="couponaccordion" class="collapse" data-parent="#checkOutAccordion">
                                         <div class="card-body">
                                             <div class="row">
@@ -55,7 +55,7 @@
                     <div class="col-lg-6">
                         <!-- Checkout Form Area Start -->
                         <div class="checkout-billing-details-wrap">
-                            <h2>Billing Details</h2>
+                            <h2>Detalle de Facturación</h2>
                             <div class="billing-form-wrap">
                                 <form action="#" method="post">
                                     <div class="row">
@@ -130,7 +130,7 @@
                                         <input type="text" id="phone" placeholder="Phone" />
                                     </div>
 
-                                    <div class="checkout-box-wrap">
+                                    <!-- <div class="checkout-box-wrap">
                                         <div class="input-item">
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="create_pwd">
@@ -146,9 +146,9 @@
                                                 <input type="password" id="pwd" placeholder="Account Password" required />
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
 
-                                    <div class="checkout-box-wrap">
+                                    <!-- <div class="checkout-box-wrap">
                                         <div class="input-item">
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="ship_to_different">
@@ -221,7 +221,7 @@
                                                 <input type="text" id="postcode_2" placeholder="Postcode / ZIP" required />
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <div class="input-item">
                                         <label for="ordernote" class="sr-only">Order Note</label>
@@ -237,8 +237,9 @@
                         <div class="order-details-area-wrap">
                         <div class="row ">
                             <div class="col-sm-6">
-                                <h2>Your Order</h2>
+                                <h2>Su Orden</h2>
                             </div>
+                            @if(!$isAuthZero)
                             <div class="col-sm-6">
                                 <div class="sort-by-wrapper">
                                     <label for="sort" class="sr-only">Sort By</label>
@@ -249,6 +250,9 @@
                                     </select>
                                 </div>
                             </div>
+                                
+
+                            @endif
                             </div>
 
                             <div class="order-details-table table-responsive">
@@ -262,14 +266,17 @@
                                     <tbody>
                                     @foreach($cart as $producto)
                                         <tr class="cart-item">
-                                            <td><span class="product-title">{{$producto->codigo}}</span> <span
+                                            <td><span class="product-title">{{$producto->codigo}} {{$producto->nombre}}</span> <span
                                             class="product-quantity">&#215; {{$producto->cantidad}}</span></td>
                                             <td>
-
-                                            <h6 class="precioLista"><p>${{number_format( $producto->precio,2, ',','.')}}<p></h6> 
-                            <h6 class="precioCompra"><p >${{number_format($producto->precio- ($producto->precio* Auth::user()->porcentaje_compra  / 100),2, ',','.')}}<p></h6>  
-                            <h6 class="precioVenta"><p >${{number_format($producto->precio- ($producto->precio* Auth::user()->porcentaje_compra  / 100)+( ($producto->precio- ($producto->precio* Auth::user()->porcentaje_compra  / 100)) * Auth::user()->porcentaje_venta  / 100),2, ',','.')}}<p></h6>    
-
+    @if($isAuthZero)
+    <h6 class="precioLista"><p>${{number_format( $producto->precio,2, ',','.')}}<p></h6> 
+                                        
+@else
+<h6 class="precioLista"><p>${{number_format( $producto->precio,2, ',','.')}}<p></h6> 
+                            <h6 class="precioCompra"><p >${{number_format($producto->precio- ($producto->precio* $porcentaje_compra  / 100),2, ',','.')}}<p></h6>  
+                            <h6 class="precioVenta"><p >${{number_format($producto->precio- ($producto->precio* $porcentaje_compra  / 100)+( ($producto->precio- ($producto->precio* $porcentaje_compra  / 100)) * $porcentaje_venta  / 100),2, ',','.')}}<p></h6>    
+@endif
 
                                             </td>
                                         </tr>
@@ -317,7 +324,7 @@
                             </div>
 
                             <div class="order-details-footer">
-                                <p>Your personal data will be used to process your order, support your experience throughout
+                                <!-- <p>Your personal data will be used to process your order, support your experience throughout
                                     this website, and for other purposes described in our
                                     <a href="#" class="text-warning">privacy policy</a>.</p>
                                 <div class="custom-control custom-checkbox mt-10">
@@ -325,7 +332,7 @@
                                     <label for="privacy" class="custom-control-label">I have read and agree to the website
                                         terms
                                         and conditions</label>
-                                </div>
+                                </div> -->
 
                                 <button id="confirmar" class="btn btn-bordered mt-40">Generar Pedido</button>
                             </div>

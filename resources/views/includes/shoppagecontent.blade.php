@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="col-sm-1">
                                     <div class="sort-by-wrapper">                 
-                                    <a href="#" id="search" name="search" class="btn-echevarne3 form-control">
+                                    <a href="#" id="clear" name="clear" class="btn-echevarne3 form-control">
               
               <i class="fa fa-times" style="font-size:20px;"></i>  
               </a>

@@ -25,6 +25,7 @@
     21. Blog Layout Style Css
     22. Blog Details Style Css
     23. Footer Style CSS
+    24. Extra css made by Sapo
 ----------------------------------------*/
 /*=====================================
    01. Typography CSS
@@ -366,6 +367,7 @@ button:focus {
 }
 .btn-orange {
     background-color: #F76725;
+    border-color: #F76725;
     border-radius: 25px;
     color: #1b1b1c;
 }
@@ -1498,7 +1500,7 @@ Scroll Top Button
 
 .slider-slide-item .slide-content h2,
 .slider-slide-item .slide-content h3 {
-    color: #d8d8d8;
+    color: #FFFFFF;
 }
 
 .slider-slide-item .slide-content h3 {
@@ -4526,4 +4528,138 @@ Start Comment Area Wrapper
 
 .single-comment-wrap .comment-footer a.btn-reply:hover {
     color: #7EAEDE;
+}
+
+/*============================
+Extra css made by Sapo
+============================*/
+.overflow-hidden{
+    overflow: hidden;
+}
+.background-shape-img{
+    position: relative;
+}
+.background-shape-img:before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-image: url("/assets/img/about-bg-shape.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon-md{
+    font-size: 32px;
+    line-height: 35px;
+}
+.icon-lg{
+    font-size: 70px;
+    line-height: 75px;
+}
+.single-feature .icon{
+    font-size: 22px;
+    line-height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.icon-box-wrap{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 40px;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.icon-box{
+    height: 65px;
+    width: 65px;
+    color: #7EAEDE;
+    text-align: center;
+    -webkit-box-shadow: 0 4px 15px 0 rgba(52, 27, 159,0.1);
+    box-shadow: 0 4px 15px 0 rgba(52, 27, 159, 0.1);
+    border-radius: 4px;
+    -webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    margin-bottom: 0;
+    margin-left: 30px;
+    background: #fff;
+    padding: 15px;
+}
+.icon-box img{
+    vertical-align: middle;
+    border-style: none;
+}
+.icon-box.gray-light-bg{
+    background: #f4f7fa;
+}
+.icon-box-wrap p{
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.single-promo span{
+    font-size: 70px;
+    line-height: inherit;
+    margin-bottom: 20px;
+}
+.single-promo-1{
+    box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 1.5rem !important;
+}
+.single-promo-1 span{
+    font-size: 35px;
+    background-image: url("../img/promo-icon-bg.svg");
+    background-size: 150px;
+    padding: 35px;
+    background-repeat: no-repeat;
+    background-position: 45% 20%;
+}
+.single-promo img{
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+}
+.single-promo .img-full-box{
+    width: auto !important;
+    height: auto !important;
+}
+.single-promo-hover{
+    transition: all .2s ease-out;
+    will-change: transform;
+}
+.single-promo-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(31,45,61,.125)!important;
+}
+
+/*promo section new style*/
+
+.single-promo-card{
+    transition: all .2s ease;
+    box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.12);
+}
+.card.single-promo-card{
+    border: 1px solid #eff2f7;
+    border-radius: 1rem;
+}
+.card.single-promo-card:hover{
+    background: #7EAEDE;
+    color: #ffffff;
+}
+.card.single-promo-card:hover  span, .card.single-promo-card:hover h5, .card.single-promo-card:hover p.text-muted{
+    color: #ffffff !important;
+}
+.single-promo-card .card-body{
+    padding: 1.5rem;
 }
