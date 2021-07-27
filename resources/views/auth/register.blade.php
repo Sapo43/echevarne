@@ -77,10 +77,7 @@
                             Signup
                         </h1>
 
-                        <!-- Subheading -->
-                        <p class="text-muted text-center mb-5">
-                            Free access to our dashboard.
-                        </p>
+                      
 
                         <!-- Form -->
                         <form class="login-signup-form" method="POST" action="{{ route('register') }}">
