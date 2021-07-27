@@ -88,7 +88,7 @@
                             <div class="form-group">
                                 <!-- Label -->
                                 <label class="pb-1">
-                                    Your Name
+                                    Usuario
                                 </label>
                                 <!-- Input group -->
                                 <div class="input-group input-group-merge">
@@ -103,6 +103,37 @@
                                 @enderror
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <!-- Label -->
+                                <label class="pb-1">
+                                    Nombre
+                                </label>
+                                <!-- Input group -->
+                                <div class="input-group input-group-merge">
+                                    <div class="input-icon">
+                                        <span class="ti-user color-primary"></span>
+                                    </div>
+                              
+                                    <input id="nombre" type="text" class="form-control" name="nombre" required autocomplete="nombre">   
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <!-- Label -->
+                                <label class="pb-1">
+                                   Apellido
+                                </label>
+                                <!-- Input group -->
+                                <div class="input-group input-group-merge">
+                                    <div class="input-icon">
+                                        <span class="ti-user color-primary"></span>
+                                    </div>
+                                    <input id="apellido" type="text" class="form-control" name="apellido" required autocomplete="apellido">
+                                   
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <!-- Label -->
                                 <label class="pb-1">
