@@ -17,7 +17,7 @@
                                     <li><a href="index-boxed.html">Home Box Layout</a></li>
                                 </ul> -->
                             </li>
-                            <li><a href="#about">About</a></li>
+                            <li><a href="/about">About</a></li>
                             <li class="has-submenu"><a href="/shop">Shop</a>
                                 
                             </li>

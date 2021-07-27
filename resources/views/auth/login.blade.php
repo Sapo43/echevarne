@@ -30,21 +30,21 @@
           rel="stylesheet">
 
     <!--Bootstrap css-->
-    <link rel="stylesheet" href="/assets/css/login/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/login/css/bootstrap.min.css">
     <!--Magnific popup css-->
-    <link rel="stylesheet" href="/assets/css/login/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/login/css/magnific-popup.css">
     <!--Themify icon css-->
-    <link rel="stylesheet" href="/assets/css/login/themify-icons.css">
+    <link rel="stylesheet" href="/assets/login/css/themify-icons.css">
     <!--animated css-->
-    <link rel="stylesheet" href="/assets/css/login/animate.min.css">
+    <link rel="stylesheet" href="/assets/login/css/animate.min.css">
 
     <!--Owl carousel css-->
-    <link rel="stylesheet" href="/assets/css/login/owl.carousel.min.css">
-    <link rel="stylesheet" href="/assets/css/login/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/login/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/login/css/owl.theme.default.min.css">
     <!--custom css-->
-    <link rel="stylesheet" href="/assets/css/login/style.css">
+    <link rel="stylesheet" href="/assets/login/css/style.css">
     <!--responsive css-->
-    <link rel="stylesheet" href="/assets/css/login/responsive.css">
+    <link rel="stylesheet" href="/assets/login/css/responsive.css">
 
 </head>
 <body>
@@ -128,7 +128,7 @@
                             <!-- Link -->
                             <p class="text-center">
                                 <small class="text-muted text-center">
-                                    No tienes cuenta? <a href="sign-up.html">Sign up</a>.
+                                    No tienes cuenta? <a href="/register">Sign up</a>.
                                 </small>
                             </p>
 
@@ -144,23 +144,23 @@
 <!--body content wrap end-->
 
 <!--jQuery-->
-<script src="/assets/js/login/jquery-3.5.0.min.js"></script>
+<script src="/assets/login/js/jquery-3.5.0.min.js"></script>
 <!--Popper js-->
-<script src="/assets/js/login/popper.min.js"></script>
+<script src="/assets/login/js/popper.min.js"></script>
 <!--Bootstrap js-->
-<script src="/assets/js/login/bootstrap.min.js"></script>
+<script src="/assets/login/js/bootstrap.min.js"></script>
 <!--Magnific popup js-->
-<script src="/assets/js/login/jquery.magnific-popup.min.js"></script>
+<script src="/assets/login/js/jquery.magnific-popup.min.js"></script>
 <!--jquery easing js-->
-<script src="/assets/js/login/jquery.easing.min.js"></script>
+<script src="/assets/login/js/jquery.easing.min.js"></script>
 
 <!--wow js-->
-<script src="/assets/js/login/wow.min.js"></script>
+<script src="/assets/login/js/wow.min.js"></script>
 <!--owl carousel js-->
-<script src="/assets/js/login/owl.carousel.min.js"></script>
+<script src="/assets/login/js/owl.carousel.min.js"></script>
 <!--countdown js-->
-<script src="/assets/js/login/jquery.countdown.min.js"></script>
+<script src="/assets/login/js/jquery.countdown.min.js"></script>
 <!--custom js-->
-<script src="/assets/js/login/scripts.js"></script>
+<script src="/assets/login/js/scripts.js"></script>
 </body>
 </html>

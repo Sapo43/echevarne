@@ -71,8 +71,7 @@ jQuery(function ($) {
         autoplay:false,
         autoplayHoverPause:true,
         lazyLoad:true,
-        rtl:true,
-    });
+    })
 
     // 6. Screenshots slider
     $('.screen-carousel').owlCarousel({
@@ -81,7 +80,6 @@ jQuery(function ($) {
         center: true,
         dots: true,
         nav: false,
-        rtl:true,
         autoplay: true,
         responsive: {
             0: {
@@ -196,8 +194,7 @@ jQuery(function ($) {
         autoplayHoverPause:true,
         lazyLoad:true,
         items:1,
-        rtl:true,
-    });
+    })
 
     // 9. our clients logo carousel
     $('.clients-carousel').owlCarousel({
@@ -205,7 +202,6 @@ jQuery(function ($) {
         loop: true,
         margin:15,
         dots:true,
-        rtl:true,
         slideTransition:'linear',
         autoplayTimeout:4500,
         autoplayHoverPause:true,
@@ -228,7 +224,7 @@ jQuery(function ($) {
             }
 
         }
-    });
+    })
 
     // 11. wow js
     function wowAnimation(){

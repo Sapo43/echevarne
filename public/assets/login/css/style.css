@@ -97,7 +97,6 @@ body, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, 
 }
 
 body {
-   
     background-color: #ffffff;
     font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
@@ -206,7 +205,7 @@ strong, b{
     background: #9629e6;
 }
 .color-primary{
-    color: #6730e3;
+    color: #7EAEDE;
 }
 .color-secondary{
     color: #9629e6
@@ -270,8 +269,8 @@ strong, b{
 }
 .solid-btn{
     color: #fff;
-    -webkit-box-shadow: 0 20px 30px 0 rgba(67,37,204,.2);
-    box-shadow: 0 20px 30px 0 rgba(78, 138, 175, 1);
+    -webkit-box-shadow: 0 5px 12px 0 rgba(100, 163, 235, 0.2);
+    box-shadow: 0 5px 12px 0 rgba(100, 163, 235, 0.2);
     background: #7EAEDE;
     border: 2px solid #7EAEDE;
     border-radius: 30px;
@@ -425,8 +424,8 @@ span.sub-title{
     border-radius: 4px;
     position: absolute;
     top: 55px;
-    right: -4.2em;
-    left: 0;
+    left: -4.2em;
+    right: 0;
     visibility: hidden;
     opacity: 0;
     transition: all .3s ease-in-out;
@@ -735,8 +734,7 @@ span.sub-title{
     .animation-four {
         position: absolute;
         -webkit-animation: move-four 6s ease-in-out infinite;
-        animation: move-four 6s ease-in-out infinite;
-        left: 0;
+        animation: move-four 6s ease-in-out infinite
     }
     .animation-new{
         position: absolute;
@@ -852,12 +850,9 @@ span.sub-title{
     text-indent: 5%;
     border-radius: 30px;
 }
-.subscribe-form input.form-control{
-    border-radius:30px;
-}
-.subscribe-form input.button {
+.subscribe-form input.button{
     position: absolute;
-    left: 4px;
+    right: 4px;
     border-radius:30px;
     padding: initial;
     top: 4px;
@@ -1319,10 +1314,10 @@ span.sub-title{
     height: auto;
     bottom: 76px;
     z-index: 0;
-    right: 268px;
+    left: 268px;
     overflow: hidden;
     background-size: cover;
-    left: 0;
+    right: 0;
 }
 
 @media (min-width: 320px) and (max-width: 767px){
@@ -1418,7 +1413,7 @@ span.sub-title{
     display: block;
 }
 .client-section-wrap ul li{
-    padding-left: 50px;
+    padding-right: 50px;
     margin: 5px 0;
 }
 .client-section-wrap ul li img{
@@ -1518,9 +1513,9 @@ span.sub-title{
     padding: 0;
 }
 .switchable.switchable-content div[class*='col-']:first-child {
-    float: left;
-    left: 0;
-    right: auto;
+    float: right;
+    right: 0;
+    left: auto;
 }
 .switchable > div[class*='col-'] {
     padding: 0;
@@ -1728,7 +1723,7 @@ span.sub-title{
     -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
     margin-bottom: 0;
-    margin-left: 30px;
+    margin-right: 30px;
     background: #fff;
     padding: 15px;
 }
@@ -1849,7 +1844,7 @@ span.sub-title{
     color: #757575;
 }
 .feature-tab li{
-    margin-left: 15px;
+    margin-right: 15px;
 }
 .feature-tab li:last-child{
     margin-right: 0;
@@ -1876,8 +1871,7 @@ span.sub-title{
 .background-img:before{
     position: absolute;
     content: '';
-    
-    background-image: linear-gradient(90deg, rgba(2,0,36,1) 8%, rgba(58,83,124,1) 50%, rgba(126,174,222,1) 100%);
+    background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(58,83,124,1) 24%, rgba(126,174,222,1) 100%);
     width: 100%;
     height: 100%;
     top: 0;
@@ -2050,18 +2044,6 @@ span.sub-title{
     font-family: 'Montserrat', sans-serif;
 }
 
-.pricing-header::after {
-    content: "";
-    display: block;
-    width: 80%;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    margin-left: -40%;
-    height: 1px;
-    background: radial-gradient(at center center, rgb(222, 228, 239) 0px, rgba(255, 255, 255, 0) 75%);
-}
-
 .pricing-feature-list li{
     font-size: 14px;
     line-height: 28px;
@@ -2116,7 +2098,7 @@ span.sub-title{
 .accordion-faq.accordion .card-header:after {
     content: "\e61a";
     position: absolute;
-    left: 1.5rem;
+    right: 1.5rem;
     top: 50%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
@@ -2701,12 +2683,12 @@ span.sub-title{
     width: 40px;
     top: 0;
     bottom: 0;
-    right: 0;
+    left: 0;
 }
 
 .input-icon span{
     padding: 18px 15px;
-    border-right: 2px solid #95aac9;
+    border-left: 2px solid #7EAEDE;
     position: absolute;
     font-size: 18px;
     height: calc(3.4rem + 2px);
@@ -2881,14 +2863,14 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 .post-meta > li {
     position: relative;
     display: inline-block;
-    padding: 0 0 0 14px;
-    margin: 0 0 0 14px;
+    padding: 0 14px 0 0;
+    margin: 0 14px 0 0;
 }
 
 .post-meta > li:not(:last-child):after {
     position: absolute;
     content: '/';
-    left: -5px;
+    right: -5px;
     top: 0;
 }
 
@@ -2905,8 +2887,8 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 /*blog single css*/
 .post-content blockquote {
-    border-right: 2px solid #eaeaea;
-    padding: 10px 40px 10px 0;
+    border-left: 2px solid #eaeaea;
+    padding: 10px 0 10px 40px;
     margin: 40px 0;
     transition: all .3s ease-in-out;
 }
@@ -2921,7 +2903,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
     list-style-type: decimal;
 }
 .post-content ul, .post-content ol {
-    margin: 15px 40px 15px 0;
+    margin: 15px 0 15px 40px;
 }
 
 /*comments css*/
@@ -2967,7 +2949,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 .comment-reply, .comment-reply-shop {
     position: absolute;
-    left: 0;
+    right: 0;
     top: 0;
     font-size: 13px;
 }
@@ -3032,7 +3014,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
     position: absolute;
     top: 50%;
     height: 100%;
-    left: .875rem;
+    right: .875rem;
     transform: translateY(-50%);
     transition: all .3s ease-out;
     color: #ddd;
@@ -3112,6 +3094,7 @@ button, [type="button"], [type="reset"], [type="submit"] {
     color: #fff;
     opacity: 1;
 }
+
 /*new demo css*/
 .big-text {
     position: relative;
@@ -3144,9 +3127,9 @@ button, [type="button"], [type="reset"], [type="submit"] {
 .offer-tag{
     background: #6730e3;
     padding: 30px;
-    border-radius: 60px 10px;
+    border-radius: 10px 60px;
     position: absolute;
-    right: 0;
+    left: 0;
     top: 35%;
     box-shadow: 0 4px 20px 0 rgba(0,0,0,.15);
     color: #ffffff;
@@ -3171,7 +3154,7 @@ button, [type="button"], [type="reset"], [type="submit"] {
     width: 180px;
     height: 35px;
     background: #ff5919;
-    right: -8px;
+    left: -8px;
     top: 20px;
 }
 .ribbon-2 span{
@@ -3187,16 +3170,16 @@ button, [type="button"], [type="reset"], [type="submit"] {
 .ribbon-2:after{
     height: 0;
     width: 0;
-    border-bottom: 15px solid transparent;
-    border-top: 20px solid transparent;
-    border-right: 15px solid #ff5919;
-    left: -15px;
+    border-top: 15px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 15px solid #ff5919;
+    right: -15px;
 }
 .ribbon-2:before{
     height: 0;
     width: 0;
     border-bottom: 8px solid #ff5919;
-    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
     top: -8px;
 }
 
@@ -3221,14 +3204,14 @@ button, [type="button"], [type="reset"], [type="submit"] {
 .hero-animated-card-1 {
     position: absolute;
     top: 20%;
-    right: -70px;
+    left: -70px;
     transform: scale(0.9);
     box-shadow: 0 22px 45px rgba(0, 0, 0, 0.09);
     animation: move-up-down 4s ease-in-out 1s infinite;
 }
 .hero-animated-card-2 {
     position: absolute;
-    left: -60px;
+    right: -60px;
     bottom: 20%;
     transform: scale(0.9);
     box-shadow: 0 22px 45px rgba(0, 0, 0, 0.2);
