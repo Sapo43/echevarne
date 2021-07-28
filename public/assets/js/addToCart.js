@@ -25,7 +25,7 @@ function selectByName(slug) {
    url: '/cart/add/'+slug,
  type : 'GET',
    success: function(respuesta) {
-console.log(respuesta)
+
    if(respuesta.cantidad==1){
      iziToast.show({
    title: 'Ok',
@@ -44,7 +44,7 @@ $('#cantidadCarrito').addClass('aumentoCarrito')
 });
    }
 
-  getminicart()
+  getminicart();
  
    },
    error: function() {

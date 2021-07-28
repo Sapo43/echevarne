@@ -12,6 +12,7 @@ function getminicart(){
       success: function(response){ 
         // Add response in Modal body
         $('#minicart').html(response);
+        
   
        
       }

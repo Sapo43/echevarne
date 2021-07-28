@@ -169,5 +169,5 @@ Route::get('/productoDetail/{slug}',[FrontProductosController::class,'productDet
 
 Route::get('/getminicart',[FrontController::class,'getMiniCart']);
 Route::post('confirmarCarrito',[CartController::class,'confirmarCarrito']);
-
+Route::get('/clearCart',[CartController::class,'trash']);
 

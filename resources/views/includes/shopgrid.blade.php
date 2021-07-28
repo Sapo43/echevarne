@@ -9,23 +9,34 @@
                                         @include('pages.product.partials')
                                            
                                         </a>
-
+                <br>
                                         <div class="ratting">
-                                            <span><i class="ion-android-star"></i></span>
-                                            <span><i class="ion-android-star"></i></span>
-                                            <span><i class="ion-android-star"></i></span>
-                                            <span><i class="ion-android-star"></i></span>
-                                            <span><i class="ion-android-star-half"></i></span>
+                                        @if(($producto->stock - $producto->stock_minimo) >= 1)
+            <span class="badge badge-success product mb-4 ml-xl-0 ml-4">Disponible</span>
+         
+                                           
+            @endif
+
+
+            @if( ($producto->stock <= $producto->stock_minimo ) && $producto->stock >0)
+            <span class="badge badge-warning product mb-4 ml-xl-0 ml-4">Consultar</span>
+            @endif
+
+
+            @if($producto->stock <=0)
+            <span class="badge badge-danger product mb-4 ml-xl-0 ml-4">No Disponible</span>
+            @endif
+               
+                                          
                                         </div>
                                     </div>
 
                                     <div class="product-item__content">
                                         <div class="product-item__info">
                                        
-                                            <!-- <h4 class="title"><a href="/producto/{{$producto->slug}}">{{$producto->codigo}}</a></h4> -->
-                                            
-                                            <span><strong>{{$producto->nombre}}</strong></span>
-                                            <br>
+                                             <h4 class="title"><strong>{{$producto->nombre}}</strong> -  {{$producto->marca->nombre}}</h4>                                         
+                                         
+                                    
                                             <span><strong>COD: </strong>{{$producto->codigo}}</span>
                                           @if(\Auth::check())  
                                             <h5 class="precioLista"><p>${{number_format( $producto->precio,2, ',','.')}}<p></h5> 
@@ -38,24 +49,25 @@
                                         </div>
 
                                         <div class="product-item__action">
-                                            <button class="btn-add-to-cart"><i class="ion-bag"></i></button>
-                                            <button class="btn-add-to-cart"><i class="ion-ios-loop-strong"></i></button>
-                                            <button class="btn-add-to-cart"><i class="ion-ios-heart-outline"></i></button>
-                                            <button class="btn-add-to-cart"><i class="ion-eye"></i></button>
+                                        <button class="btn-add-to-cart" onclick="selectByName('{{$producto->slug}}');"><i class="ion-bag"></i></button>                                            
                                         </div>
 
                                         <div class="product-item__desc">
-                                            <p>Pursue pleasure rationally encounter consequences that are extremely painful.
-                                                Nor
-                                                again is there anyone who loves or pursues or desires to obtain pain of
-                                                itself,
-                                                because it is pain, but because occasionally circles</p>
+                                        <h6>Codigos equivalentes :</h6>
+                                        <?php  
+                                        foreach (explode(",", $producto->equivalencia) as $equi){
+                                             echo '<a href="#" onclick="f(&quot;'.$equi.'&quot;)">'.$equi.'</a> ';
+                                        }
+                                           
+                                        ?>
+                                        
+                                            
                                         </div>
                                     </div>
 
-                                    <div class="product-item__sale">
+                                    <!-- <div class="product-item__sale">
                                         <span class="sale-txt">25%</span>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <!-- End Product Item -->
@@ -80,3 +92,14 @@
                         </div>
                     </div>
                     <!-- cierro links -->
+
+
+
+<script type="text/javascript">
+  function verEquivalencia(equiv){
+    
+
+  }
+
+</script>
+                    

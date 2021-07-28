@@ -61,6 +61,18 @@
                                 <i class="ion-bag"></i>
                                 <span id ="qtyCart" class="cart-total"></span>
                             </a>
+                                
+                            <div class="mini-cart-content">
+                                <div class="mini-cart-product">
+                                   <!--  -->
+                                    <div id="minicart">
+                                    
+                                    </div>
+                             
+
+                             <!--  -->
+                                </div>
+                            </div>
                             @endif
                             @if(sizeof($cart)>0)
                             <div class="mini-cart-content">

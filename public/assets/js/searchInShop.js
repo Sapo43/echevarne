@@ -1,5 +1,10 @@
-$("#search").on('click', function(){
+// $("#search").on('click', function(){
 
+function f(param) {  
+
+    if(param){
+        $("input.form-control").val(''); 
+    }
 
     var type_selected="";
     if(document.getElementById("type")==null){
@@ -24,7 +29,7 @@ var type = document.getElementById("type");
 
 var rubro = $('#rubro').val();
 var marca = $('#marca').val();
-var equivalencia = $('#equivalencia').val();
+var equivalencia = $('#equivalencia').val() || param ;
 var nombre = $('#nombre').val();
 var equiv = $('#equivalencia').val();
 var _token= $('meta[name="csrf-token"]').attr('content')
@@ -71,7 +76,7 @@ if (rubro==0&marca==0&equivalencia==""&equiv==""&nombre==""){
 })
 
 }
-});
+};
 
 
 

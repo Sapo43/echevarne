@@ -1,5 +1,5 @@
 
-                               
+                               @if(isset($cart))
                                 @foreach($cart as $producto)
 
                                 <div class="mini-product">
@@ -17,4 +17,5 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                @endif
                          

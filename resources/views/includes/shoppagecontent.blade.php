@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="col-sm-1">
                                     <div class="sort-by-wrapper">                 
-                                    <a href="#" id="search" name="search" class="btn-echevarne3 form-control">
+                                    <a onclick="f()"href="#" id="search" name="search" class="btn-echevarne3 form-control">
               
               <i class="fa fa-search"></i>  
               </a>
@@ -135,25 +135,7 @@
     </div>
 
 
-    <div class="modal fade " id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Producto</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+   
 
 
 

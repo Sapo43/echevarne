@@ -46,6 +46,9 @@ public function cartForCheckout(){
     $isAuthZero=$this->ifAuthZero();
    
         $cart= \Session::get('cart');
+        if (sizeof($cart)==0){
+            return redirect()->route('shop'); 
+        }
         $title = "Pedido";
         $cantidadCarrito=sizeof($cart);      
         $meta_description = "";
