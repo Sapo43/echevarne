@@ -56,6 +56,7 @@ Route::bind('producto',function($slug){
 
 Route::get('/cart/add/{producto}',[CartController::class,'add'])->name('addToCart');
 Route::get('cart/delete/{producto}',[CartController::class,'delete'])->name('cart-delete');
+Route::post('cart/update',[CartController::class,'update'])->name('cart-update');
 
 
 

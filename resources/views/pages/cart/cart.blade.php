@@ -34,7 +34,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <span class="price">{{number_format( $producto->precio,2, ',','.')}}</span>
+                                              $ <span name="num"  class="price">{{number_format( $producto->precio,2, ',','.')}}</span>
                                             </td>
                                             <td>
                                                 <div class="pro-qty">
@@ -43,69 +43,59 @@
                                                     <input type="text"  min="1"
                    max="5"
                    value= "{{ $producto->cantidad }}"
-                   id="product_{{$producto->id}}"class="quantity" title="Quantity" value="1" />
+                   id="product_{{$producto->id}}"class="quantity" title="Quantity" value="1" onFocus="findTotal()"  name="qty"/>
                                                 </div>
                                             </td>
                                             <td>
-                                                <span class="price">{{number_format($producto->precio,2, ',','.')}}</span>
+                                               $ <span name="subtotal" class="price">{{number_format($producto->precio *$producto->cantidad,2, ',','.')}}</span>
                                             </td>
                                         </tr>
 
                                        @endforeach
                                         <tr>
-                                            <td>
+                                            <td colspan="3" style="text-align:right">
                                                 
-                                            </td>
-                                            <td>
+                                           
                                                 
+                                            
+                                            <strong>   Total sin IVA :</strong>
                                             </td>
                                             <td>
-                                                c1
-                                            </td>
-                                            <td>
-                                              {{$totalsi}}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                a2
-                                            </td>
-                                            <td>
-                                                b2
-                                            </td>
-                                            <td>
-                                                c2
-                                            </td>
-                                            <td>
-                                            {{$totalid}}
+                                            $  {{number_format($totalsi,2, ',','.')}}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
-                                                a3
+                                            <td colspan="3" style="text-align:right">
+                                           
+                                            
+                                          
+                                            <strong> IVA 10,5% :</strong>
                                             </td>
                                             <td>
-                                                b3
-                                            </td>
-                                            <td>
-                                                c3
-                                            </td>
-                                            <td>
-                                            {{$totaliv}}
+                                           $ {{number_format($totalid,2, ',','.')}}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
-                                                a3
+                                            <td colspan="3" style="text-align:right">
+                                                
+                                           
+                                            
+                                            
+                                               <strong> IVA 21% :</strong>
                                             </td>
                                             <td>
-                                                b3
+                                            $ {{number_format($totaliv,2, ',','.')}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" style="text-align:right">
+                                                
+                                          
+                                        
+                                            <strong>  TOTAL :</strong>
                                             </td>
                                             <td>
-                                                c3
-                                            </td>
-                                            <td>
-                                            {{$totalci}}
+                                          $ {{number_format($totalci,2, ',','.')}}
                                             </td>
                                         </tr>
 
@@ -126,7 +116,7 @@
 
                                 <div class="cart-update-buttons mt-15 mt-sm-0">
                                     <button class="btn-clear-cart">Clear Cart</button>
-                                    <button class="btn-update-cart">Update Cart</button>
+                                    <button onclick="update()" class="btn-update-cart">Update Cart</button>
                                 </div>
                             </div>
                         </div>
@@ -135,13 +125,17 @@
                     <div class="col-lg-4">
                         <!-- Cart Calculate Area -->
                         <div class="cart-calculate-area mt-sm-40 mt-md-60">
-                            <h5 class="cal-title">Cart Totals</h5>
+                            <h5 class="cal-title">Productos</h5>
 
                             <div class="cart-cal-table table-responsive">
                                 <table class="table table-borderless">
                                     <tr class="cart-sub-total">
                                         <th>Subtotal</th>
-                                        <td>$289.89</td>
+                                        <td><strong>$</trong> {{number_format($totalsi,2, ',','.')}}</td>
+                                    </tr>
+                                    <tr class="cart-sub-total">
+                                        <th>IVA</th>
+                                        <td><strong>$</trong> {{number_format($totalid+$totaliv,2, ',','.')}}</td>
                                     </tr>
                                     <tr class="shipping">
                                         <th>Shipping</th>
@@ -173,7 +167,7 @@
                                     </tr>
                                     <tr class="order-total">
                                         <th>Total</th>
-                                        <td><b>$299.93</b></td>
+                                        <td> <b><strong>$</trong> {{number_format($totalci,2, ',','.')}}</b></td>
                                     </tr>
                                 </table>
                             </div>
@@ -189,4 +183,3 @@
     </div>
     <!--== End Page Content Wrapper ==-->
 
-  

@@ -49,7 +49,7 @@
 </head>
 <body>
 
-<!--body content wrap start-->
+ <!--body content wrap start-->
 <div class="main">
 
     <!--hero section start-->
@@ -62,8 +62,8 @@
                     <div class="bg-cover vh-100 ml-n3 background-img" style="background-image: url(img/hero-bg-1.jpg);">
                         <div class="position-absolute login-signup-content">
                             <div class="position-relative text-white col-md-12 col-lg-7">
-                                <h2 class="text-white">Welcome Back !</h2>
-                                <p class="lead">Keep your face always toward the sunshine - and shadows will fall behind you. Continually pursue fully researched niches whereas timely platforms. Credibly parallel task optimal catalysts for change after focused catalysts for change.</p>
+                                <h2 class="text-dark">Bienvenido !</h2>
+                                <!-- <p class="lead">Keep your face always toward the sunshine - and shadows will fall behind you. Continually pursue fully researched niches whereas timely platforms. Credibly parallel task optimal catalysts for change after focused catalysts for change.</p> -->
                             </div>
                         </div>
                     </div>
@@ -75,14 +75,14 @@
                             Sign In
                         </h1>
                         <p class="text-center mb-5">
-                            Free access to our dashboard.
+                       
                         </p>
 
                         <!--login form-->
                         <form class="login-signup-form" method="POST" action="{{ route('login') }}">
                         @csrf    
                         <div class="form-group">
-                                <label class="pb-1">Email Address</label>
+                                <label class="pb-1">Email </label>
                                 <div class="input-group input-group-merge">
                                     <div class="input-icon">
                                         <span class="ti-email color-primary"></span>
@@ -141,7 +141,7 @@
     <!--hero section end-->
 
 </div>
-<!--body content wrap end-->
+<!--body content wrap end
 
 <!--jQuery-->
 <script src="/assets/login/js/jquery-3.5.0.min.js"></script>

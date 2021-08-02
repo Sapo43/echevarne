@@ -3,7 +3,7 @@
             <div class="row align-items-center">
                 <div class="col-sm-4 col-lg-2">
                     <div class="site-logo text-center text-sm-left">
-                        <a href="index.html"><img src="/assets/img/logo.png" alt="Logo" style="max-width: 50%" /></a>
+                        <a href="index.html"><img src="/assets/img/logo_completo.png" alt="Logo"  /></a>
                     </div>
                 </div>
 

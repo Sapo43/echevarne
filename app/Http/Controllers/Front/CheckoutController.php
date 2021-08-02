@@ -34,8 +34,43 @@ $csss=array(
 $porcentaje_compra=$this->porcentaje_compra();
 $porcentaje_venta=$this->porcentaje_venta();
 $isAuthZero=$this->ifAuthZero();
+
+$porcentaje_compra=$this->porcentaje_compra();
+$porcentaje_venta=$this->porcentaje_venta();
+$isAuthZero=$this->ifAuthZero();
+
     $cart= \Session::get('cart');
-    return view ('pages.checkout.index',compact('isAuthZero','porcentaje_compra','porcentaje_venta','cart','scripts','csss'));
+    if (sizeof($cart)==0){
+        return redirect()->route('shop'); 
+    }
+
+    $cantidadCarrito=sizeof($cart);      
+
+    $totalsi=0;
+    $totalid=0;
+    $totaliv=0;
+    $totalci=0;
+    // if (empty($cart)){
+    //     return view('front.carrito.vacio',compact('cantidadCarrito','title','meta_description','h_image')); 
+    // }else{
+        foreach ($cart as $key){  
+        
+            $totalsi=$totalsi+($key->precio*$key->cantidad);
+
+            if($key->iva==21){
+                $totaliv=$totaliv+((($key->precio*$key->cantidad)*$key->iva)/100);
+            }
+            
+            if($key->iva==10.5){
+                $totalid=$totalid+((($key->precio*$key->cantidad)*$key->iva)/100);
+     
+            }
+            
+        }
+        $totalci=$totalsi+$totalid+$totaliv;
+
+    $cart= \Session::get('cart');
+    return view ('pages.checkout.index',compact('isAuthZero','porcentaje_compra','porcentaje_venta','cart','totalsi','totalid','totaliv','totalci','scripts','csss'));
 }
 
 

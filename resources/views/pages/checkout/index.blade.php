@@ -259,7 +259,7 @@
                                 <table class="table table-borderless">
                                     <thead>
                                         <tr>
-                                            <th>Products</th>
+                                            <th>Productos</th>
                                             <th>Total</th>
                                         </tr>
                                     </thead>
@@ -283,11 +283,7 @@
                                       @endforeach
                                     </tbody>
                                     <tfoot>
-                                        <tr class="cart-subtotal">
-                                            <th>Subtotal</th>
-                                            <td>$309.00</td>
-                                        </tr>
-                                        <tr class="shipping">
+                                         <tr class="shipping">
                                             <th>Shipping</th>
                                             <td>
                                                 <ul class="shipping-method">
@@ -316,8 +312,20 @@
                                             </td>
                                         </tr>
                                         <tr class="final-total">
+                                            <th>Subtotal </th>
+                                            <td><span class="total-amount"><b><strong>$</trong> {{number_format($totalsi,2, ',','.')}}</b></span></td>
+                                        </tr>
+                                        <tr class="final-total">
+                                            <th>IVA 10,5%</th>
+                                            <td><span class="total-amount"><b><strong>$</trong> {{number_format($totalid,2, ',','.')}}</b></span></td>
+                                        </tr>
+                                        <tr class="final-total">
+                                            <th>IVA 21%</th>
+                                            <td><span class="total-amount"><b><strong>$</trong> {{number_format($totaliv,2, ',','.')}}</b></span></td>
+                                        </tr>
+                                        <tr class="final-total">
                                             <th>Total</th>
-                                            <td><span class="total-amount">$289.93</span></td>
+                                            <td><span class="total-amount"><b><strong>$</trong> {{number_format($totalci,2, ',','.')}}</b></span></td>
                                         </tr>
                                     </tfoot>
                                 </table>

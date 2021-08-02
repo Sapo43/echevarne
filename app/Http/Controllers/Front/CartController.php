@@ -36,10 +36,16 @@ public function cartForCheckout(){
 
 
     $scripts = array(
+        ('/assets/js/sweetalert2.min.js'),
         ('/assets/js/postConfirmCart.js'),
-      
+        ('/assets/js/incdeccart.js')
+        
      
     );
+    $csss=array(
+        ('/assets/css/sweetalert2.min.css'),
+        
+);
 
     $porcentaje_compra=$this->porcentaje_compra();
     $porcentaje_venta=$this->porcentaje_venta();
@@ -78,7 +84,7 @@ public function cartForCheckout(){
 
     
           //  return view('front.carrito.carrito',compact('cantidadCarrito','cart','title','meta_description','h_image','totalsi','totalid','totaliv','totalci'));
-            return view('pages.cart.index',compact('isAuthZero','porcentaje_compra','porcentaje_venta','cantidadCarrito','cart','title','meta_description','h_image','totalsi','totalid','totaliv','totalci','scripts'));
+            return view('pages.cart.index',compact('isAuthZero','porcentaje_compra','porcentaje_venta','cantidadCarrito','cart','title','meta_description','h_image','totalsi','totalid','totaliv','totalci','scripts','csss'));
         }
 
 
@@ -124,13 +130,19 @@ public function cartForCheckout(){
 
     //Update item
 
-    public function update(Producto $producto,$cantidad){
- 
-        $cart = \Session::get('cart');
-
-        $cart[$producto ->slug]->cantidad=$cantidad;
-        \Session::put('cart',$cart); 
-        return redirect()->route('cart-show')    ;
+    public function update(Request $request){
+  
+        try {
+            
+            $cart = \Session::get('cart');          
+            $productoBuscado= Producto::where('id','=', $request->id)->first();
+            $cart[$productoBuscado->slug]->cantidad=$request->cantidad;
+            \Session::put('cart',$cart); 
+            return response()->json(['result'=>true]);        
+        } catch (\Throwable $th) {
+            return response()->json(['result'=>false]);
+        }
+      
     }
 
     //Trash cart

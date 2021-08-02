@@ -935,7 +935,7 @@ only screen and (min-width: 1200px) {
 04. Header Area Style CSS
 ==============================*/
 .header-area {
-    padding: 30px 0;
+    padding: 10px 0;
 }
 
 @media only screen and (max-width: 767.98px) {
@@ -1444,11 +1444,11 @@ only screen and (min-width: 992px) and (max-width: 1199.98px) {
 Scroll Top Button
 ----------------------------------*/
 .btn-scroll-top {
-    background-color: #7EAEDE;
+    /* background-color: #7EAEDE; */
     border-radius: 50%;
     -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
-    color: #FFFFFF;
+    color: #7EAEDE;
     cursor: pointer;
     font-size: 16px;
     display: block;

@@ -40,7 +40,7 @@
     <!--== Helper Min CSS ==-->
     <link href="/assets/css/helper.min.css" rel="stylesheet" />
     <!-- endbuild -->
-
+    <link href="/assets/css/floating-wpp.min.css" rel="stylesheet" />
 
 
 
@@ -128,7 +128,7 @@
 
     <!-- Scroll Top Button -->
     <button class="btn-scroll-top"><i class="ion-chevron-up"></i></button>
-
+    <div id="WAButton"></div>
 
 
     <!--== Start Responsive Menu Wrapper ==-->
@@ -166,7 +166,8 @@
     <!-- endbuild -->
 
     <script src="/assets/js/getminicart.js"></script>
-
+    <script src="/assets/js/floating-wpp.min.js"></script>
+    <script src="/assets/js/wabutton.js"></script>
 
   
 	
