@@ -9,6 +9,8 @@
     <!--== Start Page Content Wrapper ==-->
     @include('includes.shoppagecontent')
     <!--== End Page Content Wrapper ==-->
+
+   
     <div class="modal fade " id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">

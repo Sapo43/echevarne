@@ -20,7 +20,8 @@
    
 
     <!--== Nice Select Min CSS ==-->
-    <link href="/assets/css/nice-select.min.css" rel="stylesheet" />
+     <link href="/assets/css/nice-select.min.css" rel="stylesheet" /> 
+    <link href="/assets/css/nice-search-multiple.css" rel="stylesheet" />
     <!--== Slick Slider Min CSS ==-->
     <link href="/assets/css/slick.min.css" rel="stylesheet" />
     <!--== Magnific Popup Min CSS ==-->
@@ -155,7 +156,11 @@
     <!--=== Slick Slider Min Js ===-->
     <script src="/assets/js/slick.min.js"></script>
     <!--=== Nice Select Min Js ===-->
-    <script src="/assets/js/jquery.nice-select.min.js"></script>
+    <script src="/assets/js/jquery.nice-select.min.js"></script> 
+
+    <script src="/assets/js/jquery.nice-select-with-search-multiple.js"></script>
+
+
     <!--=== Leaflet Min Js ===-->
     <script src="/assets/js/leaflet.min.js"></script>
     <!--=== Countdown Js ===-->
@@ -170,7 +175,7 @@
     <script src="/assets/js/wabutton.js"></script>
 
   
-	
+
 <!-- Scripts dinamicos que llegan desde el controlador -->
 <?php
 		if(isset($scripts)){
@@ -182,6 +187,9 @@
 		}
 	?>
 <!-- fin Scripts dinámicos desde controlador -->
+
+
+
 
 </body>
 

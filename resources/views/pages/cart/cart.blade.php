@@ -6,6 +6,7 @@
                     <div class="col-lg-8">
                         <div class="shopping-cart-list-area">
                             <div class="shopping-cart-table table-responsive">
+                                
                                 <table class="table table-bordered text-center mb-0">
                                     <thead>
                                         <tr>
@@ -22,7 +23,9 @@
                                             <td class="product-list">
                                                 <div class="cart-product-item d-flex align-items-center">
                                                     <div class="remove-icon">
-                                                        <button><i class="fa fa-trash-o"></i></button>
+                                                        <a id="rmc" onclick="deleteFromCart('{{$producto->slug}}',this.id)" class="remove-pro"><i class="ion-trash-b"></i></a>
+                                                       
+                                                      
                                                     </div>
                                                     <input id="codprod"  type="hidden" value=" {{$codProd=$producto->codigo}}">
                                             
@@ -37,10 +40,8 @@
                                               $ <span name="num"  class="price">{{number_format( $producto->precio,2, ',','.')}}</span>
                                             </td>
                                             <td>
-                                                <div class="pro-qty">
-                                              
-                   
-                                                    <input type="text"  min="1"
+                                                <div class="pro-qty">                                        
+                                <input type="text"  min="1"
                    max="5"
                    value= "{{ $producto->cantidad }}"
                    id="product_{{$producto->id}}"class="quantity" title="Quantity" value="1" onFocus="findTotal()"  name="qty"/>
@@ -115,8 +116,8 @@
                               
 
                                 <div class="cart-update-buttons mt-15 mt-sm-0">
-                                    <button class="btn-clear-cart">Clear Cart</button>
-                                    <button onclick="update()" class="btn-update-cart">Update Cart</button>
+                                    <button class="btn-clear-cart">Vaciar Carrito</button>
+                                    <button onclick="update()" class="btn-update-cart">Actualizar Carrito</button>
                                 </div>
                             </div>
                         </div>
@@ -125,6 +126,7 @@
                     <div class="col-lg-4">
                         <!-- Cart Calculate Area -->
                         <div class="cart-calculate-area mt-sm-40 mt-md-60">
+                            
                             <h5 class="cal-title">Productos</h5>
 
                             <div class="cart-cal-table table-responsive">
@@ -137,34 +139,7 @@
                                         <th>IVA</th>
                                         <td><strong>$</trong> {{number_format($totalid+$totaliv,2, ',','.')}}</td>
                                     </tr>
-                                    <tr class="shipping">
-                                        <th>Shipping</th>
-                                        <td>
-                                            <ul class="shipping-method">
-                                                <li>
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" id="flat_shipping" name="shipping_method" class="custom-control-input" checked />
-                                                        <label class="custom-control-label" for="flat_shipping">Flat Rate :
-                                                            $10</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" id="free_shipping" name="shipping_method" class="custom-control-input" />
-                                                        <label class="custom-control-label" for="free_shipping">Free
-                                                            Shipping</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" id="cod_shipping" name="shipping_method" class="custom-control-input" />
-                                                        <label class="custom-control-label" for="cod_shipping">Cash on
-                                                            Delivery</label>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
+                                   
                                     <tr class="order-total">
                                         <th>Total</th>
                                         <td> <b><strong>$</trong> {{number_format($totalci,2, ',','.')}}</b></td>
@@ -173,7 +148,7 @@
                             </div>
 
                             <div class="proceed-checkout-btn">
-                                <a href="/checkout" class="btn btn-brand d-block">Checkout</a>
+                                <a id="tocheck" onclick="update(true)" class="btn btn-brand d-block">Checkout</a>
                             </div>
                         </div>
                     </div>

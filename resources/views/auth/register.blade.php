@@ -60,11 +60,11 @@
                 <div class="col-12 col-md-7 col-lg-6 col-xl-8 d-none d-lg-block">
 
                     <!-- Image -->
-                    <div class="bg-cover vh-100 ml-n3 background-img" style="background-image: url(img/hero-bg-2.jpg);">
+                    <div class="bg-cover vh-100 ml-n3 background-img" style="background-image: url(img/hero-bg-1.jpg);">
                         <div class="position-absolute login-signup-content">
                             <div class="position-relative text-white col-md-12 col-lg-7">
-                                <h2 class="text-white">Create Your Account</h2>
-                                <p class="lead">Keep your face always toward the sunshine - and shadows will fall behind you. Continually pursue fully researched niches whereas timely platforms. Credibly parallel task optimal catalysts for change after focused catalysts for change.</p>
+                                <h2 class="text-white">Crea tu cuenta</h2>
+                            
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                     <div class="login-signup-wrap px-4 px-lg-5 my-5">
                         <!-- Heading -->
                         <h1 class="text-center mb-1">
-                            Signup
+                            REGISTRO
                         </h1>
 
                       
@@ -192,13 +192,13 @@
 
                             <!-- Submit -->
                             <button  type="submit"  class="btn btn-lg btn-block solid-btn border-radius mt-4 mb-3">
-                                Sign up
+                                Registrar
                             </button>
 
                             <!-- Link -->
                             <div class="text-center">
                                 <small class="text-muted text-center">
-                                    Already have an account? <a href="/login">Log in</a>.
+                                    Ya tienes cuenta? <a href="/login">Ingresar</a>.
                                 </small>
                             </div>
 

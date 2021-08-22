@@ -369,7 +369,7 @@ button:focus {
     background-color: #F76725;
     border-color: #F76725;
     border-radius: 25px;
-    color: #1b1b1c;
+    color: #FFFFFF;
 }
 
 .btn-orange:hover {
@@ -970,7 +970,7 @@ only screen and (min-width: 1200px) {
     color: #7EAEDE ;
 }
 
-@media only screen and (max-width: 575.98px) {
+@media only screen and (max-width: 600.98px) {
     .site-logo {
         margin-bottom: 10px;
     }
@@ -1024,13 +1024,13 @@ only screen and (min-width: 992px) and (max-width: 1199.98px) {
     font-size: 25px;
     line-height: 1;
     position: relative;
-    color: #1b1b1c;
+    color: #F76725;
 }
 
 .mini-cart-wrap .btn-mini-cart .cart-total {
-    background-color: #1b1b1c;
+    background-color: #F76725;
     border-radius: 50%;
-    color: #FFFFFF;
+    color: #ffffff;
     display: block;
     font-size: 50%;
     text-align: center;
@@ -2821,7 +2821,7 @@ only screen and (min-width: 1200px) {
 }
 
 .page-header-content h1 {
-    color: #FFFFFF;
+    color: #1b1b1c;
     font-weight: 600;
     font-size: 32px;
     line-height: 1;
@@ -2865,7 +2865,7 @@ only screen and (min-width: 1200px) {
 }
 
 .breadcrumb li a {
-    color: #FFFFFF;
+    color: #1b1b1c;
     font-size: 18px;
     font-family: "Oswald", sans-serif;
     font-weight: 300;
@@ -4663,3 +4663,56 @@ Extra css made by Sapo
 .single-promo-card .card-body{
     padding: 1.5rem;
 }
+
+
+
+.btn-add-to-cart:hover {
+    color: #F76725 !important;
+  }
+
+
+
+  /* Desactivo arrows en input type number */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+.stock-disponible{
+    color: #fff;
+    background-color: #9EDE7E
+}
+.stock-nodisponible{
+    color: #fff;
+    background-color: #DE7E7E
+}
+.stock-consultar{
+    color: #fff;
+    background-color: #DDDE7E
+}
+
+.cod-link{
+    color:#1b1b1c;
+}
+
+.cod-link:hover{
+    color:#7EAEDE
+}
+
+
+.img-responsive{
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+

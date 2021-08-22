@@ -9,13 +9,14 @@
         <meta name="author" content="Federico Raffetto">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link type="text/plain" rel="author" href="{{asset('humans.txt')}}" />
-        <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
-        <link rel="icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">           
+        <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon" />         
         
         <link href="{{ asset('assetsAdmin/css/bootstrap.min.css')}}" rel="stylesheet">        
         <link href="{{ asset('assetsAdmin/css/admin.min.css?v=2') }}" rel="stylesheet">
         <link href="{{ asset('assetsAdmin/css/fonts.min.css')}}" rel="stylesheet">    
         <link href="/assets/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="{{ asset('assetsAdmin/css/ringbell.css')}}" rel="stylesheet"> 
 
         <!-- Fonts -->
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -82,11 +83,19 @@
                     </ul>
                     
                     <ul class="nav navbar-nav">
-                    <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
-          <i class="fa fa-bell"></i>
-          <span id="alerta"class="badge badge-warning navbar-badge">15</span>
-        </a>
+                    <li class="dropdown"> 
+                    <div class="ringBell">
+                    <a class=""  href="/admin/pedidos" aria-expanded="false">
+     
+                    <span id="alerta" class="-count">{{($flagPedidos)}}</span>
+</a>
+                        </div>
+       
+        </li>
                         </ul>
+                      
+
+
                     <ul class="nav navbar-nav navbar-right">
                         @if (!Auth::guard('admin')->guest())
                         <li class="dropdown">
@@ -136,7 +145,7 @@ var channel = pusher.subscribe('my-channel');
 channel.bind('my-event', function(data) {
   console.log(data.message);
   $('#alerta').html('');
-  $('#alerta').html(data.message);
+  $('#alerta').html("!");
 });
 </script>
     </body>

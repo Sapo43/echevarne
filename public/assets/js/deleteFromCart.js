@@ -1,13 +1,14 @@
 
-function deleteFromCart(slug){
-console.log("deleeeee");
-    $.ajax({
-      url: "/cart/delete/"+slug,
-      success: function(response){ 
-        // Add response in Modal body
-        getminicart();
+function deleteFromCart(slug,id){
   
+     $.ajax({
+       url: "/cart/delete/"+slug,
+       success: function(response){ 
+         getminicart();
+          if(id=='rmc'){
+            window.location.href='/cart'
+          }
        
-      }
-    });
+       }
+     });
   }

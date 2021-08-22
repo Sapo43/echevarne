@@ -72,6 +72,9 @@ if (rubro==0&marca==0&equivalencia==""&equiv==""&nombre==""){
             $('.precioCompra').css('display', 'none');
             $('.precioLista').css('display', 'block');
         }
+
+
+        recentCall();
 }
 })
 
@@ -89,3 +92,29 @@ $("#clear").on('click', function(){
     $("input.form-control").val('');          
              
 });
+
+
+
+function recentCall(){
+    var rubro = $('#rubro').val();
+var marca = $('#marca').val();
+var equivalencia = $('#equivalencia').val() 
+var nombre = $('#nombre').val();
+var equiv = $('#equivalencia').val();
+var _token= $('meta[name="csrf-token"]').attr('content')
+    $.ajax({
+        data:  {  
+            'rubro':rubro,
+                 'marca':marca,                 
+                'nombre':nombre,
+                'equivalencia':equivalencia,
+                'busqueda':true
+        },
+        url: '/shopRecentSearch',
+        success: function(response)
+        {     
+            $('#sidebarProduct').html(response);    
+        }     
+    })
+
+}

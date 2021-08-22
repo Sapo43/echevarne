@@ -29,7 +29,7 @@ $(document).ready(function(){
         }) 
 
 $('body').on('change','#type', function() {      
-    console.log("Session en el cliente"+sessionStorage.Tipo);
+  
         var type = document.getElementById("type");      
         var type_selected = type.options[type.selectedIndex].value;
         sessionStorage.Tipo=type_selected;

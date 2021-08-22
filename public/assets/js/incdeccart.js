@@ -35,7 +35,7 @@ function findTotal(){
 }
 
 
-function update(){
+function update(toCheck){
 
 swal.fire({
     title: "",
@@ -120,8 +120,18 @@ swal.fire({
                         
                         showConfirmButton: true
                     }).then(function (result) {
+                        
                         if (result.value) {
-                            window.location = "/cart";
+                                console.log(toCheck);
+                           
+                                if(toCheck)
+                                {
+                                    window.location="/checkout"; 
+                                }else{
+                                    window.location = "/cart";
+                                }
+                             
+                         
                         }
                     });
         }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Producto;
 use App\Models\Rubro;
 use App\Models\Marca;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App;
 use PDF;
@@ -31,6 +32,8 @@ $csss=array(
         ('/assets/css/iziToast.css'),
         ('/assets/css/addtocartanimation.css')
 );
+
+$clientes=User::all();
 $porcentaje_compra=$this->porcentaje_compra();
 $porcentaje_venta=$this->porcentaje_venta();
 $isAuthZero=$this->ifAuthZero();
@@ -70,7 +73,7 @@ $isAuthZero=$this->ifAuthZero();
         $totalci=$totalsi+$totalid+$totaliv;
 
     $cart= \Session::get('cart');
-    return view ('pages.checkout.index',compact('isAuthZero','porcentaje_compra','porcentaje_venta','cart','totalsi','totalid','totaliv','totalci','scripts','csss'));
+    return view ('pages.checkout.index',compact('clientes','isAuthZero','porcentaje_compra','porcentaje_venta','cart','totalsi','totalid','totaliv','totalci','scripts','csss'));
 }
 
 

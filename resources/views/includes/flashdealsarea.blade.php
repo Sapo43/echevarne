@@ -3,18 +3,17 @@
             <div class="row align-items-center">
                 <div class="col-md-5 col-lg-6">
                     <div class="flash-deals-thumb text-center text-md-left">
-                        <img src="/assets/img/extra/chair.png" alt="Deals" />
+                        <img src="/img/novedades/nueva-linea-de-kits-de-filtros.jpg" alt="Deals" />
                     </div>
                 </div>
 
                 <div class="col-md-7 col-lg-6 text-center">
                     <div class="flash-deals-content">
-                        <h2>FLASH DEALS</h2>
-                        <h3>HURRY UP AND GET 25% DISCOUNT</h3>
-                        <a href="cart.html" class="btn btn-brand">Add to cart</a>
+                        <h2>REBAJAS DE ULTIMO MOMENTO</h2>                        
+                        <a href="/shop/MARENO" class="btn btn-brand">SHOP</a>
 
                         <div class="deals-countdown-area">
-                            <div class="ht-countdown" data-date="9/20/2019"></div>
+                            <div class="ht-countdown" data-date="9/20/2021"></div>
                         </div>
                     </div>
                 </div>

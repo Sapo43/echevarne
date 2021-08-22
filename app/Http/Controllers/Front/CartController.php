@@ -12,6 +12,7 @@ use App\Models\Pedido;
 use App\Models\Rubro;
 use App\Models\Marca;
 use App\Models\ImageModal;
+use App\Models\User;
 use App\Http\Requests;
 use Carbon\Carbon;
 use Validator;
@@ -29,6 +30,8 @@ class CartController extends Controller {
     public function __construct()
     {
         if(!\Session::has('cart')) \Session::put('cart',array());
+        
+
        
     }
 
@@ -38,7 +41,9 @@ public function cartForCheckout(){
     $scripts = array(
         ('/assets/js/sweetalert2.min.js'),
         ('/assets/js/postConfirmCart.js'),
-        ('/assets/js/incdeccart.js')
+        ('/assets/js/incdeccart.js'),
+        ('/assets/js/deleteFromCart.js')
+
         
      
     );
@@ -91,15 +96,14 @@ public function cartForCheckout(){
 
     //Add item
     
-    public function add(Producto $producto){
+    public function add(Producto $producto,$cantidad){
 
         
-        $cart = \Session::get('cart');   
-    
+        $cart = \Session::get('cart');     
 
         
 
-        $producto->cantidad=1;
+        $producto->cantidad=$producto->cantidad+$cantidad;
 
         if(in_array($producto,$cart)){
             return response()->json(['msg'=>'Ya existe el producto '.$producto->nombre.' en tu pedido',
@@ -109,7 +113,7 @@ public function cartForCheckout(){
         $cart[$producto ->slug] = $producto;
         \Session::put('cart',$cart); 
         return response()->json(['msg'=>'Agregamos '.$producto->nombre.' a tu pedido',
-                                 'cantidad'=>1   
+                                 'cantidad'=>$cantidad
         ]);
     }    
         
@@ -123,7 +127,7 @@ public function cartForCheckout(){
         $cart = \Session::get('cart');
                 unset($cart[$producto->slug]);
         \Session::put('cart',$cart); 
-        // return redirect()->route('cart-show')    ;
+  
 
         return response()->json(['msg'=>'ok ']);
     }
@@ -156,29 +160,59 @@ public function cartForCheckout(){
     public function confirmarCarrito(Request $request){
 
 
+   
        
-        // $validator = Validator::make($request->all(), [
-        //     'notas' => 'required',
-            
-        // ]);
-
-
-        // if ($validator->passes()) {
+        
       $arrayPedidos=[];
             $totalsi=0;
             $totalid=0;
             $totaliv=0;
             $totalci=0;
-
+            if($request->enNombre==null){
+                $user=User::findOrFail(\Auth::user()->id);
+            if (\Auth::user()->telefono!=$request->telefono){
+                    $user->telefono=$request->telefono;   
+            }
+            if (\Auth::user()->codigo_postal!=$request->codigo_postal){
+                $user->codigo_postal=$request->codigo_postal;
+            }
+            if (\Auth::user()->email!=$request->email){
+                $user->email=$request->email;
+            }
+            if(\Auth::user()->direccion!=$request->direccion){
+                $user->direccion=$request->direccion;
+            }
+            if(\Auth::user()->ciudad!=$request->ciudad){
+                $user->ciudad=$request->ciudad;
+            }
+            if(\Auth::user()->nombre!=$request->nombre){
+                $user->nombre=$request->nombre;
+            }
+            if(\Auth::user()->apellido!=$request->apellido){
+                $user->apellido=$request->apellido;
+            }
+            if(\Auth::user()->cuit!=$request->cuit){
+                $user->cuit=$request->cuit;
+            }
+            $user->save();
+            }
+            
 
             $cart = \Session::get('cart');
             $totalCant=0;
             $montoTotal=0;
-         $pedido=new Pedido();
-         $date=\Carbon\Carbon::now('America/Argentina/Buenos_Aires');
-         $pedido->created_at=$date;
-         $pedido->created_by=\Auth::user()->id;
-         foreach ($cart as $key){  
+            $pedido=new Pedido();
+            $date=\Carbon\Carbon::now('America/Argentina/Buenos_Aires');
+            $pedido->created_at=$date;
+            if($request->enNombre_id==null){
+            $pedido->created_by=\Auth::user()->id;
+            $pedido->referido_por=\Auth::user()->id;
+            }else{
+                $pedido->created_by=$request->enNombre_id;
+                $pedido->referido_por=\Auth::user()->id;
+            }
+           
+            foreach ($cart as $key){  
                
             $totalCant=$totalCant+$key->cantidad; 
             $montoTotal=$montoTotal+($key->precio*$key->cantidad);

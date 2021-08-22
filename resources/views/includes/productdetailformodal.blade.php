@@ -75,16 +75,16 @@
                                             <div class="action-top d-sm-flex">
                                                 <div class="pro-qty mr-3 mb-4 mb-sm-0">
                                                     <label for="quantity" class="sr-only">Quantity</label>
-                                                    <input type="text" id="quantity" title="Quantity" value="1" />
+                                                    <input type="number" id="quantity" title="Quantity" value="1" />
                                                 </div>
 
-                                                <button class="cart-button btn btn-bordered" onclick="selectByName('{{$producto->slug}}');">
-      <span class="add-to-cart">Add to cart</span>
+                                                <button class="cart-button btn btn-orange" onclick="selectByName('{{$producto->slug}}',$('#quantity').val());">
+      <span class="add-to-cart">Agregar</span>
       <span class="added"></span>
       <i class="fa fa-shopping-cart"></i>
     </button>
 
-                                                <!-- <button  id="addtocart" class="btn btn-bordered" onclick="selectByName('{{$producto->slug}}');">Add to Cart <span class="cart-item"></span></button> -->
+                                               
                                                 
                                             </div>
                                         </div> 

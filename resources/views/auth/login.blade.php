@@ -62,7 +62,7 @@
                     <div class="bg-cover vh-100 ml-n3 background-img" style="background-image: url(img/hero-bg-1.jpg);">
                         <div class="position-absolute login-signup-content">
                             <div class="position-relative text-white col-md-12 col-lg-7">
-                                <h2 class="text-dark">Bienvenido !</h2>
+                                <h2 class="text-white">Bienvenido !</h2>
                                 <!-- <p class="lead">Keep your face always toward the sunshine - and shadows will fall behind you. Continually pursue fully researched niches whereas timely platforms. Credibly parallel task optimal catalysts for change after focused catalysts for change.</p> -->
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                     <div class="login-signup-wrap px-4 px-lg-5 my-5">
                         <!-- Heading -->
                         <h1 class="text-center mb-1">
-                            Sign In
+                            INGRESO
                         </h1>
                         <p class="text-center mb-5">
                        
@@ -102,9 +102,9 @@
                                         <label class="pb-1">Password</label>
                                     </div>
                                     <div class="col-auto">
-                                        <a href="password-reset.html" class="form-text small text-muted">
+                                        <!-- <a href="password-reset.html" class="form-text small text-muted">
                                             Olvidaste el password?
-                                        </a>
+                                        </a> -->
                                     </div>
                                 </div>
                                 <div class="input-group input-group-merge">
@@ -122,13 +122,13 @@
 
                             <!-- Submit -->
                             <button  type="submit" class="btn btn-lg btn-block solid-btn border-radius mt-4 mb-3">
-                                Sign in
+                                Ingresar
                             </button>
 
                             <!-- Link -->
                             <p class="text-center">
                                 <small class="text-muted text-center">
-                                    No tienes cuenta? <a href="/register">Sign up</a>.
+                                    No tienes cuenta? <a href="/register">Regístrate</a>.
                                 </small>
                             </p>
 

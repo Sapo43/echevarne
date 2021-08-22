@@ -5,24 +5,22 @@
                     <div class="col-lg-3">
                         <div class="widget-item">
                             <div class="about-widget">
-                                <a href="index.html"><img src="/assets/img/logo-light.png" alt="Logo" /></a>
-                                <p>Lukas is the best parts shop for your car
-                                    accessories. What kind of parts do you
-                                    need you can get here soluta nobis</p>
+                                <a href="index.html"><img src="/assets/img/EchevarneHnos_LogoTexto.png" alt="Logo" /></a>
+                                <p>Tienda de Repuestos y Accesorios para autos.
+¿Qué pieza estás necesitando? Seguramente la vas a encontrar navegando la web.
+</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-sm-6 col-lg-2">
                         <div class="widget-item">
-                            <h4 class="widget-title">Information</h4>
+                            <h4 class="widget-title">Nosotros</h4>
                             <div class="widget-body">
                                 <ul class="widget-list">
-                                    <li><a href="#">Our company</a></li>
-                                    <li><a href="#">Contact us</a></li>
-                                    <li><a href="#">Our services</a></li>
-                                    <li><a href="#">Why We?</a></li>
-                                    <li><a href="#">Careers</a></li>
+                                    <li><a href="/about">La empresa</a></li>
+                                    <li><a href="/contacto">Contactanos</a></li>
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -30,14 +28,11 @@
 
                     <div class="col-sm-6 col-lg-2">
                         <div class="widget-item">
-                            <h4 class="widget-title">Quicklink</h4>
+                            <h4 class="widget-title">Links rapidos</h4>
                             <div class="widget-body">
                                 <ul class="widget-list">
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">Shop</a></li>
-                                    <li><a href="#">Cart</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="/shop">Shop</a></li>                       
+                                    <li><a href="/contacto">Contacto</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -45,14 +40,13 @@
 
                     <div class="col-sm-6 col-lg-2">
                         <div class="widget-item">
-                            <h4 class="widget-title">Support</h4>
+                            <h4 class="widget-title">Ayuda</h4>
                             <div class="widget-body">
                                 <ul class="widget-list">
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">Contact</a></li>
-                                    <li><a href="#">Return Policy</a></li>
-                                    <li><a href="#">Online Support</a></li>
-                                    <li><a href="#">Money Back</a></li>
+                                 
+                                    <li><a href="/contacto">Contacto</a></li>
+                                    <li><a href="#">Política de Devolución y Reembolso</a></li>
+                                 
                                 </ul>
                             </div>
                         </div>
@@ -60,12 +54,12 @@
 
                     <div class="col-sm-6 col-lg-3">
                         <div class="widget-item">
-                            <h4 class="widget-title">Store Information</h4>
+                            <h4 class="widget-title">¿Dónde estamos?</h4>
                             <div class="widget-body">
                                 <address>
-                                    2005 Stokes Isle Apartment. 896, Washington 10010, USA <br>
-                                https://example.com <br>
-                                (+68) 120034509
+                                Primera Junta 104 - Junín, Buenos Aires<br>
+                                https://echevarnehnos.com <br>
+                                (+54) 0236 4434583
                             </address>
                             </div>
                         </div>
@@ -79,7 +73,7 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <div class="copyright-content">
-                            <p>Copyright © 2019 Lukas. All Rights Reserved.</p>
+                            <p>Copyright © 2021 Echevarne Hermanos.</p>
                         </div>
                     </div>
                 </div>

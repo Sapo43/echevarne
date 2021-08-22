@@ -15,11 +15,7 @@ use PDF;
 
 class ProductosController extends Controller {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
+    
     public function index(Request $request) {
         $scripts = array(
             ('/assets/js/precioslistacompraventa.js') 
@@ -40,29 +36,6 @@ class ProductosController extends Controller {
         return view('front.producto.productos', compact('productos', 'rubros', 'marcas', 'title', 'meta_description', 'h_image','total','scripts'));
     }
 
-    // public function show($slug,Request $request) {
-    
-    //     $p_id = substr($slug, 0, strpos($slug, '-'));
-    //     $producto = Producto::find($p_id);
-    //     $h_image = 'ficha_producto.png';
-
-    //     if (isset($producto)) {
-    //         $seo_title = 'Echevarne Hermanos - ' . ucwords(strtolower($producto->nombre)) . ' Marca ' . ucfirst(strtolower($producto->marca->nombre));
-    //         if (trim($producto->descripcion) != '') {
-    //             $meta_description = $producto->descripcion;
-    //         } else {
-    //             if(isset($producto->rubro)) {
-    //                 $meta_description = $producto->rubro->nombre . ' | ' . $producto->nombre . ' Marca: ' . $producto->marca->nombre;
-    //             }else{
-    //                 $meta_description = $producto->nombre . ' Marca: ' . $producto->marca->nombre;
-    //             }
-    //         }
-
-    //         return view('front.producto.show', compact('seo_title', 'meta_description', 'producto', 'h_image'));
-    //     } else {
-    //         return redirect()->route('home');
-    //     }
-    // }
     
     public function show($slug,Request $request) {
     
@@ -155,7 +128,7 @@ class ProductosController extends Controller {
         $pdf->loadview('pdf.productosfiltro',$data);
         return $pdf->download();
         
-       // return view('front.producto.productos', compact('productos', 'rubros', 'marcas', 'title', 'meta_description', 'h_image'));
+       
     }
 
 

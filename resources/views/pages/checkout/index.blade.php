@@ -5,8 +5,6 @@
 
 
 
-
-
   <!--== Start Page Content Wrapper ==-->
   <div class="page-content-wrapper sp-y">
         <div class="cart-page-content-wrap">
@@ -14,29 +12,37 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="checkout-page-coupon-area">
+@if(\Auth::user()->vendedor)
                             <!-- Checkout Coupon Accordion Start -->
                             <div class="checkoutAccordion" id="checkOutAccordion">
                                 <div class="card">
-                                    <!-- <h3><i class="fa fa-info-circle"></i> Have a Coupon? <span data-toggle="collapse" data-target="#couponaccordion">
-                                    Click here to Enter your Code</span>
-                                    </h3> -->
+                                     <h3><i class="fa fa-info-circle"></i> Pedir a nombre de un cliente? <span data-toggle="collapse" data-target="#couponaccordion">
+                                    Seleccionar cliente</span>
+                                    </h3> 
                                     <div id="couponaccordion" class="collapse" data-parent="#checkOutAccordion">
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-lg-8">
                                                     <div class="apply-coupon-wrapper">
-                                                        <p>If you have a coupon code, please apply it below.</p>
+                                                        <p></p>
                                                         <form action="#" method="post">
                                                             <div class="row">
                                                                 <div class="col-md-8">
-                                                                    <div class="input-item mt-0">
-                                                                        <input type="text" placeholder="Enter Your Coupon Code" required />
-                                                                    </div>
+                                                                <div class="col-md-6">
+    <div class="form-group  sort-by-wrapper">
+      
+        <input id="custom_field1" name="custom_field1" type="text" list="custom_field1_datalist" class="form-control" placeholder="Cliente">
+        <datalist id="custom_field1_datalist" class="sort-by-wrapper">
+            @foreach($clientes as $cliente)
+                <option data-value="{{$cliente->id}}" value="{{$cliente->nombre }} {{$cliente->apellido}}">{{$cliente->dni}}</option>
+            @endforeach
+        </datalist>
+        <span id="error" class="text-danger"></span>
+    </div>
+</div>
                                                                 </div>
 
-                                                                <div class="col-md-4 mt-20 mt-md-0">
-                                                                    <button class="btn btn-bordered">Apply Coupon</button>
-                                                                </div>
+                                                                
                                                             </div>
                                                         </form>
                                                     </div>
@@ -46,6 +52,8 @@
                                     </div>
                                 </div>
                             </div>
+
+                            @endif
                             <!-- Checkout Coupon Accordion End -->
                         </div>
                     </div>
@@ -59,173 +67,62 @@
                             <div class="billing-form-wrap">
                                 <form action="#" method="post">
                                     <div class="row">
+                                        <input type="hidden" class="form-control" value="{{\Auth::user()->id}}">
                                         <div class="col-md-6">
                                             <div class="input-item mt-0">
-                                                <label for="f_name" class="sr-only required">First Name</label>
-                                                <input type="text" id="f_name" placeholder="First Name" required />
+                                                <label for="nombre" class="sr-only required">Nombre</label>
+
+                                                <input type="text" id="nombre" placeholder="Nombre" required value="{{\Auth::user()->nombre}}"/>
+                                                
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="input-item mt-md-0">
-                                                <label for="l_name" class="sr-only required">Last Name</label>
-                                                <input type="text" id="l_name" placeholder="Last Name" required />
+                                                <label for="l_name" class="sr-only required">Apellido</label>
+                                                <input type="text" id="apellido" placeholder="Apellido" required value="{{\Auth::user()->apellido}}"/>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="input-item">
+                                        <label for="cuit" class="sr-only required">Cuit </label>
+                                        <input type="cuit" id="cuit" placeholder="Cuit" required value="{{\Auth::user()->cuit}}" />
+                                    </div>
+                                    <div class="input-item">
+                                        <label for="email" class="sr-only required">Email </label>
+                                        <input type="email" id="email" placeholder="Email" value="{{\Auth::user()->email}}" readonly/>
+                                    </div>                             
+
+                                    
 
                                     <div class="input-item">
-                                        <label for="email" class="sr-only required">Email Address</label>
-                                        <input type="email" id="email" placeholder="Email Address" required />
+                                        <label for="street-address" class="sr-only required">Dirección</label>
+                                        <input type="text" id="direccion" placeholder="Dirección" required  value="{{\Auth::user()->direccion}}"/>
+                                    </div>
+
+                                
+
+                                    <div class="input-item">
+                                        <label for="town" class="sr-only required">Ciudad</label>
+                                        <input type="text" id="ciudad" placeholder="Ciudad" required value="{{\Auth::user()->ciudad}}"/>
+                                    </div>
+
+                                
+
+                                    <div class="input-item">
+                                        <label for="postcode" class="sr-only required">Codigo postal</label>
+                                        <input type="text" id="codigo_postal" placeholder="Codigo postal" required value="{{\Auth::user()->codigo_postal}}"/>
                                     </div>
 
                                     <div class="input-item">
-                                        <label for="com-name" class="sr-only">Company Name</label>
-                                        <input type="text" id="com-name" placeholder="Company Name" />
+                                        <label for="phone" class="sr-only">Telefono</label>
+                                        <input type="text" id="telefono" placeholder="telefono" value="{{\Auth::user()->telefono}}" />
                                     </div>
 
+                                    
                                     <div class="input-item">
-                                        <label for="country" class="sr-only required">Country</label>
-                                        <select name="country" id="country">
-                                            <option value="Afghanistan">Afghanistan</option>
-                                            <option value="Albania">Albania</option>
-                                            <option value="Algeria">Algeria</option>
-                                            <option value="Armenia">Armenia</option>
-                                            <option value="Bangladesh">Bangladesh</option>
-                                            <option value="India">India</option>
-                                            <option value="Pakistan">Pakistan</option>
-                                            <option value="England">England</option>
-                                            <option value="London">London</option>
-                                            <option value="London">London</option>
-                                            <option value="Chaina">China</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="input-item">
-                                        <label for="street-address" class="sr-only required">Street address</label>
-                                        <input type="text" id="street-address" placeholder="Street address Line 1" required />
-                                    </div>
-
-                                    <div class="input-item">
-                                        <input type="text" placeholder="Street address Line 2 (Optional)" />
-                                    </div>
-
-                                    <div class="input-item">
-                                        <label for="town" class="sr-only required">Town / City</label>
-                                        <input type="text" id="town" placeholder="Town / City" required />
-                                    </div>
-
-                                    <div class="input-item">
-                                        <label for="state" class="sr-only">State / Divition</label>
-                                        <input type="text" id="state" placeholder="State / Divition" />
-                                    </div>
-
-                                    <div class="input-item">
-                                        <label for="postcode" class="sr-only required">Postcode / ZIP</label>
-                                        <input type="text" id="postcode" placeholder="Postcode / ZIP" required />
-                                    </div>
-
-                                    <div class="input-item">
-                                        <label for="phone" class="sr-only">Phone</label>
-                                        <input type="text" id="phone" placeholder="Phone" />
-                                    </div>
-
-                                    <!-- <div class="checkout-box-wrap">
-                                        <div class="input-item">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="create_pwd">
-                                                <label class="custom-control-label" for="create_pwd">Create an
-                                                    account?</label>
-                                            </div>
-                                        </div>
-                                        <div class="account-create single-form-row">
-                                            <p>Create an account by entering the information below. If you are a returning
-                                                customer please login at the top of the page.</p>
-                                            <div class="input-item">
-                                                <label for="pwd" class="sr-only required">Account Password</label>
-                                                <input type="password" id="pwd" placeholder="Account Password" required />
-                                            </div>
-                                        </div>
-                                    </div> -->
-
-                                    <!-- <div class="checkout-box-wrap">
-                                        <div class="input-item">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="ship_to_different">
-                                                <label class="custom-control-label" for="ship_to_different">Ship to a
-                                                    different
-                                                    address?</label>
-                                            </div>
-                                        </div>
-                                        <div class="ship-to-different single-form-row">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="input-item">
-                                                        <label for="f_name_2" class="sr-only required">First Name</label>
-                                                        <input type="text" id="f_name_2" placeholder="First Name" required />
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="input-item">
-                                                        <label for="l_name_2" class="sr-only required">Last Name</label>
-                                                        <input type="text" id="l_name_2" placeholder="Last Name" required />
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="input-item">
-                                                <label for="email_2" class="sr-only required">Email Address</label>
-                                                <input type="email" id="email_2" placeholder="Email Address" required />
-                                            </div>
-
-                                            <div class="input-item">
-                                                <label for="com-name_2" class="sr-only">Company Name</label>
-                                                <input type="text" id="com-name_2" placeholder="Company Name" />
-                                            </div>
-
-                                            <div class="input-item">
-                                                <label for="country_2" class="sr-only required">Country</label>
-                                                <select name="country" id="country_2">
-                                                    <option value="Bangladesh">Bangladesh</option>
-                                                    <option value="India">India</option>
-                                                    <option value="Pakistan">Pakistan</option>
-                                                    <option value="England">England</option>
-                                                    <option value="London">London</option>
-                                                    <option value="London">London</option>
-                                                    <option value="Chaina">Chaina</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="input-item">
-                                                <label for="street-address_2" class="sr-only required">Street address</label>
-                                                <input type="text" id="street-address_2" placeholder="Street address Line 1" required />
-                                            </div>
-
-                                            <div class="input-item">
-                                                <input type="text" placeholder="Street address Line 2 (Optional)" />
-                                            </div>
-
-                                            <div class="input-item">
-                                                <label for="town_2" class="sr-only required">Town / City</label>
-                                                <input type="text" id="town_2" placeholder="Town / City" required />
-                                            </div>
-
-                                            <div class="input-item">
-                                                <label for="state_2" class="sr-only">State / Divition</label>
-                                                <input type="text" id="state_2" placeholder="State / Divition" />
-                                            </div>
-
-                                            <div class="input-item">
-                                                <label for="postcode_2" class="sr-only required">Postcode / ZIP</label>
-                                                <input type="text" id="postcode_2" placeholder="Postcode / ZIP" required />
-                                            </div>
-                                        </div>
-                                    </div> -->
-
-                                    <div class="input-item">
-                                        <label for="ordernote" class="sr-only">Order Note</label>
-                                        <textarea name="ordernote" id="ordernote" cols="30" rows="3" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                        <label for="ordernote" class="sr-only">Nota</label>
+                                        <textarea name="ordernote" id="notas" cols="30" rows="3" placeholder="Notas, por ejemplo datos de envio, retiro de pedido ..."></textarea>
                                     </div>
                                 </form>
                             </div>
@@ -243,7 +140,7 @@
                             <div class="col-sm-6">
                                 <div class="sort-by-wrapper">
                                     <label for="sort" class="sr-only">Sort By</label>
-                                    <select name="sort" id="type">
+                                    <select class="form-control"name="sort" id="type">
                                         <option value="Lista">Ver precio lista</option>
                                         <option value="Compra">Ver precio compra</option>
                                         <option value="Venta">Ver precio venta</option>
@@ -260,6 +157,7 @@
                                     <thead>
                                         <tr>
                                             <th>Productos</th>
+                                            <th>Precio Unit.</th>
                                             <th>Total</th>
                                         </tr>
                                     </thead>
@@ -269,13 +167,27 @@
                                             <td><span class="product-title">{{$producto->codigo}} {{$producto->nombre}}</span> <span
                                             class="product-quantity">&#215; {{$producto->cantidad}}</span></td>
                                             <td>
+
+@if($isAuthZero)
+<h6 class="precioLista"><p>${{number_format( $producto->precio,2, ',','.')}}<p></h6> 
+                                    
+@else
+<h6 class="precioLista"><p>${{number_format( $producto->precio*$producto->cantidad,2, ',','.')}}<p></h6> 
+                        <h6 class="precioCompra"><p >${{number_format(($producto->precio- ($producto->precio* $porcentaje_compra  / 100)),2, ',','.')}}<p></h6>  
+                        <h6 class="precioVenta"><p >${{number_format(($producto->precio- ($producto->precio* $porcentaje_compra  / 100)+( ($producto->precio- ($producto->precio* $porcentaje_compra  / 100)) * $porcentaje_venta  / 100)),2, ',','.')}}<p></h6>    
+@endif
+
+                                        </td>
+                                            
+                                            <td>
+
     @if($isAuthZero)
-    <h6 class="precioLista"><p>${{number_format( $producto->precio,2, ',','.')}}<p></h6> 
+    <h6 class="precioLista"><p>${{number_format( $producto->precio*$producto->cantidad,2, ',','.')}}<p></h6> 
                                         
 @else
-<h6 class="precioLista"><p>${{number_format( $producto->precio,2, ',','.')}}<p></h6> 
-                            <h6 class="precioCompra"><p >${{number_format($producto->precio- ($producto->precio* $porcentaje_compra  / 100),2, ',','.')}}<p></h6>  
-                            <h6 class="precioVenta"><p >${{number_format($producto->precio- ($producto->precio* $porcentaje_compra  / 100)+( ($producto->precio- ($producto->precio* $porcentaje_compra  / 100)) * $porcentaje_venta  / 100),2, ',','.')}}<p></h6>    
+<h6 class="precioLista"><p>${{number_format( $producto->precio*$producto->cantidad,2, ',','.')}}<p></h6> 
+                            <h6 class="precioCompra"><p >${{number_format(($producto->precio- ($producto->precio* $porcentaje_compra  / 100))*$producto->cantidad,2, ',','.')}}<p></h6>  
+                            <h6 class="precioVenta"><p >${{number_format(($producto->precio- ($producto->precio* $porcentaje_compra  / 100)+( ($producto->precio- ($producto->precio* $porcentaje_compra  / 100)) * $porcentaje_venta  / 100))*$producto->cantidad,2, ',','.')}}<p></h6>    
 @endif
 
                                             </td>
@@ -283,48 +195,35 @@
                                       @endforeach
                                     </tbody>
                                     <tfoot>
-                                         <tr class="shipping">
-                                            <th>Shipping</th>
-                                            <td>
-                                                <ul class="shipping-method">
-                                                    <li>
-                                                        <div class="custom-control custom-radio">
-                                                            <input type="radio" id="flat_shipping" name="shipping_method" class="custom-control-input" checked />
-                                                            <label class="custom-control-label" for="flat_shipping">Flat Rate :
-                                                                $10</label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="custom-control custom-radio">
-                                                            <input type="radio" id="free_shipping" name="shipping_method" class="custom-control-input" />
-                                                            <label class="custom-control-label" for="free_shipping">Free
-                                                                Shipping</label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="custom-control custom-radio">
-                                                            <input type="radio" id="cod_shipping" name="shipping_method" class="custom-control-input" />
-                                                            <label class="custom-control-label" for="cod_shipping">Cash on
-                                                                Delivery</label>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
+                                         
                                         <tr class="final-total">
                                             <th>Subtotal </th>
-                                            <td><span class="total-amount"><b><strong>$</trong> {{number_format($totalsi,2, ',','.')}}</b></span></td>
+                                            <td></td>
+                                            <td>
+                                            @if($isAuthZero)
+    <h6 class="precioLista"><p>${{number_format( $totalsi*$producto->cantidad,2, ',','.')}}<p></h6> 
+                                        
+@else
+<h6 class="precioLista"><p>${{number_format( $totalsi*$producto->cantidad,2, ',','.')}}<p></h6> 
+                            <h6 class="precioCompra"><p >${{number_format(($totalsi- ($totalsi* $porcentaje_compra  / 100))*$producto->cantidad,2, ',','.')}}<p></h6>  
+                            <h6 class="precioVenta"><p >${{number_format(($totalsi- ($totalsi* $porcentaje_compra  / 100)+( ($totalsi- ($totalsi* $porcentaje_compra  / 100)) * $porcentaje_venta  / 100))*$producto->cantidad,2, ',','.')}}<p></h6>    
+@endif
+
+                                           
                                         </tr>
                                         <tr class="final-total">
                                             <th>IVA 10,5%</th>
+                                            <td></td>
                                             <td><span class="total-amount"><b><strong>$</trong> {{number_format($totalid,2, ',','.')}}</b></span></td>
                                         </tr>
                                         <tr class="final-total">
                                             <th>IVA 21%</th>
+                                            <td></td>
                                             <td><span class="total-amount"><b><strong>$</trong> {{number_format($totaliv,2, ',','.')}}</b></span></td>
                                         </tr>
                                         <tr class="final-total">
                                             <th>Total</th>
+                                            <td></td>
                                             <td><span class="total-amount"><b><strong>$</trong> {{number_format($totalci,2, ',','.')}}</b></span></td>
                                         </tr>
                                     </tfoot>
@@ -358,4 +257,5 @@
 
 
    @endsection
+
 

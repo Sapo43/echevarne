@@ -1,31 +1,65 @@
-<div class="product-item">
-                                <div class="product-item__thumb">
-                                    <a href="single-product.html">
-                                        <img class="thumb-primary" src="/assets/img/product/product-5.png" alt="Product" />
-                                        <img class="thumb-secondary" src="/assets/img/product/product-4.png" alt="Product" />
-                                    </a>
-                                </div>
+                               <div class="product-item">
+                                    <div class="product-item__thumb">
+                                        <!-- <a href="/producto/{{$producto->slug}}"> -->
+                                      <a href="#" data-toggle="modal" data-id="{{$producto->slug}}" onclick='loadModal(this)' data-target="#basicModal" style="height: 300px;weight:300px;">
+                                        @include('pages.product.partials')
+                                        
+                                           
+                                        </a>
+                <br>
+                                        <div class="ratting">
+                                        @if(($producto->stock - $producto->stock_minimo) >= 1)
+            <span class="badge stock-disponible product mb-4 ml-xl-0 ml-4">Disponible</span>
+         
+                                           
+            @endif
 
-                                <div class="product-item__content">
-                                    <div class="ratting">
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star"></i></span>
-                                        <span><i class="ion-android-star-half"></i></span>
+
+            @if( ($producto->stock <= $producto->stock_minimo ) && $producto->stock >0)
+            <span class="badge stock-consultar product mb-4 ml-xl-0 ml-4">Consultar</span>
+            @endif
+
+
+            @if($producto->stock <=0)
+            <span class="badge stock-nodisponible product mb-4 ml-xl-0 ml-4">No Disponible</span>
+            @endif
+               
+                                          
+                                        </div>
                                     </div>
-                                    <h4 class="title"><a href="single-product.html">Locking Hub Diagram</a></h4>
-                                    <span class="price"><strong>Price:</strong> $165.00</span>
-                                </div>
 
-                                <div class="product-item__action">
-                                    <button class="btn-add-to-cart"><i class="ion-bag"></i></button>
-                                    <button class="btn-add-to-cart"><i class="ion-ios-loop-strong"></i></button>
-                                    <button class="btn-add-to-cart"><i class="ion-ios-heart-outline"></i></button>
-                                    <button class="btn-add-to-cart"><i class="ion-eye"></i></button>
-                                </div>
+                                    <div class="product-item__content">
+                                        <div class="product-item__info text-center">
+                                       
+                                             <h5 class=""><strong>{{ucfirst(strtolower($producto->nombre))}}</strong> -  {{ucfirst(strtolower($producto->marca->nombre))}}</h5>                                         
+                                         
+                                    
+                                            <span><strong>Codigo : </strong>{{$producto->codigo}}</span>
+                                         
+                                            <h6 class="precioLista text-center"><p>${{number_format( $producto->precio,2, ',','.')}}<p></h6> 
+                        
 
-                                <div class="product-item__sale">
-                                    <span class="sale-txt">21%</span>
+                                        </div>
+
+                                        <div class="product-item__action">
+                                        <button class="btn-add-to-cart" onclick="selectByName('{{$producto->slug}}');"><i class="ion-bag"></i></button>                                            
+                                        </div>
+
+                                        <div class="product-item__desc">
+                                        <h6>Codigos equivalentes :</h6>
+                                        <?php  
+                                        foreach (explode(",", $producto->equivalencia) as $equi){
+                                             echo '<a class="cod-link" href="#" onclick="f(&quot;'.$equi.'&quot;)">'.$equi.'</a> ';
+                                        }
+                                           
+                                        ?>
+                                        
+                                            
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="product-item__sale">
+                                        <span class="sale-txt">25%</span>
+                                    </div> -->
                                 </div>
-                            </div>
+                     

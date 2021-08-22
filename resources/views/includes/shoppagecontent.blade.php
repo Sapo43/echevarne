@@ -1,5 +1,5 @@
 
-
+ {{ request()->cookie('nombre') }}
 <div class="page-content-wrapper sp-y">
         <div class="container container-wide">
             <div class="row">
@@ -13,21 +13,37 @@
               
                     <div class="action-bar-inner mb-30">
                          <!-- Abre row  de filtros--> 
-                       
+                    @if($novedadid)
                 
+                    <div class="row align-items-center ">
+                                 <div class="col-sm-3">
+                                 <div class="sort-by-wrapper">           
+                  
+                    {!! Form::select('marca', [$novedadid => $novedad]+$marcas, null, array('class' => 'form-control','id'=>'marca')) !!}
+                    </div>
+                    @else
+
                     <div class="row align-items-center">
                                  <div class="col-sm-3">
-                                 <div class="sort-by-wrapper">
-                 
-                  
+                                 <div class="sort-by-wrapper">                         
                     {!! Form::select('marca', ['0' => 'Todas']+$marcas, null, array('class' => 'form-control','id'=>'marca')) !!}
                     </div>
+                    @endif
+
+
+                    @if($rubroid)
                                 </div>
                                 <div class="col-sm-3">
-                                <div class="sort-by-wrapper">
-              
+                                <div class="sort-by-wrapper">              
+                    {!! Form::select('rubro', [$rubroid => $novedad]+$rubros, null, array('class' => 'form-control','id'=>'rubro')) !!}
+                    </div>
+                    @else
+                    </div>
+                                <div class="col-sm-3">
+                                <div class="sort-by-wrapper">              
                     {!! Form::select('rubro', ['0' => 'Todos']+$rubros, null, array('class' => 'form-control','id'=>'rubro')) !!}
                     </div>
+                    @endif
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="sort-by-wrapper">                 
@@ -66,7 +82,7 @@
                             <div class="col-sm-3">
                                 <div class="sort-by-wrapper">
                                     <label for="sort" class="sr-only">Sort By</label>
-                                    <select name="sort" id="type">
+                                    <select name="sort" id="type" class="form-control">
                                         <option value="Lista">Ver precio lista</option>
                                         <option value="Compra">Ver precio compra</option>
                                         <option value="Venta">Ver precio venta</option>
@@ -118,13 +134,22 @@
 
                     <!-- abro links -->
                     <div id="linksShopContent" >  
-                        <div class="action-bar-inner mt-30">
-                            <div class="row align-items-center">
-                                <div class="col-sm-6">
-                                    <nav class="pagination-wrap mb-10 mb-sm-0">                                            
-                                    {!! $data->links('includes.paginator') !!}                             
-                                    </nav>
-                                </div>                          
+                        <div class="shop-page-action-bar mt-30">
+                            <div class="container container-wide">
+                                <div class="action-bar-inner">
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-3 col-md-3">
+
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <nav class="pagination-wrap mb-10 mb-sm-0">                                            
+                                             {!! $data->links('includes.paginator') !!}                             
+                                            </nav>
+                                        </div>  
+                                        <div class="col-sm-3 col-md-3">
+                                            </div>                        
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

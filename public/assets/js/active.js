@@ -41,10 +41,10 @@
                 var $this = $(this).html(event.strftime(''
 
                     +
-                    '<div class="countdown-item"><span class="countdown-item__time">%D</span><span class="countdown-item__label">Days</span></div>' +
-                    '<div class="countdown-item"><span class="countdown-item__time">%H</span><span class="countdown-item__label">Hours</span></div>' +
-                    '<div class="countdown-item"><span class="countdown-item__time">%M</span><span class="countdown-item__label">Minutes</span></div>' +
-                    '<div class="countdown-item"><span class="countdown-item__time">%S</span><span class="countdown-item__label">Seconds</span></div>'));
+                    '<div class="countdown-item"><span class="countdown-item__time">%D</span><span class="countdown-item__label">Días</span></div>' +
+                    '<div class="countdown-item"><span class="countdown-item__time">%H</span><span class="countdown-item__label">Horas</span></div>' +
+                    '<div class="countdown-item"><span class="countdown-item__time">%M</span><span class="countdown-item__label">Minutos</span></div>' +
+                    '<div class="countdown-item"><span class="countdown-item__time">%S</span><span class="countdown-item__label">Segundos</span></div>'));
             });
         });
 
@@ -136,8 +136,9 @@
 
         $(".btn-scroll-top").on('click', function() {
             $('html, body').animate({
-                scrollTop: 0
+                scrollTop: 0,                
             }, 1500);
+            
         });
 
 
@@ -379,5 +380,21 @@
         } else {
             $('.btn-scroll-top').removeClass('show');
         }
+
+        console.log($(".btn-scroll-top").offset().top)
+        console.log($(".footer-area").offset().top)
+         if ($(".btn-scroll-top").offset().top >= ($(".footer-area").offset().top )) {
+            $(".btn-scroll-top").css('background-color', 'white'); 
+            $(".floating-wpp").css("display", "none");
+        } else {
+            $(".floating-wpp").css("display", "block");
+         }
+
+
     }); // End Scroll Function
 }(jQuery));
+
+
+$(window).scroll(function () {
+    
+});

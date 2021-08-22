@@ -25,7 +25,7 @@
     <!--== End Call to Action Area ==-->
 
     <!--== Start Promotion Code Banner Area ==-->
-    @include('includes.promotioncodearea')
+    <!-- @include('includes.promotioncodearea') -->
     <!--== End Promotion Code Banner Area ==-->
 
     <!--== Start Products Area Wrapper ==-->
@@ -37,7 +37,7 @@
     <!--== End Call to action Wrapper ==-->
 
     <!--== Start Newsletter Area ==-->
-    @include('includes.newsletterarea')
+    <!-- @include('includes.newsletterarea') -->
     <!--== End Newsletter Area ==-->
 
     <!--== Start Brand Logo Area Wrapper ==-->
