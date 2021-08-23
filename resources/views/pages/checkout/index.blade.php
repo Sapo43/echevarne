@@ -214,32 +214,59 @@
                                         <tr class="final-total">
                                             <th>IVA 10,5%</th>
                                             <td></td>
-                                            <td><span class="total-amount"><b><strong>$</trong> {{number_format($totalid,2, ',','.')}}</b></span></td>
+                                            <td>
+                                            @if($isAuthZero)
+    <h6 class="precioLista"><p>${{number_format( $totalid*$producto->cantidad,2, ',','.')}}<p></h6> 
+                                        
+@else
+<h6 class="precioLista"><p>${{number_format( $totalid*$producto->cantidad,2, ',','.')}}<p></h6> 
+                            <h6 class="precioCompra"><p >${{number_format(($totalid- ($totalid* $porcentaje_compra  / 100))*$producto->cantidad,2, ',','.')}}<p></h6>  
+                            <h6 class="precioVenta"><p >${{number_format(($totalid- ($totalid* $porcentaje_compra  / 100)+( ($totalid- ($totalid* $porcentaje_compra  / 100)) * $porcentaje_venta  / 100))*$producto->cantidad,2, ',','.')}}<p></h6>    
+@endif
+                                                <span class="total-amount"><b><strong>$</trong> {{number_format($totalid,2, ',','.')}}</b></span>
+                                            
+                                            </td>
                                         </tr>
                                         <tr class="final-total">
                                             <th>IVA 21%</th>
                                             <td></td>
-                                            <td><span class="total-amount"><b><strong>$</trong> {{number_format($totaliv,2, ',','.')}}</b></span></td>
+                                            <td>
+
+                                            @if($isAuthZero)
+    <h6 class="precioLista"><p>${{number_format( $totaliv*$producto->cantidad,2, ',','.')}}<p></h6> 
+                                        
+@else
+<h6 class="precioLista"><p>${{number_format( $totaliv*$producto->cantidad,2, ',','.')}}<p></h6> 
+                            <h6 class="precioCompra"><p >${{number_format(($totaliv- ($totaliv* $porcentaje_compra  / 100))*$producto->cantidad,2, ',','.')}}<p></h6>  
+                            <h6 class="precioVenta"><p >${{number_format(($totaliv- ($totaliv* $porcentaje_compra  / 100)+( ($totaliv- ($totaliv* $porcentaje_compra  / 100)) * $porcentaje_venta  / 100))*$producto->cantidad,2, ',','.')}}<p></h6>    
+@endif
+                                                <!-- <span class="total-amount"><b><strong>$</trong> {{number_format($totaliv,2, ',','.')}}</b></span> -->
+                                            
+                                            </td>
                                         </tr>
                                         <tr class="final-total">
                                             <th>Total</th>
                                             <td></td>
-                                            <td><span class="total-amount"><b><strong>$</trong> {{number_format($totalci,2, ',','.')}}</b></span></td>
+                                            <td>
+                                            @if($isAuthZero)
+    <h6 class="precioLista"><p>${{number_format( $totalci*$producto->cantidad,2, ',','.')}}<p></h6> 
+                                        
+@else
+<h6 class="precioLista"><p>${{number_format( $totalci*$producto->cantidad,2, ',','.')}}<p></h6> 
+                            <h6 class="precioCompra"><p >${{number_format(($totalci- ($totalci* $porcentaje_compra  / 100))*$producto->cantidad,2, ',','.')}}<p></h6>  
+                            <h6 class="precioVenta"><p >${{number_format(($totalci- ($totalci* $porcentaje_compra  / 100)+( ($totalci- ($totalci* $porcentaje_compra  / 100)) * $porcentaje_venta  / 100))*$producto->cantidad,2, ',','.')}}<p></h6>    
+@endif
+
+                                            <!-- <span class="total-amount"><b><strong>$</trong> {{number_format($totalci,2, ',','.')}}</b></span> -->
+                                            
+                                            </td>
                                         </tr>
                                     </tfoot>
                                 </table>
                             </div>
 
                             <div class="order-details-footer">
-                                <!-- <p>Your personal data will be used to process your order, support your experience throughout
-                                    this website, and for other purposes described in our
-                                    <a href="#" class="text-warning">privacy policy</a>.</p>
-                                <div class="custom-control custom-checkbox mt-10">
-                                    <input type="checkbox" id="privacy" class="custom-control-input" required />
-                                    <label for="privacy" class="custom-control-label">I have read and agree to the website
-                                        terms
-                                        and conditions</label>
-                                </div> -->
+                            
 
                                 <button id="confirmar" class="btn btn-bordered mt-40">Generar Pedido</button>
                             </div>

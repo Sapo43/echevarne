@@ -31,7 +31,7 @@
                                     <div class="product-item__content">
                                         <div class="product-item__info text-center">
                                        
-                                             <h5 class=""><strong>{{ucfirst(strtolower($producto->nombre))}}</strong> -  {{ucfirst(strtolower($producto->marca->nombre))}}</h5>                                         
+                                             <h5 class=""><strong>{{$producto->nombre}}</strong> -  {{$producto->marca->nombre}}</h5>                                         
                                          
                                     
                                             <span><strong>Codigo : </strong>{{$producto->codigo}}</span>

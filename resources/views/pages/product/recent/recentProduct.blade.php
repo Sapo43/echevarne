@@ -10,15 +10,15 @@
 
                                     </a>
                                     <div class="content">
-                                        <a href="single-product.html" class="title">{{$producto->codigo}}</a>
-                                        <span class="price">{{$producto->precio}}</span>
-                                        <div class="ratting">
+                                    <?php echo '<a class="cod-link" href="#" onclick="f(&quot;'.$producto->codigo.'&quot;)">'.$producto->codigo.'</a> '; ?>
+                                        <span class="price">$ {{$producto->precio}}</span>
+                                        <!-- <div class="ratting">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star-half-o"></i>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
 @endforeach

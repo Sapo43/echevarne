@@ -4,6 +4,13 @@ function f(param) {
 
     if(param){
         $("input.form-control").val(''); 
+        if ($("#basicModal").data('bs.modal')._isShown){
+            setTimeout(function() {
+                $('#basicModal').modal('hide');
+           }, 500);
+             
+           
+        }   
     }
 
     var type_selected="";

@@ -18,7 +18,7 @@
                                        
                                         </div>
 
-                                        
+                                        <a href="#thumb-gallery" class="btn-large-view btn-gallery-popup">View Larger <i class="fa fa-search-plus"></i></a>
                                     </div>
 
                                     <div class="product-details-thumbnail-nav">
@@ -34,8 +34,8 @@
                                 <div class="product-details-info-content-wrap">
                                     <div class="prod-details-info-content">
                                         <h2>{{$producto->nombre}}</h2>
-                                        <h4><b>Codigo:</b> {{$producto->codigo}}</h4>
-                                        <h6><b>Precio:</b> $ {{$producto->precio}} </h6>
+                                        <h4 class="price"><strong>Codigo:</strong> <span>{{$producto->codigo}} </span></span></h4>
+                                        <h6 class="price"><strong>Precio:</strong> {{$producto->precio}} <span></h6>
                                         
 
                                         <div class="product-config">
@@ -107,15 +107,11 @@
                         </div>
                <br>
                         <div class="row">
-                           
                             <div class="col-12">
                                  <!-- Start carousel -->
-                                 
                                  <div class="container">
-                               
   <div class="carousel slide multi-item-carousel" id="theCarousel">
     <!-- <div class="carousel-inner row w-100 mx-auto" style="height:300px"> -->
-    <h5 class="title">Equivalencias</h5>
     <div class="carousel-inner row w-100 mx-auto">
 
 
@@ -123,47 +119,11 @@
     <div class="carousel-item col-md-4 active " style="height:auto;">
     <div class="card" >
     <input type="hidden" value="{{$producto=$productosEquivalencia[0]}}">
-  
+    @include('pages.product.partials')
             <div class="card card-body">
-            
-                             <div class="sidebar-body">                         
-                          
-                             <div class="sidebar-product">
-                                    <a href="#"  onclick="f(&quot;{{$producto->codigo}}&quot;)" class="image">
-                                    @include('pages.product.partials')    
-
-                                    </a>
-                                    <div class="content">
-                                    <?php echo '<a class="cod-link" href="#" onclick="f(&quot;'.$producto->codigo.'&quot;)">'.$producto->codigo.'</a> '; ?>
-                                        <span class="price">$ {{$producto->precio}}</span>
-                                        <div class="ratting">
-                                        @if(($producto->stock - $producto->stock_minimo) >= 1)
-            <span class="badge stock-disponible product mb-4 ml-xl-0 ml-4">Disponible</span>
-         
-                                           
-            @endif
-
-
-            @if( ($producto->stock <= $producto->stock_minimo ) && $producto->stock >0)
-            <span class="badge stock-consultar product mb-4 ml-xl-0 ml-4">Consultar</span>
-            @endif
-
-
-            @if($producto->stock <=0)
-            <span class="badge stock-nodisponible product mb-4 ml-xl-0 ml-4">No Disponible</span>
-            @endif
-               
-                                          
-                                        </div>
-                                    </div>
-                             
-
-                        
-
-                               
-
-                            </div>
-                        </div>
+            <h5 class="card-title">{{$producto->codigo}}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
  
     </div>
       </div>
@@ -173,46 +133,11 @@
     <div class="carousel-item col-md-4">
     <div class="card" >
     <input type="hidden" value="{{$producto=$productosEquivalencia[$i]}}">
-
+    @include('pages.product.partials')
             <div class="card card-body">
-            <div class="sidebar-body">                         
-                          
-                          <div class="sidebar-product">
-                          <a href="#"  onclick="f({{$producto->codigo}})" class="image">
-                                 @include('pages.product.partials')    
-
-                                 </a>
-                                 <div class="content">
-                                 <?php echo '<a class="cod-link" href="#" onclick="f(&quot;'.$producto->codigo.'&quot;)">'.$producto->codigo.'</a> '; ?>
-                                     <span class="price">$ {{$producto->precio}}</span>
-                                     <!-- <div class="ratting">
-                                        @if(($producto->stock - $producto->stock_minimo) >= 1)
-            <span class="badge stock-disponible product mb-4 ml-xl-0 ml-4">Disponible</span>
-         
-                                           
-            @endif
-
-
-            @if( ($producto->stock <= $producto->stock_minimo ) && $producto->stock >0)
-            <span class="badge stock-consultar product mb-4 ml-xl-0 ml-4">Consultar</span>
-            @endif
-
-
-            @if($producto->stock <=0)
-            <span class="badge stock-nodisponible product mb-4 ml-xl-0 ml-4">No Disponible</span>
-            @endif
-               
-                                          
-                                        </div> -->
-                                 </div>
-                          
-
-                     
-
-                            
-
-                         </div>
-                     </div>
+            <h5 class="card-title">{{$producto->codigo}}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
  
     </div>
       </div>
@@ -233,5 +158,16 @@
     </a>
   </div>
 </div>
+
+
+
+
+                        <!-- end carousel -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
