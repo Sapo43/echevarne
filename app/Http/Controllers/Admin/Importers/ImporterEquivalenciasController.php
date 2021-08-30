@@ -60,23 +60,7 @@ class ImporterEquivalenciasController extends Controller {
                 
         }
 
-        // $equivalencias = Equivalencia::lists('codigo', 'equivalenc')->toArray();
-
-        // $rowsOk = array();
-        // $rowsError = array();
-        // $i = 1;
-
-        // foreach ($rows as $row) {
-
-        //     $vRow = $this->validarEquivalencia($row, $rowsError, $equivalencias, $i);
-        //     switch ($vRow) {
-        //         case self::VALIDACION_OK:
-        //             array_push($rowsOk, $row[0]);
-        //             break;
-        //         case self::VALIDACION_ERROR_FATAL:
-        //             break 2;
-        //     }
-        //     $i++;
+        
 
       
         $rowsError=[];

@@ -37,16 +37,16 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            'root' => storage_path('app/public_html'),
             'url' => env('APP_URL').'/storage',
-            'visibility' => 'public',
+            'visibility' => 'public_html',
         ],
 
         'icons'=>[
             'driver' => 'local',
             'root' =>public_path('/assets/iconDownloads'),
-            'url' => env('APP_URL').'/public',
-            'visibility' => 'public',
+            'url' => env('APP_URL').'/public_html',
+            'visibility' => 'public_html',
 
         ],
 
@@ -75,7 +75,7 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+        public_path('storage') => storage_path('app/public_html'),
     ],
 
 ];

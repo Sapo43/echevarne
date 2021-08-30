@@ -39,7 +39,7 @@ class PedidosController extends Controller {
             
             
             $pedidos = Pedido::
-            select('pedidos.id','pedidos.notas','pedidos.created_at','users.apellido','pedidos.total_monto', 'status.estado','pedidos.total_cantidad')
+            select('pedidos.id','pedidos.notas','pedidos.created_at','users.apellido','users.nombre','users.nro_cliente','pedidos.total_monto', 'status.estado','pedidos.total_cantidad')
                         ->join('users', 'users.id', '=', 'pedidos.created_by')
                         // ->join('orders', 'users.id', '=', 'orders.user_id')
                         ->join('status','status.id','=','pedidos.status_id')

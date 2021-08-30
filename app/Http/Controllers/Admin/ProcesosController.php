@@ -45,7 +45,7 @@ class ProcesosController extends Controller
         //Busco el archivo en la ruta.
         $filename = "productos.csv";
         $csvFile = storage_path('csv/' . self::DESTINATION_PATH_FILE . '/' . $filename);
-
+     
         if (!file_exists($csvFile) || !is_readable($csvFile)) {
 
             Log::info("Finaliza Proceso de actualización de Productos");
@@ -80,13 +80,13 @@ class ProcesosController extends Controller
             }
 
             Log::info("     - Se generan las tablas de RollBack de Productos");
-            $this->createRollBackTableProductos();
+            //$this->createRollBackTableProductos();
 
             $qRegistros = count($rows);
             Log::info("     - El Archivo a procesar posee " . $qRegistros . " registros.");
 
-            $marcas = Marca::lists('nombre', 'id')->toArray();
-            $rubros = Rubro::lists('nombre', 'id')->toArray();
+            $marcas = Marca::pluck('nombre', 'id')->toArray();
+            $rubros = Rubro::pluck('nombre', 'id')->toArray();
 
             $i = 1;
             $table_keys = ['codigo', 'nombre', 'precio', 'iva', 'rubro_id', 'marca_id', 'activo', 'actualizado', 'stock', 'stock_minimo', 'created_by', 'created_at'];
@@ -121,6 +121,7 @@ class ProcesosController extends Controller
                             case self::VALIDACION_OK:
                                 try {
 
+                                    if(trim($row[5])!='' &&  trim($row[8])!='') {
                                     //Codigo
                                     array_push($values, trim($row[0]));
                                     //Nombre
@@ -149,7 +150,7 @@ class ProcesosController extends Controller
 
                                     $productoNew = array_combine($table_keys, array_values($values));
                                     array_push($productosOk, $productoNew);
-
+                                    }
                                 } catch (Exception $ex) {
 
                                     Log::info("Finaliza Proceso de actualización de Productos");
@@ -170,21 +171,24 @@ class ProcesosController extends Controller
                         switch ($vRow) {
                             case self::VALIDACION_OK:
                                 try {
-
-                                    $producto->nombre = trim($row[1]);
-                                    $producto->precio = $this->getPrecio(trim($row[3]));
-                                    $producto->iva = $this->getIva($row[4]);
-                                    $producto->rubro_id = trim($row[5]);
-                                    $producto->marca_id = trim($row[8]);
-                                    $producto->activo = $this->isProductoActivo(trim($row[9]));
-                                    $producto->actualizado = $row[12];
-                                    $producto->stock = trim($row[13]);
-                                    $producto->stock_minimo = trim($row[14]);
-                                    $producto->updated_by = 99;
-                                    $producto->updated_at = \Carbon\Carbon::now();
-                                    $producto->slug = $producto->id . '-' . str_slug($producto->nombre);
-                                    $producto->save();
-                                    $qActualizados++;
+                                    if(trim($row[5])!='' &&  trim($row[8])!='') {
+                                        
+                                        $producto->nombre = trim($row[1]);
+                                        $producto->precio = $this->getPrecio(trim($row[3]));
+                                        $producto->iva = $this->getIva($row[4]);
+                                        $producto->rubro_id = trim($row[5]);
+                                        $producto->marca_id = trim($row[8]);
+                                        $producto->activo = $this->isProductoActivo(trim($row[9]));
+                                        $producto->actualizado = $row[12];
+                                        $producto->stock = trim($row[13]);
+                                        $producto->stock_minimo = trim($row[14]);
+                                        $producto->updated_by = 99;
+                                        $producto->updated_at = \Carbon\Carbon::now();
+                                        $producto->slug = $producto->id . '-' . str_slug($producto->nombre);
+                                        $producto->save();
+                                        $qActualizados++;   
+                                    }
+                                   
 
                                 } catch (Exception $ex) {
 

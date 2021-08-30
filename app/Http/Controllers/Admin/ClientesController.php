@@ -96,8 +96,8 @@ class ClientesController extends Controller
     {
         $cliente = User::findOrFail($id);
         $operatorias = ['CONS FINAL' => 'CONS FINAL', 'MONOTRIBUTO' => 'MONOTRIBUTO', 'INSCRIPTO' => 'INSCRIPTO', 'OTRO' => 'OTRO'];
-
-        return view('admin.clientes.edit', compact('cliente', 'operatorias'));
+        $vendedor= ['1'=>'SI','0'=>'NO'];
+        return view('admin.clientes.edit', compact('cliente', 'operatorias','vendedor'));
     }
 
     /**
@@ -112,11 +112,11 @@ class ClientesController extends Controller
         $data = \Request::all();
         $cliente = User::findOrFail($id);
 
-        $v = $this->validarCliente($data);
+        // $v = $this->validarCliente($data);
 
-        if ($v->fails()) {
-            return redirect()->back()->withErrors($v->errors())->withInput(\Request::All());
-        }
+        // if ($v->fails()) {
+        //     return redirect()->back()->withErrors($v->errors())->withInput(\Request::All());
+        // }
 
         $data['dni'] = StrHelper::soloNumeros(trim($data['dni']));
         $data['cuit'] = StrHelper::soloNumeros(trim($data['cuit']));
@@ -182,7 +182,7 @@ class ClientesController extends Controller
 
     private function validarCliente($data)
     {
-
+       
         $data['dni'] = StrHelper::soloNumeros(trim($data['dni']));
         $data['cuit'] = StrHelper::soloNumeros(trim($data['cuit']));
 
@@ -200,7 +200,7 @@ class ClientesController extends Controller
             'nombre' => 'required',
             'email' => 'email',
             'dni' => 'required_with:cuit|string|min:7|max:8',
-            'cuit' => 'string|min:11|max:11|cuit_dni:dni|cuit_valido',
+            
         );
 
         return Validator::make($data, $rules, $messages);

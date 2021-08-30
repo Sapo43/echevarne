@@ -16,6 +16,7 @@ use App\Http\Traits\PTrait;
 use Illuminate\Support\Facades\Storage;
 use App\Helpers\StrHelper;
 use App\Http\Traits\AuditTrait;
+use File;
 class FrontController extends Controller {
 
   use PTrait;
@@ -50,6 +51,7 @@ class FrontController extends Controller {
                             ->get();
                       
         $novedades = Novedad::where('visible', 1)->take(6)->orderBy('orden')->get();
+        
         return view('pages.home.index', compact('porcentaje_compra','porcentaje_venta','productos','novedades','cart','scripts'));
     }
 
@@ -81,21 +83,20 @@ class FrontController extends Controller {
         if($request->ajax()){
 
 
-
-
+          
+         
                     $data = Producto::filterAndPaginate1($request->get('nombre'), $request->get('rubro'), $request->get('marca'), $request->get('equivalencia'), "1");  
                
-                              
+                          
                             $busquedaArray= \Session::get('busquedaArray');
                             $busquedaIndice= \Session::get('busquedaIndice');
                             \Session::put('busquedaIndice',$busquedaIndice+1);
-                          
                             array_push($busquedaArray,$data->take(3)->get());
-                            \Session::put('busquedaArray', $busquedaArray);
-
+                            \Session::put('busquedaArray', $busquedaArray);                        
                             $data=$data->paginate(5); 
-                        
-                    return view('includes.shopgrid', compact('background','cart','seccion','data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'))->render();
+                            
+                          
+                    return view('includes.shopgrid', compact('background','cart','seccion','data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'));
         }
         if($novedad){
 
@@ -169,8 +170,10 @@ public function servicios() {
 
 public function descargas() {
     $background="/assets/img/EH_BANNER05.jpg";
-    $files = Storage::disk('icons')->allFiles();
+ 
+    $files = File::files(public_path()."/assets/iconDownloads/");
     $sizeofIconsFolder=sizeof($files);
+
     $cart = \Session::get('cart');
     $seccion="Catalogos";
     $title = 'Echevarne Hermanos - Catalogos';

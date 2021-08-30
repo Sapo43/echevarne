@@ -99,26 +99,28 @@ public function cartForCheckout(){
     public function add(Producto $producto,$cantidad){
 
         
-        $cart = \Session::get('cart');     
+        $cart = \Session::get('cart');         
+   
 
+        if(array_key_exists($producto->slug,$cart)){
         
-
-        $producto->cantidad=$producto->cantidad+$cantidad;
-
-        if(in_array($producto,$cart)){
-            return response()->json(['msg'=>'Ya existe el producto '.$producto->nombre.' en tu pedido',
-            'cantidad'=>0
-]);   
-        }else{
-        $cart[$producto ->slug] = $producto;
-        \Session::put('cart',$cart); 
-        return response()->json(['msg'=>'Agregamos '.$producto->nombre.' a tu pedido',
-                                 'cantidad'=>$cantidad
-        ]);
-    }    
+            $cart[$producto ->slug]->cantidad=$cart[$producto ->slug]->cantidad+$cantidad;
+            
+            \Session::put('cart',$cart); 
+        }
         
+        else{
+            
+             $producto->cantidad=$cantidad;
+            $cart[$producto ->slug] = $producto;
+            \Session::put('cart',$cart); 
+       
+      
+      
         
-        
+    }  
+    return response()->json(['msg'=>'Agregamos '.$producto->nombre.' a tu pedido',
+    'cantidad'=>$cantidad  ]);
       
     }
     //Delete item
@@ -139,11 +141,14 @@ public function cartForCheckout(){
         try {
             
             $cart = \Session::get('cart');          
-            $productoBuscado= Producto::where('id','=', $request->id)->first();
+            $productoBuscado= Producto::where('id','=', $request->id)->first();      
+            \Log::debug('Test antes de actualizar' . $cart[$productoBuscado->slug]->cantidad . 'request cantidad'. $request->cantidad);      
             $cart[$productoBuscado->slug]->cantidad=$request->cantidad;
             \Session::put('cart',$cart); 
+            \Log::debug('Test despues de actualizar' . $cart[$productoBuscado->slug]->cantidad . 'request cantidad'. $request->cantidad);
             return response()->json(['result'=>true]);        
         } catch (\Throwable $th) {
+
             return response()->json(['result'=>false]);
         }
       
