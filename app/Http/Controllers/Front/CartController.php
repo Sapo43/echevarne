@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
+use App\Models\Carrito;
 use App\Models\Producto;
 use App\Models\DetallePedido;
 use App\Models\Pedido;
@@ -30,6 +31,7 @@ class CartController extends Controller {
     public function __construct()
     {
         if(!\Session::has('cart')) \Session::put('cart',array());
+        
         
 
        

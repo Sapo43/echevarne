@@ -28,7 +28,7 @@ class FrontController extends Controller {
   {
       if(!\Session::has('busquedaArray')) \Session::put('busquedaArray',[]);
       if(!\Session::has('busquedaIndice')) \Session::put('busquedaIndice',-1);
-     
+      if(!\Session::has('cart')) \Session::put('cart',array());
       
 
 
@@ -55,9 +55,11 @@ class FrontController extends Controller {
         return view('pages.home.index', compact('porcentaje_compra','porcentaje_venta','productos','novedades','cart','scripts'));
     }
 
+   
+
     public function shop(Request $request,$novedad=null){
         $background="/assets/img/bg/page-header-bg.jpg";
-        $cart= \Session::get('cart');
+    $cart= \Session::get('cart');
         $seccion="Shop";  
         $scripts = array(
             ('/assets/js/iziToast.min.js'),
@@ -129,13 +131,9 @@ class FrontController extends Controller {
             $rubroid=null;
         }
        
-        $data = Producto::filterAndPaginate1($request->get('nombre'), $rubro, $marca, $request->get('codigo'), "1");
-        \Session::put('productos', $data->get());
-        $data=$data->paginate(5); 
-
-
-        
-            return view('pages.shop.index', compact('background','rubroid','novedadid','novedad','cart','seccion','data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'));
+        $data = Producto::filterAndPaginate1($request->get('nombre'), $rubro, $marca, $request->get('codigo'), "1");        
+        $data=$data->paginate(5);         
+        return view('pages.shop.index', compact('background','rubroid','novedadid','novedad','cart','seccion','data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'));
            
        
           
