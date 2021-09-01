@@ -83,7 +83,7 @@ Route::post('/downloadPdf',[FrontProductosController::class,'downloadpdf']);
 Route::get('/admin', [HomeController::class,'index']);
 
 Route::get('/admin/login', [AuthController::class,'adminLogin'])->name('auth.admin.login');
-Route::post('/admin/login', [AuthController::class,'adminLoginPost'])->name('auth.admin.login');
+Route::post('/admin/login', [AuthController::class,'adminLoginPost'])->name('auth.admin.loginPost');
 Route::get('/admin/logout', [AuthController::class,'adminLogout'])->name('auth.admin.logout');
 
 
@@ -147,8 +147,8 @@ Route::get('/index-equivalencias', [ImporterEquivalenciasController::class,'inde
     Route::put('/admin/menus/permisosUpdate/{menu_id}',  [MenuController::class,'permisosUpdate']);
 
     //Usuarios
-    Route::get('usuarios/password/{id}', [UserController::class,'editContraseña'])->name('admin.clientes.editPass',);
-    Route::put('usuarios/password/update/{id}', [UserController::class,'updateContraseña'])->name('admin.clientes.updatePass');
+    Route::get('usuarios/password/{id}', [ClientesController::class,'editContraseña'])->name('admin.clientes.editPass',);
+    Route::put('usuarios/password/update/{id}', [ClientesController::class,'updateContraseña'])->name('admin.clientes.updatePass');
 
     //Proceso
     Route::get('/update-productos', [ProcesosController::class,'updateProductos'])->name('admin.update.productos');
@@ -159,7 +159,7 @@ Route::get('/index-equivalencias', [ImporterEquivalenciasController::class,'inde
 
 Route::get('/admin/image-upload', [ImageUploadController::class,'imageUpload'])->name('image.upload');
 Route::post('/admin/image-upload', [ImageUploadController::class,'imageUploadPost'])->name('image.upload.post');
-
+Route::post('/admin/pedidos/status', [PedidosController::class,'atender']);
   
 Route::get('novedad/{slug}', [FrontController::class,'showNovedad'])->name('front.novedad.show');
 

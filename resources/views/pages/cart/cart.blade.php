@@ -29,11 +29,11 @@
                                                     </div>
                                                     <input id="codprod"  type="hidden" value=" {{$codProd=$producto->codigo}}">
                                             
-                                                    <a href="single-product.html" class="product-thumb">
+                                                    <a href="" class="product-thumb">
 
                                                     @include('pages.product.partials')
                                                     </a>
-                                                    <a href="single-product.html" class="product-name"> {{$producto->nombre}}</a>
+                                                    <a href="" class="product-name"> {{$producto->nombre}}</a>
                                                 </div>
                                             </td>
                                             <td>
@@ -41,10 +41,9 @@
                                             </td>
                                             <td>
                                                 <div class="pro-qty">                                        
-                                <input type="text"  min="1"
-                   max="5"
+                                <input type="number"  
                    value= "{{ $producto->cantidad }}"
-                   id="product_{{$producto->id}}"class="quantity" title="Quantity" value="1" onFocus="findTotal()"  name="qty"/>
+                   id="product_{{$producto->id}}"class="quantity" title="Quantity" onFocus="findTotal()"  name="qty"/>
                                                 </div>
                                             </td>
                                             <td>

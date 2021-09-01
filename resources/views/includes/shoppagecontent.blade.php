@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="sort-by-wrapper">                 
-                                        <input class="form-control" id="equivalencia"name="equivalencia" type="text" placeholder="Equivalencia">
+                                        <input class="form-control" id="equivalencia"name="equivalencia" type="text" placeholder="Codigo">
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
@@ -77,8 +77,8 @@
                         <div class="row align-items-center">
                         <div class="col-sm-6">
                         </div>
-                            
-                            @if(\Auth::check())  
+                            @if(\Auth::check())
+                            @if(\Auth::user()->porcentaje_compra>0 || \Auth::user()->porcentaje_venta>0)  
                             <div class="col-sm-3">
                                 <div class="sort-by-wrapper">
                                     <label for="sort" class="sr-only">Sort By</label>
@@ -90,6 +90,10 @@
                                 </div>
                             </div>
                                @else       
+                               <div class="col-sm-3"></div>
+                          
+                         @endif
+                         @else       
                                <div class="col-sm-3"></div>
                           
                          @endif

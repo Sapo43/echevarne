@@ -39,4 +39,20 @@
         {!! Form::label('operatoria', 'Operatoria') !!}
         {!! Form::select('operatoria', $operatorias, null, ['class' => 'form-control']) !!}
     </div>
+ 
 </div>
+<div class="row">
+<div class="col-md-3">
+        {!! Form::label('porcentaje_compra', 'Porcentaje Compra') !!}
+        {!! Form::text('porcentaje_compra', null, array('class' => 'form-control')) !!}   
+    </div>
+    <div class="col-md-3">
+        {!! Form::label('porcentaje_venta', 'Porcentaje Venta') !!}
+        {!! Form::text('porcentaje_venta', null, array('class' => 'form-control')) !!}   
+    </div>
+</div>
+
+<div class="col-md-3">
+        {!! Form::label('vendedor', 'Es vendedor?') !!}
+        {!! Form::select('vendedor', $vendedor, null, ['class' => 'form-control']) !!}
+    </div>

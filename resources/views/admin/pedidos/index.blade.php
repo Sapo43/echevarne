@@ -16,6 +16,8 @@
                     <tr>
                         <th>Fecha</th>
                         <th>Usuario</th>
+                      
+                        <th>Apellido</th>
                         <th>Total</th>
                         <th>Cant Productos</th>
                         <th>Notas</th>
@@ -29,8 +31,10 @@
                                 
                             </td>
                             <td>
-                                {{$pedido->apellido}}
+                            {{$pedido->nro_cliente}} -  {{$pedido->apellido}}   {{$pedido->nombre}}
                             </td>
+                           
+                            
                             <td>
                             {{$pedido->total_monto}}
                             </td>
