@@ -37,14 +37,15 @@ class CartController extends Controller {
        
     }
 
-public function cartForCheckout(){
+public function cartForCheckout(Request $request){
 
-
+  
     $scripts = array(
         ('/assets/js/sweetalert2.min.js'),
         ('/assets/js/postConfirmCart.js'),
         ('/assets/js/incdeccart.js'),
-        ('/assets/js/deleteFromCart.js')
+        ('/assets/js/deleteFromCart.js'),
+        ('/assets/js/loadDataToModal.js'),  
 
         
      
@@ -158,9 +159,8 @@ public function cartForCheckout(){
 
     //Trash cart
     public function trash(){
-       \Session::forget('cart');
-     
-        return redirect()->route('cart-show')    ;
+       \Session::forget('cart');     
+        return redirect()->route('shop');
     }
 
 

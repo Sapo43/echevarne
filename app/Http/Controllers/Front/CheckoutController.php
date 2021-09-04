@@ -23,7 +23,8 @@ public function index(){
     $scripts = array(
         ('/assets/js/iziToast.min.js'),
         ('/assets/js/precioslistacompraventa.js'),
-        ('/assets/js/confirmarCarrito.js')       
+        ('/assets/js/confirmarCarrito.js'),
+        
 
     );         
 

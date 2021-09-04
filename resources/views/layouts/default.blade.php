@@ -189,7 +189,19 @@
 <!-- fin Scripts dinámicos desde controlador -->
 
 
+<script>
+// self executing function here
+(function() {
 
+    var a=document.getElementById('btn-mini-cart');
+if(a.getAttribute("href")=='/shop'){
+    document.getElementById('qtyCart').style.display = 'none';
+}
+   // your page initialization code here
+   // the DOM will be available here
+
+})();
+</script>
 
 </body>
 

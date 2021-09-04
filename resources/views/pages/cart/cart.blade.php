@@ -29,11 +29,11 @@
                                                     </div>
                                                     <input id="codprod"  type="hidden" value=" {{$codProd=$producto->codigo}}">
                                             
-                                                    <a href="" class="product-thumb">
-
+                                                 
+                                                    <a class="product-thumb" href="#" data-toggle="modal" data-id="{{$producto->slug}}" onclick='loadModal(this)' data-target="#basicModal" >
                                                     @include('pages.product.partials')
                                                     </a>
-                                                    <a href="" class="product-name"> {{$producto->nombre}}</a>
+                                                    <a class="product-name" href="#" data-toggle="modal" data-id="{{$producto->slug}}" onclick='loadModal(this)' data-target="#basicModal" > {{$producto->nombre}}</a>
                                                 </div>
                                             </td>
                                             <td>
@@ -115,7 +115,7 @@
                               
 
                                 <div class="cart-update-buttons mt-15 mt-sm-0">
-                                    <button class="btn-clear-cart">Vaciar Carrito</button>
+                                    <a style="color:red"type="button" href="/trash" class="btn-clear-cart">Vaciar Carrito</a>
                                     <button onclick="update()" class="btn-update-cart">Actualizar Carrito</button>
                                 </div>
                             </div>

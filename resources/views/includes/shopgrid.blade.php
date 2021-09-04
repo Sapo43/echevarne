@@ -1,3 +1,13 @@
+<div class="countBusqueda" style="display:none;">
+
+@if($count>1)
+<h1>Se encontraron {{$count}} productos</h1>
+@else
+<h1>Se encontro {{$count}} producto</h1>
+@endif
+</div>
+
+
 <div class="row mtn-30">
      
                             @foreach($data as $producto)
@@ -29,7 +39,8 @@
                                     </div>
                                     <div class="product-item__content">
                                         <div class="product-item__info text-center">
-                                       <h5 class=""><strong>{{$producto->nombre}}</strong> -  {{$producto->marca->id}}</h5>                                         
+                                       <h5 class=""><strong>{{$producto->nombre}}</strong> - 
+                                        {{$producto->marca->nombre}}</h5>                                         
                                          
                                     
                                             <span><strong>Codigo : </strong>{{$producto->codigo}}</span>

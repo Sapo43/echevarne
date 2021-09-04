@@ -129,7 +129,13 @@
                     <div class="product-wrapper product-layout layout-grid">
                     <div id="table_data"> 
                        
-                        
+                    <div class="index" >
+                    @if($count>1)
+<h1>Se encontraron {{$count}} productos</h1>
+@else
+<h1>Se encontro {{$count}} producto</h1>
+@endif
+                    </div>
                     
                             @include('includes.shopgrid')
                           

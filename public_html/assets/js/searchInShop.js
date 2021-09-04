@@ -44,6 +44,8 @@ var equivalencia = $('#equivalencia').val() || param ;
 var nombre = $('#nombre').val();
 var equiv = $('#equivalencia').val();
 var _token= $('meta[name="csrf-token"]').attr('content')
+
+;
    
 if (rubro==0&marca==0&equivalencia==""&equiv==""&nombre==""){
     alert('Complete campos para buscar')
@@ -64,7 +66,11 @@ if (rubro==0&marca==0&equivalencia==""&equiv==""&nombre==""){
 },
         success: function(response)
         {     
-            $('#table_data').html(response);           
+
+
+            $('.index').css('display', 'none');
+            $('#table_data').html(response);             
+            $('.countBusqueda').css('display', 'block');          
             $('#linksShopContent').css('display', 'none');
             $('#linksShopGrid').css('display', 'block');    
             if(sessionStorage.Tipo=='Compra'){
@@ -131,3 +137,5 @@ var _token= $('meta[name="csrf-token"]').attr('content')
     })
 
 }
+
+

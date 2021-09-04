@@ -26,7 +26,7 @@ class FrontController extends Controller {
 
   public function __construct()
   {
-      if(!\Session::has('busquedaArray')) \Session::put('busquedaArray',[]);
+      if(!\Session::has('busquedaArray')) \Session::put('busquedaArray',[]);      
       if(!\Session::has('busquedaIndice')) \Session::put('busquedaIndice',-1);
       if(!\Session::has('cart')) \Session::put('cart',array());
       
@@ -39,10 +39,18 @@ class FrontController extends Controller {
         $cart= \Session::get('cart');
         $porcentaje_compra=$this->porcentaje_compra();
         $porcentaje_venta=$this->porcentaje_venta();   
-        $scripts = array(         
+        $scripts = array(    
+            ('/assets/js/iziToast.min.js'),
+            ('/assets/js/addToCart.js'),     
             ('/assets/js/deleteFromCart.js'),
-            ('/assets/js/precioslistacompraventa.js'),        
+            ('/assets/js/precioslistacompraventa.js'),
+            ('/assets/js/loadDataToModal.js')        
         );
+        $csss=array(
+            ('/assets/css/iziToast.css'),
+            ('/assets/css/addtocartanimation.css'),
+            ('/assets/css/carouselProducto.css')
+    );
         $productos=Producto::orWhere('codigo','=','Gul tp x4')
                             ->orWhere('codigo','=','HUT 7 K 1515')
                             ->orWhere('codigo','=','NAR 48728')
@@ -52,7 +60,7 @@ class FrontController extends Controller {
                       
         $novedades = Novedad::where('visible', 1)->take(6)->orderBy('orden')->get();
         
-        return view('pages.home.index', compact('porcentaje_compra','porcentaje_venta','productos','novedades','cart','scripts'));
+        return view('pages.home.index', compact('porcentaje_compra','porcentaje_venta','productos','novedades','cart','scripts','csss'));
     }
 
    
@@ -89,16 +97,22 @@ class FrontController extends Controller {
          
                     $data = Producto::filterAndPaginate1($request->get('nombre'), $request->get('rubro'), $request->get('marca'), $request->get('equivalencia'), "1");  
                
-                          
+                    $count=sizeof($data->get());
                             $busquedaArray= \Session::get('busquedaArray');
                             $busquedaIndice= \Session::get('busquedaIndice');
+                        
+                            if(sizeof($busquedaArray)>4){                                
+                                array_shift($busquedaArray);
+                            }
+                            if($busquedaIndice>3){
+                                $busquedaIndice=2;
+                            }
                             \Session::put('busquedaIndice',$busquedaIndice+1);
                             array_push($busquedaArray,$data->take(3)->get());
                             \Session::put('busquedaArray', $busquedaArray);                        
-                            $data=$data->paginate(5); 
-                            
                           
-                    return view('includes.shopgrid', compact('background','cart','seccion','data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'));
+                            $data=$data->paginate(12); 
+                    return view('includes.shopgrid', compact('count','background','cart','seccion','data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'));
         }
         if($novedad){
 
@@ -132,8 +146,9 @@ class FrontController extends Controller {
         }
        
         $data = Producto::filterAndPaginate1($request->get('nombre'), $rubro, $marca, $request->get('codigo'), "1");        
-        $data=$data->paginate(5);         
-        return view('pages.shop.index', compact('background','rubroid','novedadid','novedad','cart','seccion','data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'));
+        $count=sizeof($data->get());
+        $data=$data->paginate(12);         
+        return view('pages.shop.index', compact('count','background','rubroid','novedadid','novedad','cart','seccion','data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'));
            
        
           
@@ -242,15 +257,18 @@ public function misDatos(Request $request){
 }
 
 public function PostMisDatos(Request $request,$id){
-    try {
-        $data = \Request::all();       
+  
+        try {
+        $data = $request->all();         
         $cliente = User::findOrFail($id);
         $data['dni'] = StrHelper::soloNumeros(trim($data['dni']));
         $data['cuit'] = StrHelper::soloNumeros(trim($data['cuit']));
-                $cliente->fill($data);    
+        $cliente->fill($data);    
         $cliente->setAudit('web');
         $cliente->save();
+       
     } catch (\Throwable $th) {
+    
         //throw $th;
     }
  
@@ -263,8 +281,7 @@ public function PostMisDatos(Request $request,$id){
 }
 
 
-public function shopRecentSearch(Request $request){
-   
+public function shopRecentSearch(Request $request){ 
  
            
     $busquedaArray = \Session::get('busquedaArray');

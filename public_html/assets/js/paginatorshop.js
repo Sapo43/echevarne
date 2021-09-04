@@ -76,7 +76,7 @@
         var activeView=$('.layout-switcher li.active').data("layout");
         areaWrap = $(".product-layout");
          $('#table_data').html(data);
-        
+         $('.countBusqueda').css('display', 'block');   
          if(sessionStorage.Tipo=='Compra'){
             $('.precioVenta').css('display', 'none');
             $('.precioLista').css('display', 'none');

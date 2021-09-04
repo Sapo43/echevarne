@@ -4,10 +4,10 @@
 
                                 <div class="mini-product">
                                         <div class="mini-product__thumb">
-                                            <a href="single-product.html">  @include('pages.product.partials')</a>
+                                              @include('pages.product.partials')
                                         </div>
                                         <div class="mini-product__info">
-                                            <h2 class="title"><a href="single-product.html">{{$producto->codigo}}</a></h2>
+                                            <h2 class="title">{{$producto->codigo}}</h2>
 
                                             <div class="mini-calculation">
                                                 <p class="price">{{$producto->cantidad}} x <span>${{$producto->precio}}</span></p>

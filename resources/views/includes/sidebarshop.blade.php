@@ -25,7 +25,7 @@
 
 
                         <div class="sidebar-item">
-                            <h4 class="sidebar-title">Product categories</h4>
+                            <h4 class="sidebar-title">Rubros</h4>
                             <div class="sidebar-body">
                                 <ul class="sidebar-list">
                                     <li><a href="/shop/LAMPARAS">Lamparas</a></li>

@@ -46,6 +46,7 @@ Route::get('/about',[FrontController::class,'about'])->name('about');
 Route::get('/descargas',[FrontController::class,'descargas'])->name('descargas');
 Route::get('/contacto',[FrontController::class,'contacto'])->name('contacto');
 Route::get('file/{folder}/{filename}', [FileController::class,'getFile'])->where('filename', '^[^/]+$');
+Route::get('/trash',[CartController::class,'trash'])->name('trash');
 
 
 

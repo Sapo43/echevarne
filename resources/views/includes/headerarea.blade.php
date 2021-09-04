@@ -54,13 +54,13 @@
                         <div class="mini-cart-wrap">
                        @if(isset($cart))     
                         @if(sizeof($cart)>0)
-                            <a href="/cart" class="btn-mini-cart">
-                                <i class="ion-bag"></i>
+                            <a href="/cart" class="btn-mini-cart" id="btn-mini-cart">
+                                <i class="ion-android-cart"></i>                                
                                 <span id ="qtyCart" class="cart-total">{{sizeof($cart)}}</span>
                             </a>
                             @else
-                            <a href="/shop" class="btn-mini-cart">
-                                <i class="ion-bag"></i>
+                            <a href="/shop" class="btn-mini-cart" id="btn-mini-cart">
+                                <i class="ion-android-cart"></i>
                                 <span id ="qtyCart" class="cart-total"></span>
                             </a>
                                 
@@ -92,8 +92,8 @@
                             </div>
                             @endif
                             @else
-                            <a href="/shop" class="btn-mini-cart">
-                                <i class="ion-bag"></i>
+                            <a href="/shop" class="btn-mini-cart" id="btn-mini-cart">
+                                <i class="ion-android-cart"></i>
                                 <span id ="qtyCart" class="cart-total"></span>
                             </a>
 

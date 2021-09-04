@@ -137,9 +137,20 @@ class ProductosController extends Controller {
     public function productDetailModal($slug,Request $request){
         $p_id = substr($slug, 0, strpos($slug, '-'));
         $producto = Producto::find($p_id);
-        $productosEquivalencia=Producto::filterAndPaginate1($request->get('nombre'), $request->get('rubro'), $request->get('marca'), $producto->codigo, "1")->get(10);  
         
-        return view('includes.productdetailformodal',compact('producto','productosEquivalencia'));
+        $productosEquivalencia=Producto::find($p_id);  
+        $productosEquivalencia=explode(",", $productosEquivalencia->equivalencia);
+        $productosEquivalencias=[];
+        if(sizeof($productosEquivalencia)>0){
+            if ($productosEquivalencia[0]!=''){
+                $productosEquivalencias=Producto::filterAndPaginate1($request->get('nombre'), $request->get('rubro'), $request->get('marca'), $productosEquivalencia[0], "1")->get(5);
+            }            
+        }
+        
+
+    
+        
+        return view('includes.productdetailformodal',compact('producto','productosEquivalencia','productosEquivalencias'));
     }
 
 }
