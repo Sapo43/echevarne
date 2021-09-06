@@ -132,6 +132,7 @@ public function cartForCheckout(Request $request){
         $cart = \Session::get('cart');
                 unset($cart[$producto->slug]);
         \Session::put('cart',$cart); 
+        
   
 
         return response()->json(['msg'=>'ok ']);
@@ -159,6 +160,13 @@ public function cartForCheckout(Request $request){
 
     //Trash cart
     public function trash(){
+
+        if($user=Auth::user()){            
+            $carrito=Carrito::where('user_id','=',\Auth::user()->id)->get();          
+            foreach ($carrito as $key){
+                $key->delete();
+            }            
+        }
        \Session::forget('cart');     
         return redirect()->route('shop');
     }
@@ -286,11 +294,14 @@ public function cartForCheckout(Request $request){
       
    
         event(new StatusLiked('Someone'));
-        
-    
+        if($user=Auth::user()){            
+            $carrito=Carrito::where('user_id','=',\Auth::user()->id)->get();          
+            foreach ($carrito as $key){
+                $key->delete();
+            }            
+        }
+        \Session::forget('cart');
 
-
-     \Session::forget('cart');
 			return response()->json(['success'=>'Tu pedido ha sido enviado.']);
         }
 

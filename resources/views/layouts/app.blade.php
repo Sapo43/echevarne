@@ -18,6 +18,7 @@
         <link href="/assets/css/font-awesome.min.css" rel="stylesheet" />
         <link href="{{ asset('assetsAdmin/css/ringbell.css')}}" rel="stylesheet"> 
 
+        <link href="{{ asset('assetsAdmin/css/own.css')}}" rel="stylesheet"> 
         <!-- Fonts -->
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
@@ -28,6 +29,21 @@
                 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         @yield('styles')
+
+	<!-- CSS dinamicos que llegan desde el controlador -->
+	<?php
+	if(isset($csss)){
+		if(is_array($csss)){
+			foreach($csss as $css){
+				echo '<link href="'. $css .' "rel="stylesheet" type="text/css">'.PHP_EOL;
+			}
+		}
+	}
+	?>
+	<!-- fin CSS dinámicos desde controlador -->
+
+
+
     </head>
     <body>
         <nav class="navbar navbar-default navbar-tdb">
@@ -121,8 +137,8 @@
         </div>
         <!-- Scripts -->
   
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script src="/assets/js/jquery-3.3.1.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
 
         {!! HTML::script('assetsAdmin/js/bootstrap-confirmation.js') !!} 
 
@@ -148,5 +164,23 @@ channel.bind('my-event', function(data) {
   $('#alerta').html("!");
 });
 </script>
+
+<?php
+		if(isset($scripts)){
+			if(is_array($scripts)){
+				foreach($scripts as $script){
+					echo '<script src="' . $script . '"></script>'.PHP_EOL;
+				}
+			}
+		}
+	?>
+<script type="text/javascript">
+
+$(document).ready(function() {
+  $('select').niceSelect();
+});
+</script>
+
+
     </body>
 </html>

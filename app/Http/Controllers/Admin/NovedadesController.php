@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Novedad;
+use App\Models\Producto;
+use App\Models\Rubro;
+use App\Models\Marca;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Request;
@@ -43,7 +46,24 @@ class NovedadesController extends Controller {
      */
     public function create() {
         if (\Auth::guard('admin')->user()->can(['novedades-crear'])) {
-            return view('admin.novedades.create');
+
+            $scripts = array(
+                ('/assets/js/jquery.nice-select.min.js'),
+                ('/assets/js/jquery.nice-select-with-search-multiple.js'),
+              
+             );
+            $csss=array(
+                    ('/assets/css/nice-search-multiple.css'),
+                    ('/assets/css/nice-select.min.css')
+              
+            );
+
+
+
+            $codigos=Producto::where('activo','=','1')->pluck('codigo', 'id')->toArray();
+            $rubros = Rubro::getRubros()->pluck('nombre', 'id')->toArray();
+            $marcas = Marca::getMarcas()->pluck('nombre', 'id')->toArray();
+            return view('admin.novedades.create',compact('codigos','rubros','marcas','scripts','csss'));
         } else {
             return view('errors.noTienePermisos');
         }

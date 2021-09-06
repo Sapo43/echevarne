@@ -46,3 +46,29 @@
         {!! Form::text('url', null, array('class' => 'form-control')) !!}                    
     </div>      
 </div>
+
+<p>Para filtrar la novedad desde home :</p>
+
+<div class="row align-items-center ">
+                                 <div class="col-sm-3">
+                                 <div class="sort-by-wrapper">                         
+                    {!! Form::select('marca', ['0' => 'Todas']+$marcas, null, array('class' => 'form-control','id'=>'marca')) !!}
+                    </div>
+                    </div>
+               
+
+                  
+                                 <div class="col-sm-3">
+                                 <div class="sort-by-wrapper">                         
+                    {!! Form::select('rubro', ['0' => 'Todos']+$rubros, null, array('class' => 'form-control','id'=>'rubro')) !!}
+                    </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+                                 <div class="sort-by-wrapper">                         
+                    {!! Form::select('codigo', ['0' => 'Todos']+$codigos, null, array('class' => 'form-control','id'=>'codigo')) !!}
+                    </div>
+                    </div>
+                   
+</div>
