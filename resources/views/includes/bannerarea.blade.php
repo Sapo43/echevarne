@@ -30,16 +30,27 @@
                                 </div>
     <br>
                                 <div class="product-item__content">
-                               
+                               @if($novedad->marca_id!=null && $novedad->rubro_id==null && $novedad->codigo_producto==null)
                                 <h4 class="title"><a href="/shop/novedad/{{$novedad->marca_id}}/0/0">{{$novedad->titulo}}</a></h4>
+                                @endif
+                                @if($novedad->marca_id!=null && $novedad->rubro_id!=null && $novedad->codigo_producto==null)
                                 <h4 class="title"><a href="/shop/novedad/{{$novedad->marca_id}}/{{$novedad->rubro_id}}/0">{{$novedad->titulo}}</a></h4>
+                                @endif
+                                @if($novedad->marca_id!=null && $novedad->rubro_id!=null && $novedad->codigo_producto!=null)
                                 <h4 class="title"><a href="/shop/novedad/{{$novedad->marca_id}}/{{$novedad->rubro_id}}/{{$novedad->codigo_producto}}">{{$novedad->titulo}}</a></h4>
-
+                                @endif
+                                @if($novedad->marca_id==null && $novedad->rubro_id!=null && $novedad->codigo_producto!=null)
                                 <h4 class="title"><a href="/shop/novedad/0/{{$novedad->rubro_id}}/0">{{$novedad->titulo}}</a></h4>
+                                @endif
+                                @if($novedad->marca_id==null && $novedad->rubro_id!=null && $novedad->codigo_producto!=null)
                                 <h4 class="title"><a href="/shop/novedad/0/{{$novedad->rubro_id}}/{{$novedad->codigo_producto}}">{{$novedad->titulo}}</a></h4>
-                                
+                                @endif
+                                @if($novedad->marca_id==null && $novedad->rubro_id==null && $novedad->codigo_producto!=null)
                                 <h4 class="title"><a href="/shop/novedad/0/0/{{$novedad->codigo_producto}}">{{$novedad->titulo}}</a></h4>
+                                @endif
+                                @if($novedad->marca_id!=null && $novedad->rubro_id==null && $novedad->codigo_producto!=null)
                                 <h4 class="title"><a href="/shop/novedad/{{$novedad->marca_id}}/0/{{$novedad->codigo_producto}}">{{$novedad->titulo}}</a></h4>
+                                @endif
                                 <span class="price"><strong></strong> {{$novedad->subtitulo}}</span>
                                 
                                 </div>
