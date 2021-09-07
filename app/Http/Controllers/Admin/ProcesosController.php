@@ -171,8 +171,7 @@ class ProcesosController extends Controller
                         switch ($vRow) {
                             case self::VALIDACION_OK:
                                 try {
-                                    if(trim($row[5])!='' &&  trim($row[8])!='') {
-                                        
+                                    if(trim($row[5])!='' &&  trim($row[8])!='') {                                        
                                         $producto->nombre = trim($row[1]);
                                         $producto->precio = $this->getPrecio(trim($row[3]));
                                         $producto->iva = $this->getIva($row[4]);

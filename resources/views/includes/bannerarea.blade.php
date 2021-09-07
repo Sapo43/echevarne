@@ -20,28 +20,27 @@
                             <div class="product-item">
                                 <div class="product-item__thumb">
                                    
-                                @if($novedad->es_producto != 1)
-                                <!-- Es novedad -->
-                                    <a href="">
-                                        <img class="thumb-primary" src="{{$novedad->imagen}}" alt="{{$novedad->titulo}}" style="width: 300px; height: 300px" />
-                                        <img class="thumb-secondary" src="{{$novedad->imagen}}" alt="{{$novedad->titulo}}" style="width: 300px; height: 300px"/>
-                                    </a>
-                                @else
+                           
                                 
                                 <a href="">
                                         <img class="thumb-primary" src="{{$novedad->imagen}}" alt="{{$novedad->titulo}}" style="width: 300px; height: 300px" />
                                         <img class="thumb-secondary" src="{{$novedad->imagen}}" alt="{{$novedad->titulo}}" style="width: 300px; height: 300px"/>
                                     </a>
-                                @endif
+                            
                                 </div>
     <br>
                                 <div class="product-item__content">
                                
-                                    
+                                <h4 class="title"><a href="/shop/novedad/{{$novedad->marca_id}}/0/0">{{$novedad->titulo}}</a></h4>
+                                <h4 class="title"><a href="/shop/novedad/{{$novedad->marca_id}}/{{$novedad->rubro_id}}/0">{{$novedad->titulo}}</a></h4>
+                                <h4 class="title"><a href="/shop/novedad/{{$novedad->marca_id}}/{{$novedad->rubro_id}}/{{$novedad->codigo_producto}}">{{$novedad->titulo}}</a></h4>
+
+                                <h4 class="title"><a href="/shop/novedad/0/{{$novedad->rubro_id}}/0">{{$novedad->titulo}}</a></h4>
+                                <h4 class="title"><a href="/shop/novedad/0/{{$novedad->rubro_id}}/{{$novedad->codigo_producto}}">{{$novedad->titulo}}</a></h4>
                                 
-                                    
-                                        <h4 class="title"><a href="/shop/{{$novedad->titulo}}">{{$novedad->titulo}}</a></h4>
-                                        <span class="price"><strong></strong> {{$novedad->subtitulo}}</span>
+                                <h4 class="title"><a href="/shop/novedad/0/0/{{$novedad->codigo_producto}}">{{$novedad->titulo}}</a></h4>
+                                <h4 class="title"><a href="/shop/novedad/{{$novedad->marca_id}}/0/{{$novedad->codigo_producto}}">{{$novedad->titulo}}</a></h4>
+                                <span class="price"><strong></strong> {{$novedad->subtitulo}}</span>
                                 
                                 </div>
 
@@ -62,3 +61,5 @@
             </div>
         </div>
     </div>
+
+

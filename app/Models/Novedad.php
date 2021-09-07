@@ -15,6 +15,6 @@ class Novedad extends Model {
      * @var string
      */
     protected $table = 'novedades';
-    protected $fillable = ['titulo', 'subtitulo', 'imagen', 'link', 'visible', 'texto', 'es_producto'];
+    protected $fillable = ['titulo', 'subtitulo', 'imagen', 'link', 'visible', 'texto', 'es_producto','rubro_id','marca_id','codigo_producto'];
 
 }

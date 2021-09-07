@@ -98,8 +98,12 @@ class NovedadesController extends Controller {
             if (!Request::has('visible')) {
                 $novedad->visible = 0;
             }
+            if(Request::has('codigo_producto')){
+               $producto= Producto::where('id','=',Request::input('codigo_producto'))->first();    
+               $novedad->codigo_producto=$producto->codigo;
+            }
             $novedad->setAudit('admin');
-
+          
             $novedad->save();
 
             return redirect()->route('admin.novedades.index');

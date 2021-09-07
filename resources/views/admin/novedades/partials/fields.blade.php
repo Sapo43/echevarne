@@ -52,7 +52,7 @@
 <div class="row align-items-center ">
                                  <div class="col-sm-3">
                                  <div class="sort-by-wrapper">                         
-                    {!! Form::select('marca', ['0' => 'Todas']+$marcas, null, array('class' => 'form-control','id'=>'marca')) !!}
+                    {!! Form::select('marca_id', ['0' => 'Todas']+$marcas, null, array('class' => 'form-control','id'=>'marca_id')) !!}
                     </div>
                     </div>
                
@@ -60,14 +60,14 @@
                   
                                  <div class="col-sm-3">
                                  <div class="sort-by-wrapper">                         
-                    {!! Form::select('rubro', ['0' => 'Todos']+$rubros, null, array('class' => 'form-control','id'=>'rubro')) !!}
+                    {!! Form::select('rubro_id', ['0' => 'Todos']+$rubros, null, array('class' => 'form-control','id'=>'rubro_id')) !!}
                     </div>
                     </div>
 
 
                     <div class="col-sm-3">
                                  <div class="sort-by-wrapper">                         
-                    {!! Form::select('codigo', ['0' => 'Todos']+$codigos, null, array('class' => 'form-control','id'=>'codigo')) !!}
+                    {!! Form::select('codigo_producto', ['0' => 'Todos']+$codigos, null, array('class' => 'form-control','id'=>'codigo_producto')) !!}
                     </div>
                     </div>
                    

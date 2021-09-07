@@ -44,7 +44,6 @@ $porcentaje_venta=$this->porcentaje_venta();
 $isAuthZero=$this->ifAuthZero();
 
     $cart= \Session::get('cart');
-   
     if (sizeof($cart)==0){
         return redirect()->route('shop'); 
     }

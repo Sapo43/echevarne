@@ -36,7 +36,7 @@ use App\Http\Controllers\PusherController;
 
 Route::get('/', [FrontController::class,'home']);
 Route::get('/home', [FrontController::class,'home'])->name('home');
-Route::get('/shop/{novedad?}', [FrontController::class,'shop'])->name('shop');
+Route::get('/shop/{novedad?}/{marca?}/{rubro?}/{codigo?}', [FrontController::class,'shop'])->name('shop');
 Route::get('/producto/{slug}', [FrontProductosController::class,'show'])->name('front.productos.show');
 Route::get('/shopRecentSearch',[FrontController::class,'shopRecentSearch']);
 // Route::get('/shop/fetch_data', [FrontController::class,'shop'])->name('shop');

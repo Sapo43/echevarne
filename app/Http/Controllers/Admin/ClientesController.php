@@ -42,8 +42,8 @@ class ClientesController extends Controller
         if (\Auth::guard('admin')->user()->can(['clientes-crear'])) {
 
             $operatorias = ['CONS FINAL' => 'CONS FINAL', 'MONOTRIBUTO' => 'MONOTRIBUTO', 'INSCRIPTO' => 'INSCRIPTO', 'OTRO' => 'OTRO'];
-
-            return view('admin.clientes.create', compact('operatorias'));
+     		$vendedor= ['1'=>'SI','0'=>'NO'];
+            return view('admin.clientes.create', compact('operatorias','vendedor'));
         } else {
             return view('errors.noTienePermisos');
         }
@@ -96,7 +96,7 @@ class ClientesController extends Controller
     {
         $cliente = User::findOrFail($id);
         $operatorias = ['CONS FINAL' => 'CONS FINAL', 'MONOTRIBUTO' => 'MONOTRIBUTO', 'INSCRIPTO' => 'INSCRIPTO', 'OTRO' => 'OTRO'];
-        $vendedor= ['1'=>'SI','0'=>'NO'];
+     	$vendedor= ['1'=>'SI','0'=>'NO'];
         return view('admin.clientes.edit', compact('cliente', 'operatorias','vendedor'));
     }
 
@@ -112,11 +112,11 @@ class ClientesController extends Controller
         $data = \Request::all();
         $cliente = User::findOrFail($id);
 
-        // $v = $this->validarCliente($data);
+        //$v = $this->validarCliente($data);
 
-        // if ($v->fails()) {
-        //     return redirect()->back()->withErrors($v->errors())->withInput(\Request::All());
-        // }
+        //if ($v->fails()) {
+          //  return redirect()->back()->withErrors($v->errors())->withInput(\Request::All());
+        //}
 
         $data['dni'] = StrHelper::soloNumeros(trim($data['dni']));
         $data['cuit'] = StrHelper::soloNumeros(trim($data['cuit']));
@@ -182,7 +182,7 @@ class ClientesController extends Controller
 
     private function validarCliente($data)
     {
-       
+
         $data['dni'] = StrHelper::soloNumeros(trim($data['dni']));
         $data['cuit'] = StrHelper::soloNumeros(trim($data['cuit']));
 

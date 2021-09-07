@@ -26,7 +26,7 @@ class FrontController extends Controller {
 
   public function __construct()
   {
-      if(!\Session::has('busquedaArray')) \Session::put('busquedaArray',[]);      
+      if(!\Session::has('busquedaArray')) \Session::put('busquedaArray',[]);
       if(!\Session::has('busquedaIndice')) \Session::put('busquedaIndice',-1);
       if(!\Session::has('cart')) \Session::put('cart',array());
       
@@ -36,15 +36,16 @@ class FrontController extends Controller {
   }
 
     public function home(){
+    
         $cart= \Session::get('cart');
         $porcentaje_compra=$this->porcentaje_compra();
         $porcentaje_venta=$this->porcentaje_venta();   
-        $scripts = array(    
+         $scripts = array(    
             ('/assets/js/iziToast.min.js'),
             ('/assets/js/addToCart.js'),     
             ('/assets/js/deleteFromCart.js'),
             ('/assets/js/precioslistacompraventa.js'),
-            ('/assets/js/loadDataToModal.js')        
+             ('/assets/js/loadDataToModal.js')
         );
         $csss=array(
             ('/assets/css/iziToast.css'),
@@ -59,15 +60,12 @@ class FrontController extends Controller {
                             ->get();
                       
         $novedades = Novedad::where('visible', 1)->take(6)->orderBy('orden')->get();
-        
         return view('pages.home.index', compact('porcentaje_compra','porcentaje_venta','productos','novedades','cart','scripts','csss'));
     }
 
-   
-
-    public function shop(Request $request,$novedad=null){
+    public function shop(Request $request,$novedad=null,$marca=null,$rubro=null,$codigo=null){
         $background="/assets/img/bg/page-header-bg.jpg";
-    $cart= \Session::get('cart');
+        $cart= \Session::get('cart');
         $seccion="Shop";  
         $scripts = array(
             ('/assets/js/iziToast.min.js'),
@@ -90,17 +88,21 @@ class FrontController extends Controller {
         $marcas = Marca::getMarcas()->pluck('nombre', 'id')->toArray();
         $porcentaje_compra=$this->porcentaje_compra();
         $porcentaje_venta=$this->porcentaje_venta();        
+        
+  
+        
+        
+        
         if($request->ajax()){
 
 
-          
-         
+
+
                     $data = Producto::filterAndPaginate1($request->get('nombre'), $request->get('rubro'), $request->get('marca'), $request->get('equivalencia'), "1");  
                
-                    $count=sizeof($data->get());
+                              $count=sizeof($data->get());  
                             $busquedaArray= \Session::get('busquedaArray');
-                            $busquedaIndice= \Session::get('busquedaIndice');
-                        
+                            $busquedaIndice= \Session::get('busquedaIndice');                        
                             if(sizeof($busquedaArray)>4){                                
                                 array_shift($busquedaArray);
                             }
@@ -109,46 +111,58 @@ class FrontController extends Controller {
                             }
                             \Session::put('busquedaIndice',$busquedaIndice+1);
                             array_push($busquedaArray,$data->take(3)->get());
-                            \Session::put('busquedaArray', $busquedaArray);                        
-                          
-                            $data=$data->paginate(12); 
-                    return view('includes.shopgrid', compact('count','background','cart','seccion','data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'));
+                            \Session::put('busquedaArray', $busquedaArray);        
+         
+                            $data=$data->paginate(12);
+                    return view('includes.shopgrid', compact('count','background','cart','seccion','data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'))->render();
         }
-        if($novedad){
+        // if($novedad){
 
-            $marca=Marca::where('nombre','=',$novedad)->pluck('id')->toArray();
-            if (sizeof($marca)>0) {
-                $novedadid=$marca[0];
-                $marca=$marca[0];
+        //     $marca=Marca::where('nombre','=',$novedad)->pluck('id')->toArray();
+        //     if (sizeof($marca)>0) {
+        //         $novedadid=$marca[0];
+        //         $marca=$marca[0];
                 
-                $rubro=null;
-                $rubroid=null;
+        //         $rubro=null;
+        //         $rubroid=null;
 
-            }else{
-                //aca uso novedad pero es el rubro, por que la url declarada es /shop/{novedad?}
-                $marca=$request->get('marca');
-                $rubro=Rubro::where('nombre','like','%'.$novedad.'%')->pluck('id')->toArray();
-                $rubroid=$rubro[0];
-                $rubro=$rubro[0];                
-                $novedadid=null;
+        //     }else{
+        //         //aca uso novedad pero es el rubro, por que la url declarada es /shop/{novedad?}
+        //         $marca=$request->get('marca');
+        //         $rubro=Rubro::where('nombre','like','%'.$novedad.'%')->pluck('id')->toArray();
+        //         $rubroid=$rubro[0];
+        //         $rubro=$rubro[0];                
+        //         $novedadid=null;
             
                 
-            }
+        //     }
         
             
                
-        }else{
+        // }else{
             
-            $marca=$request->get('marca');
-            $rubro=$request->get('rubro');
-            $novedadid=null;
-            $rubroid=null;
-        }
+        //     $marca=$request->get('marca');
+        //     $rubro=$request->get('rubro');
+        //     $novedadid=null;
+        //     $rubroid=null;
+        // }
        
-        $data = Producto::filterAndPaginate1($request->get('nombre'), $rubro, $marca, $request->get('codigo'), "1");        
-        $count=sizeof($data->get());
-        $data=$data->paginate(12);         
-        return view('pages.shop.index', compact('count','background','rubroid','novedadid','novedad','cart','seccion','data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'));
+        if($novedad){
+           $data= Producto::filterAndPaginate1($request->get('nombre'), $rubro, $marca, $codigo, "1");
+           $count=sizeof($data->get());
+        $data=$data->paginate(12); 
+           dd($data);
+            
+        }
+
+        $data = Producto::filterAndPaginate1($request->get('nombre'), $rubro, $marca, $request->get('codigo'), "1");
+  
+          $count=sizeof($data->get());
+        $data=$data->paginate(12); 
+
+
+        
+            return view('pages.shop.index', compact('count','background','rubroid','novedadid','novedad','cart','seccion','data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'));
            
        
           
@@ -183,10 +197,8 @@ public function servicios() {
 
 public function descargas() {
     $background="/assets/img/EH_BANNER05.jpg";
- 
     $files = File::files(public_path()."/assets/iconDownloads/");
     $sizeofIconsFolder=sizeof($files);
-
     $cart = \Session::get('cart');
     $seccion="Catalogos";
     $title = 'Echevarne Hermanos - Catalogos';
@@ -257,18 +269,15 @@ public function misDatos(Request $request){
 }
 
 public function PostMisDatos(Request $request,$id){
-  
-        try {
-        $data = $request->all();         
+    try {
+        $data = \Request::all();       
         $cliente = User::findOrFail($id);
         $data['dni'] = StrHelper::soloNumeros(trim($data['dni']));
         $data['cuit'] = StrHelper::soloNumeros(trim($data['cuit']));
-        $cliente->fill($data);    
+                $cliente->fill($data);    
         $cliente->setAudit('web');
         $cliente->save();
-       
     } catch (\Throwable $th) {
-    
         //throw $th;
     }
  
@@ -281,7 +290,8 @@ public function PostMisDatos(Request $request,$id){
 }
 
 
-public function shopRecentSearch(Request $request){ 
+public function shopRecentSearch(Request $request){
+   
  
            
     $busquedaArray = \Session::get('busquedaArray');
