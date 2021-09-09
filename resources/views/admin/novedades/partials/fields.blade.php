@@ -47,10 +47,11 @@
     </div>      
 </div>
 
-<p>Para filtrar la novedad desde home :</p>
+<p>Filtros que se aplicaran a esta novedad en la web :</p>
 
 <div class="row align-items-center ">
                                  <div class="col-sm-3">
+                                     <label>Filtrar por marca</label>
                                  <div class="sort-by-wrapper">                         
                     {!! Form::select('marca_id', ['0' => 'Todas']+$marcas, null, array('class' => 'form-control','id'=>'marca_id')) !!}
                     </div>
@@ -59,6 +60,7 @@
 
                   
                                  <div class="col-sm-3">
+                                 <label>Filtrar por Rubro</label>
                                  <div class="sort-by-wrapper">                         
                     {!! Form::select('rubro_id', ['0' => 'Todos']+$rubros, null, array('class' => 'form-control','id'=>'rubro_id')) !!}
                     </div>
@@ -66,6 +68,7 @@
 
 
                     <div class="col-sm-3">
+                    <label>Filtrar por codigo</label>
                                  <div class="sort-by-wrapper">                         
                     {!! Form::select('codigo_producto', ['0' => 'Todos']+$codigos, null, array('class' => 'form-control','id'=>'codigo_producto')) !!}
                     </div>

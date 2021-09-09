@@ -117,7 +117,11 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                
                                 </div>
+                                <a  href="{{ route('password.request') }}">
+                                       Olvidaste el password?
+                                    </a>
                             </div>
 
                             <!-- Submit -->
@@ -131,7 +135,7 @@
                                     No tienes cuenta? <a href="/register">Regístrate</a>.
                                 </small>
                             </p>
-
+                          
                         </form>
                     </div>
                 </div>

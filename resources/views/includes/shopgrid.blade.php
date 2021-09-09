@@ -1,12 +1,12 @@
 <div class="countBusqueda" style="display:none;">
 
 @if($count>1)
-<h1>Se encontraron {{$count}} productos</h1>
+<h5>Se encontraron {{$count}} productos</h5>
 @else
-<h1>Se encontro {{$count}} producto</h1>
+<h5>Se encontro {{$count}} producto</h5>
 @endif
 </div>
-
+<br>
 
 <div class="row mtn-30">
      

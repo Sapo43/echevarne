@@ -6,11 +6,11 @@
                             <div class="sidebar-body">
                                 <ul class="sidebar-list">                
 
-                                    <li><a href="/shop/HUTCHINSON"> Hutchinson <span>(2)</span></a></li>
-                                    <li><a href="/shop/GULF">Gulf <span>(3)</span></a></li>
-                                    <li><a href="/shop/NOSSO">Nosso <span>(6)</span></a></li>
-                                    <li><a href="/shop/NARVA">Narva <span>(6)</span></a></li>
-                                    <li><a href="/shop/MAGNETI MARELLI">Marelli <span>(6)</span></a></li>
+                                    <li>  <a href="/shop/novedad/382"> Hutchinson <span></span></a></li>
+                                    <li><a href="/shop/novedad/64">Gulf <span></span></a></li>
+                                    <li><a href="/shop/novedad/1">Nosso <span></span></a></li>
+                                    <li><a href="/shop/novedad/300">Narva <span></span></a></li>
+                                    <li><a href="/shop/novedad/4">Marelli <span></span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -28,11 +28,11 @@
                             <h4 class="sidebar-title">Rubros</h4>
                             <div class="sidebar-body">
                                 <ul class="sidebar-list">
-                                    <li><a href="/shop/LAMPARAS">Lamparas</a></li>
-                                    <li><a href="/shop/LUBRICANTES">Lubricantes</a></li>
-                                    <li><a href="/shop/CORREAS">Correas</a></li>
-                                    <li><a href="/shop/ARRANQUES">Arranques</a></li>
-                                    <li><a href="/shop/RELOJES">Relojes</a></li>
+                                    <li><a href="/shop/novedad/0/7">Lamparas</a></li>
+                                    <li><a href="/shop/novedad/0/91">Lubricantes</a></li>
+                                    <li><a href="/shop/novedad/0/96">Correas</a></li>
+                                    <li><a href="/shop/novedad/0/76">Arranques</a></li>
+                                    <li><a href="/shop/novedad/0/26">Relojes</a></li>
                                 
                                 </ul>
                             </div>

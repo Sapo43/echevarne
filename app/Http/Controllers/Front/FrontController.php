@@ -94,8 +94,7 @@ class FrontController extends Controller {
         
         
         if($request->ajax()){
-
-
+       
 
 
                     $data = Producto::filterAndPaginate1($request->get('nombre'), $request->get('rubro'), $request->get('marca'), $request->get('equivalencia'), "1");  
@@ -116,42 +115,25 @@ class FrontController extends Controller {
                             $data=$data->paginate(12);
                     return view('includes.shopgrid', compact('count','background','cart','seccion','data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'))->render();
         }
-        // if($novedad){
-
-        //     $marca=Marca::where('nombre','=',$novedad)->pluck('id')->toArray();
-        //     if (sizeof($marca)>0) {
-        //         $novedadid=$marca[0];
-        //         $marca=$marca[0];
-                
-        //         $rubro=null;
-        //         $rubroid=null;
-
-        //     }else{
-        //         //aca uso novedad pero es el rubro, por que la url declarada es /shop/{novedad?}
-        //         $marca=$request->get('marca');
-        //         $rubro=Rubro::where('nombre','like','%'.$novedad.'%')->pluck('id')->toArray();
-        //         $rubroid=$rubro[0];
-        //         $rubro=$rubro[0];                
-        //         $novedadid=null;
-            
-                
-        //     }
         
-            
-               
-        // }else{
-            
-        //     $marca=$request->get('marca');
-        //     $rubro=$request->get('rubro');
-        //     $novedadid=null;
-        //     $rubroid=null;
-        // }
        
         if($novedad){
+            $rubrotxt='';
+            if($rubro>0){
+                $rubrotxt=Rubro::where('id','=',$rubro)->pluck('nombre')[0];
+            }
+            $marcatxt='';
+            if ($marca>0){
+                $marcatxt=Marca::where('id','=',$marca)->pluck('nombre')[0];
+            }   
+            
+                        
            $data= Producto::filterAndPaginate1($request->get('nombre'), $rubro, $marca, $codigo, "1");
-           $count=sizeof($data->get());
-        $data=$data->paginate(12); 
-           dd($data);
+           
+            $count=sizeof($data->get());
+            $data=$data->paginate(12); 
+     
+        return view('pages.shop.index', compact('count','background','novedad','rubro','marca','rubrotxt','marcatxt','codigo','cart','seccion','data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'));
             
         }
 
@@ -160,9 +142,10 @@ class FrontController extends Controller {
           $count=sizeof($data->get());
         $data=$data->paginate(12); 
 
-
-        
-            return view('pages.shop.index', compact('count','background','rubroid','novedadid','novedad','cart','seccion','data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'));
+            $novedadid=null;
+             $rubroid=null;
+            $novedad=null;
+            return view('pages.shop.index', compact('count','background','cart','seccion','data','scripts','csss','porcentaje_compra','porcentaje_venta','rubros', 'marcas'));
            
        
           

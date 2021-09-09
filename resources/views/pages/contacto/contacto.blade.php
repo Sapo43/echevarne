@@ -23,7 +23,7 @@
                                 </div>
                                 <div class="con-info-txt">
                                     <h4>Contactanos</h4>
-                                    <p>(+54) 236 4434583
+                                    <p>(+54) 236 4423989 - 4434583
                                     </p>
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="con-info-txt">
                                     <h4>Escribinos</h4>
-                                    <p>echevarnehermanos@gmail.com
+                                    <p>info@echevarnehnos.com
                                         </p>
                                 </div>
                             </div>

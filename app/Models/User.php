@@ -8,8 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Http\Traits\AuditTrait;
 use App\Helpers\StrHelper;
-class User extends Authenticatable
-{
+use App\Notifications\ResetPassword as ResetPasswordNotification;
+class User extends Authenticatable{
+
+    use Notifiable;
     use AuditTrait;
     const ESTADO_HABILITADO = "H";
     const ESTADO_INHABILITADO = "I";
@@ -118,5 +120,14 @@ class User extends Authenticatable
             return null;
         }
     }
+
+    public function sendPasswordResetNotification($token)
+    {
+        // Your your own implementation.
+        $this->notify(new ResetPasswordNotification($token));
+    }
+
+
+
 
 }

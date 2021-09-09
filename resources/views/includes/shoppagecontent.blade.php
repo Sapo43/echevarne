@@ -13,49 +13,90 @@
               
                     <div class="action-bar-inner mb-30">
                          <!-- Abre row  de filtros--> 
-                    @if($novedadid)
                 
-                    <div class="row align-items-center ">
-                                 <div class="col-sm-3">
-                                 <div class="sort-by-wrapper">           
-                  
-                    {!! Form::select('marca', [$novedadid => $novedad]+$marcas, null, array('class' => 'form-control','id'=>'marca')) !!}
-                    </div>
-                    @else
 
                     <div class="row align-items-center">
-                                 <div class="col-sm-3">
-                                 <div class="sort-by-wrapper">                         
-                    {!! Form::select('marca', ['0' => 'Todas']+$marcas, null, array('class' => 'form-control','id'=>'marca')) !!}
-                    </div>
-                    @endif
-
-
-                    @if($rubroid)
+                        @if(!isset($novedad))
+                        <div class="col-sm-3">
+                        <label >Marcas :</label>
+                                <div class="sort-by-wrapper">                         
+                                {!! Form::select('marca', ['0' => 'Todas']+$marcas, null, array('class' => 'form-control','id'=>'marca')) !!}
                                 </div>
-                                <div class="col-sm-3">
-                                <div class="sort-by-wrapper">              
-                    {!! Form::select('rubro', [$rubroid => $novedad]+$rubros, null, array('class' => 'form-control','id'=>'rubro')) !!}
-                    </div>
-                    @else
-                    </div>
-                                <div class="col-sm-3">
-                                <div class="sort-by-wrapper">              
-                    {!! Form::select('rubro', ['0' => 'Todos']+$rubros, null, array('class' => 'form-control','id'=>'rubro')) !!}
-                    </div>
-                    @endif
-                                </div>
-                                <div class="col-sm-2">
+                        </div>
+                        <div class="col-sm-3">
+                        <label >Rubros :</label>
+                            <div class="sort-by-wrapper">              
+                                {!! Form::select('rubro', ['0' => 'Todos']+$rubros, null, array('class' => 'form-control','id'=>'rubro')) !!}
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                        <label >Codigo :</label>
                                     <div class="sort-by-wrapper">                 
                                         <input class="form-control" id="equivalencia"name="equivalencia" type="text" placeholder="Codigo">
                                     </div>
+                        </div>
+                        @else
+                        @if($marca==0)    
+                        <div class="col-sm-3">
+                        <label >Marcas :</label>
+                                <div class="sort-by-wrapper">                         
+                                {!! Form::select('marca', ['0' => 'Todas']+$marcas, null, array('class' => 'form-control','id'=>'marca')) !!}
                                 </div>
-                                <div class="col-sm-2">
+                        </div>
+                        @else
+                        <div class="col-sm-3">
+                        <label >Marcas :</label>
+                                <div class="sort-by-wrapper">                         
+                                {!! Form::select('marca', [$marca => $marcatxt]+['0' => 'Todas']+$marcas, null, array('class' => 'form-control','id'=>'marca')) !!}
+                                </div>
+                        </div>
+                        @endif
+                        @if($rubro==0)
+                        <div class="col-sm-3">
+                        <label >Rubros :</label>
+                            <div class="sort-by-wrapper">              
+                                {!! Form::select('rubro', ['0' => 'Todos']+$rubros, null, array('class' => 'form-control','id'=>'rubro')) !!}
+                            </div>
+                        </div>
+
+                        @else
+                       
+                        <div class="col-sm-3">
+                        <label >Rubros :</label>
+                            <div class="sort-by-wrapper">              
+                                {!! Form::select('rubro', [$rubro => $rubrotxt]+['0' => 'Todos']+$rubros, null, array('class' => 'form-control','id'=>'rubro')) !!}
+                            </div>
+                        </div>
+                        @endif
+                 
+                        @if($codigo=='')
+                        <div class="col-sm-2">
+                        <label >Codigo :</label>
+                                    <div class="sort-by-wrapper">                 
+                                        <input class="form-control" id="equivalencia"name="equivalencia" type="text" placeholder="Codigo">
+                                    </div>
+                        </div>
+                        @else
+                        <div class="col-sm-2">
+                        <label >Codigo :</label>
+                                    <div class="sort-by-wrapper">                 
+                                        <input class="form-control" id="equivalencia"name="equivalencia" type="text" placeholder="Codigo" value='{{$codigo}}'>
+                                    </div>
+                        </div>
+                        @endif
+
+
+
+                        @endif
+                        
+                        <div class="col-sm-2">
+                        <label >Descripción :</label>
                                     <div class="sort-by-wrapper">                 
                                         <input class="form-control" id="nombre"name="nombre" type="text" placeholder="Descripción">
                                     </div>
                                 </div>
                                 <div class="col-sm-1">
+                                <label ></label>
                                     <div class="sort-by-wrapper">                 
                                     <a onclick="f()"href="#" id="search" name="search" class="btn-echevarne3 form-control">
               
@@ -64,6 +105,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-1">
+                                <label ></label>
                                     <div class="sort-by-wrapper">                 
                                     <a href="#" id="clear" name="clear" class="btn-echevarne3 form-control">
               
@@ -131,11 +173,12 @@
                        
                     <div class="index" >
                     @if($count>1)
-<h1>Se encontraron {{$count}} productos</h1>
+<h5>Se encontraron {{$count}} productos</h5>
 @else
-<h1>Se encontro {{$count}} producto</h1>
+<h5>Se encontro {{$count}} producto</h5>
 @endif
                     </div>
+                    <br>
                     
                             @include('includes.shopgrid')
                           

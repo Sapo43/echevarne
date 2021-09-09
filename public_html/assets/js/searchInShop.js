@@ -105,10 +105,8 @@ if (rubro==0&marca==0&equivalencia==""&equiv==""&nombre==""){
 
 
 $("#clear").on('click', function(){
-    
-    $("select.form-control").val(0);
-    $("select").niceSelect('update');
-    $("input.form-control").val('');          
+    window.location='/shop';
+        
              
 });
 
