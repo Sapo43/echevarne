@@ -120,8 +120,21 @@ class NovedadesController extends Controller {
      */
     public function edit($id) {
         if (\Auth::guard('admin')->user()->can(['novedades-editar'])) {
+            $scripts = array(
+                ('/assets/js/jquery.nice-select.min.js'),
+                ('/assets/js/jquery.nice-select-with-search-multiple.js'),
+              
+             );
+            $csss=array(
+                    ('/assets/css/nice-search-multiple.css'),
+                    ('/assets/css/nice-select.min.css')
+              
+            );
             $novedad = Novedad::findOrFail($id);
-            return view('admin.novedades.edit', compact('novedad'));
+            $codigos=Producto::where('activo','=','1')->pluck('codigo', 'id')->toArray();
+            $rubros = Rubro::getRubros()->pluck('nombre', 'id')->toArray();
+            $marcas = Marca::getMarcas()->pluck('nombre', 'id')->toArray();
+            return view('admin.novedades.edit', compact('novedad','codigos','rubros','marcas','scripts','csss'));
         } else {
             return view('errors.noTienePermisos');
         }
