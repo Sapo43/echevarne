@@ -78,7 +78,7 @@ Route::post('/misDatos/{id}',[FrontController::class,'PostMisDatos'])->middlewar
 Route::post('/downloadPdf',[FrontProductosController::class,'downloadpdf']);
 
 
-
+Route::put('/mi-cuenta/update-password/{userId}',[FrontController::class,'updatePassword'])->middleware('auth')->name('miCuenta.update.password');
 
 /* * ------ Administrador----------* */
 Route::get('/admin', [HomeController::class,'index']);
@@ -99,8 +99,7 @@ Route::prefix('admin')->namespace('Admin')->group(static function() {
         Route::resource('permisosRoles', '\App\Http\Controllers\Admin\RoleAndPermissionController');
         Route::resource('menus', '\App\Http\Controllers\Admin\MenuController');
         Route::resource('novedades', '\App\Http\Controllers\Admin\NovedadesController');
-        Route::resource('descargas', '\App\Http\Controllers\Admin\DescargasController');
-        
+        Route::resource('descargas', '\App\Http\Controllers\Admin\DescargasController');        
         Route::resource('rubros', '\App\Http\Controllers\Admin\RubrosController');
         Route::resource('marcas', '\App\Http\Controllers\Admin\MarcasController');
         Route::resource('contactos', '\App\Http\Controllers\Admin\ContactosController');
@@ -119,7 +118,7 @@ Route::middleware('auth:admin')->group(static function () {
     
 Route::get('/admin/productos/edit/{id}',[ProductController::class,'edit'])->name('admin.productos.edit');
 Route::get('/admin/productos',[ProductController::class,'index'])->name('admin.productos.index');
-Route::put('/admin/productos/{producto}',[ProductController::class,'index'])->name('admin.productos.update');
+Route::post('/admin/productos/{id}',[ProductController::class,'update'])->name('admin.productos.update');
 Route::delete('/admin/productos/{id}',[ProductController::class,'destroy'])->name('admin.productos.destroy');
 Route::get('/admin/productos/create',[ProductController::class,'create'])->name('admin.productos.create');
 Route::post('/admin/store',[ProductController::class,'store'])->name('admin.productos.store');

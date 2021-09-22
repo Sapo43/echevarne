@@ -34,7 +34,7 @@
                                 <div class="product-details-info-content-wrap">
                                     <div class="prod-details-info-content">
                                         <h2>{{$producto->nombre}} - {{$producto->codigo}}</h2>
-                                        <!-- <h4>Codigo: {{$producto->codigo}}</h4> -->
+                                        <h6>{{$producto->marca->nombre}}</h6>
                                         <h5><b>Precio:</b> $ {{$producto->precio}} </h5>
                                         <p>Actulizado: {{$producto->actualizado}} </p>
                                         <p>IVA: % {{$producto->iva}} </p>
@@ -189,25 +189,7 @@
                                  <div class="content">
                                  <?php echo '<a class="cod-link" href="#" onclick="f(&quot;'.$producto->codigo.'&quot;)">'.$producto->codigo.'</a> '; ?>
                                      <span class="price">$ {{$producto->precio}}</span>
-                                     <!-- <div class="ratting">
-                                        @if(($producto->stock - $producto->stock_minimo) >= 1)
-            <span class="badge stock-disponible product mb-4 ml-xl-0 ml-4">Disponible</span>
-         
-                                           
-            @endif
-
-
-            @if( ($producto->stock <= $producto->stock_minimo ) && $producto->stock >0)
-            <span class="badge stock-consultar product mb-4 ml-xl-0 ml-4">Consultar</span>
-            @endif
-
-
-            @if($producto->stock <=0)
-            <span class="badge stock-nodisponible product mb-4 ml-xl-0 ml-4">No Disponible</span>
-            @endif
-               
-                                          
-                                        </div> -->
+                                     
                                  </div>
                           
 

@@ -7,7 +7,11 @@
                                             <a class="active" id="desc-tab" data-toggle="tab" href="#misdatosContent" role="tab">MIS DATOS</a>
                                         </li>
                                         <li>
-                                            <a id="profile-tab" data-toggle="tab" href="#pedidosContent">MIS PEDIDOS</a>
+                                        <a id="password-tab" data-toggle="tab" href="#passwordTab">CONTRASEÑA</a>
+                                        </li>
+                                        <li>
+                                        <a id="profile-tab" data-toggle="tab" href="#pedidosContent">MIS PEDIDOS</a>
+                                       
                                         </li>
                                     </ul>
 
@@ -17,10 +21,10 @@
                                             <div class="description-content">
                                             <h4></h4>
                                             <div class="row">
-<div class="col-lg-3">
-    </div>
-                    <div class="col-lg-6">
-                        <!-- Checkout Form Area Start -->
+                    <div class="col-lg-3">
+                        </div>
+                             <div class="col-lg-6">
+                       
                         <div class="checkout-billing-details-wrap">
                          
                             <div class="billing-form-wrap">
@@ -122,11 +126,76 @@
 
             <!-- cierro tabla -->
 
+
+            
                                                 
                                             </div>
                                             <!-- cierro tab -->
+                                            
                                         </div>
-                                    </div>
+                                        <div class="tab-pane fade" id="passwordTab">
+                                            <div class="product-rating-wrap">
+                                                <div class="average-rating">
+                                                
+                                                    
+                                                </div>
+                                                <div class="row contacto">
+        <div class="col-xs-12 col-sm-2 col-md-2 col-wop-l">
+         
+        </div>
+        <div class="col-xs-12 col-sm-10 col-md-10 col-wop-r-xs contactoWrapper">
+            <div class="row camposWrapper">
+                <div class="col-md-12">
+                    @if($errors->any())
+                        @foreach($errors->all() as $error)
+                            <div class="alert alert-danger" role="alert">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                <span class="sr-only">Error:</span>
+                                <span style="text-transform: capitalize;">&nbsp;{{$error}}</span>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+                {!! Form::model($cliente, ['route' => ['miCuenta.update.password', $cliente->id], 'method' => 'PUT'])!!}
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        {!! Form::label('contraseña_actual', 'Contraseña Actual') !!}
+                        {!! Form::password('contraseña_actual', array('class' => 'form-control tlp', 'title' => 'Ingrese aquí la contraseña que utilizo para ingresar al Sistema')) !!}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        {!! Form::label('contraseña', 'Nueva Contraseña') !!}
+                        {!! Form::password('contraseña', array('class' => 'form-control tlp', 'title' => 'Ingrese aquí su nueva contraseña. Recuerde que la misma debe estar compuesta por letras y números')) !!}
+                    </div>
+                    <div class="col-md-3 form-group">
+                        {!! Form::label('contraseña_rep', 'Repetir Contraseña') !!}
+                        {!! Form::password('contraseña_rep', array('class' => 'form-control tlp', 'title' => 'Repita aquí su nueva contraseña')) !!}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="  text-align: right;">
+                        <a href="{{ route('home') }}" class="btn btn-default">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp;
+                            Cancelar
+                        </a>&nbsp;&nbsp;
+                        <button type="submit" class="btn btn-default">
+                            <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>&nbsp;
+                            Guardar
+                        </button>
+                    </div>
+                </div>
+                {!! Form::hidden('clienteId', $cliente->id, array('id'=>'clienteId')) !!}
+                {!! Form::close() !!}
+            </div>
+        </div>
+    </div>
+            </div>
+                                                
+                                            </div>
+                                        </div>
+
+                                        
                                 </div>
                             </div>
                         </div>

@@ -142,15 +142,18 @@ class ProductosController extends Controller {
         $productosEquivalencia=explode(",", $productosEquivalencia->equivalencia);
         $productosEquivalencias=[];
         if(sizeof($productosEquivalencia)>0){
-            if ($productosEquivalencia[0]!=''){
-                $productosEquivalencias=Producto::filterAndPaginate1($request->get('nombre'), $request->get('rubro'), $request->get('marca'), $productosEquivalencia[0], "1")->get(5);
-            }            
+            // if ($productosEquivalencia[0]!=''){
+            //     $productosEquivalencias=Producto::filterAndPaginate1($request->get('nombre'), $request->get('rubro'), $request->get('marca'), $productosEquivalencia[0], "1")->get(5);
+            // }          
+          
+            $productosEquivalencias=Producto::whereIn('codigo', $productosEquivalencia)
+            ->get();
         }
         
 
-    
+ 
         
-        return view('includes.productdetailformodal',compact('producto','productosEquivalencia','productosEquivalencias'));
+        return view('includes.productdetailformoda',compact('producto','productosEquivalencia','productosEquivalencias'));
     }
 
 }

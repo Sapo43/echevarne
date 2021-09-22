@@ -18,7 +18,7 @@ function selectByName(slug,cantidad) {
    message: respuesta.msg,
    timeout: 2000,
 });
-console.log(respuesta.cantidad);
+
 if($('#qtyCart').html()=='') {
   $('#qtyCart').html('1');
 }else{

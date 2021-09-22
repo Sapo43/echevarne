@@ -9,8 +9,8 @@
         <meta name="author" content="Federico Raffetto">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link type="text/plain" rel="author" href="{{asset('humans.txt')}}" />
-        <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
-        <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon" />         
+        <link rel="shortcut icon" href="/assetsAdmin/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/assetsAdmin/favicon.ico" type="image/x-icon" />         
         
         <link href="{{ asset('assetsAdmin/css/bootstrap.min.css')}}" rel="stylesheet">        
         <link href="{{ asset('assetsAdmin/css/admin.min.css?v=2') }}" rel="stylesheet">
@@ -56,7 +56,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="{{ url('/admin') }}">
-                        <img src="{{asset('assetsAdmin/img/logo.png')}}" alt="Echevarne Hermanos" class="img-responsive"/>
+                        <img src="{{asset('assetsAdmin/img/logo-light.png')}}" alt="Echevarne Hermanos" class="img-responsive"/>
                     </a>
                 </div>
 
@@ -137,8 +137,8 @@
         </div>
         <!-- Scripts -->
   
-        <script src="/assets/js/jquery-3.3.1.min.js"></script>
-        <script src="/assets/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
         {!! HTML::script('assetsAdmin/js/bootstrap-confirmation.js') !!} 
 

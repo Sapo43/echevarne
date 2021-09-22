@@ -18,7 +18,7 @@
                                        
                                         </div>
 
-                                        <a href="#thumb-gallery" class="btn-large-view btn-gallery-popup">View Larger <i class="fa fa-search-plus"></i></a>
+                                        
                                     </div>
 
                                     <div class="product-details-thumbnail-nav">
@@ -33,9 +33,12 @@
                             <div class="col-md-7">
                                 <div class="product-details-info-content-wrap">
                                     <div class="prod-details-info-content">
-                                        <h2>{{$producto->nombre}}</h2>
-                                        <h4 class="price"><strong>Codigo:</strong> <span>{{$producto->codigo}} </span></span></h4>
-                                        <h6 class="price"><strong>Precio:</strong> {{$producto->precio}} <span></h6>
+                                        <h2>{{$producto->nombre}} - {{$producto->codigo}}</h2>
+                                        <h6>{{$producto->marca->nombre}}</h6>
+                                        <h5><b>Precio:</b> $ {{$producto->precio}} </h5>
+                                        <p>Actulizado: {{$producto->actualizado}} </p>
+                                        <p>IVA: % {{$producto->iva}} </p>
+
                                         
 
                                         <div class="product-config">
@@ -46,8 +49,7 @@
                                                         <td class="config-option">
                                                             <div class="config-color">
                                                                 @foreach($productosEquivalencia as $dato)
-                                                                <a href="#">{{$dato->codigo}}</a>
-                                                                <?php echo '<a class="cod-link" href="#" onclick="f(&quot;'.$dato->codigo.'&quot;)">'.$dato->codigo.'</a> '; ?>
+                                                                <?php echo '<a class="cod-link" href="#" onclick="f(&quot;'.$dato.'&quot;)">'.$dato.'</a> '; ?>
                                                                 @endforeach
                                                                
                                                                
@@ -58,6 +60,8 @@
                                                 </table>
                                             </div>
                                         </div>
+                                   
+                                        @if(url('/').'/cart' != url()->previous())
 
                                         <div class="product-action">
                                             <div class="action-top d-sm-flex">
@@ -78,7 +82,7 @@
                                         </div> 
 
 
-                                       
+                                       @endif
 
   
  
@@ -107,67 +111,45 @@
                         </div>
                <br>
                         <div class="row">
+                           
                             <div class="col-12">
                                  <!-- Start carousel -->
+                                 
                                  <div class="container">
-  <div class="carousel slide multi-item-carousel" id="theCarousel">
-    <!-- <div class="carousel-inner row w-100 mx-auto" style="height:300px"> -->
-    <div class="carousel-inner row w-100 mx-auto">
+                                 <div id="carrusel">
+    <a href="#" class="left-arrow"><img src="assets/left-arrow.png" /></a>
+    <a href="#" class="right-arrow"><img src="assets/right-arrow.png" /></a>
+    <div class="carrusel">
+{{sizeof($productosEquivalencias)}}
+    @for ($i = 0; $i < sizeof($productosEquivalencias) ; $i++)
+    <input type="hidden" value="{{$producto=$productosEquivalencias[$i]}}">
+    <div class="product" id="product_{{$i}}">
+        <div class="resize-image">  <a href=""  onclick="f({{$producto->codigo}})"  >
+                                 @include('pages.product.partialsForModal')    
 
-
-    @for ($i = 0; $i < 1 ; $i++)
-    <div class="carousel-item col-md-4 active " style="height:auto;">
-    <div class="card" >
-    <input type="hidden" value="{{$producto=$productosEquivalencia[0]}}">
-    @include('pages.product.partials')
-            <div class="card card-body">
-            <h5 class="card-title">{{$producto->codigo}}</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
- 
-    </div>
-      </div>
-      </div>
-@endfor  
-    @for ($i = 1; $i < sizeof($productosEquivalencia) ; $i++)
-    <div class="carousel-item col-md-4">
-    <div class="card" >
-    <input type="hidden" value="{{$producto=$productosEquivalencia[$i]}}">
-    @include('pages.product.partials')
-            <div class="card card-body">
-            <h5 class="card-title">{{$producto->codigo}}</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
- 
-    </div>
-      </div>
-      </div>
-@endfor  
-    
-    
+                                 </a></div>
   
-
-    </div>
-    <a style="color:red"class="carousel-control-prev" href="#theCarousel" role="button" data-slide="prev">
-      <span style="color:red" class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span  style="color:red" class="sr-only">Anterior</span>
-    </a>
-    <a style="color:red" class="carousel-control-next" href="#theCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Siguiente</span>
-    </a>
-  </div>
-</div>
-
-
-
-
-                        <!-- end carousel -->
-                    </div>
-                </div>
-            </div>
+    
+                                
+                                 <?php echo '<a class="cod-link" href="#" onclick="f(&quot;'.$producto->codigo.'&quot;)">'.$producto->codigo.'</a> '; ?>
+                                 <br>
+                                     <span class="price">$ {{$producto->precio}}</span>
+                                     
+                                
         </div>
+
+    @endfor 
+        
     </div>
+</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+   
+                      
 
 
 

@@ -31,9 +31,21 @@ class ProductController extends Controller {
         if (\Auth::guard('admin')->user()->can(['productos-ver'])) {
             $rubros = Rubro::getRubros()->pluck('nombre', 'id')->toArray();
             $marcas = Marca::getMarcas()->pluck('nombre', 'id')->toArray();
+            $scripts = array(
+                ('/assets/js/jquery.nice-select.min.js'),
+                ('/assets/js/jquery.nice-select-with-search-multiple.js'),
+              
+             );
+            $csss=array(
+                    ('/assets/css/nice-search-multiple.css'),
+                    ('/assets/css/nice-select.min.css')
+              
+            );
+
+
             $productos = Producto::filterAndPaginate($request->get('nombre'), $request->get('rubro'), $request->get('marca'), $request->get('codigo'), $request->get('activo'));
             $productos=$productos->paginate(24);
-            return view('admin.productos.index', compact('productos', 'rubros', 'marcas'));
+            return view('admin.productos.index', compact('productos', 'rubros', 'marcas','scripts','csss'));
         } else {
             return view('errors.noTienePermisos');
         }
@@ -60,9 +72,10 @@ class ProductController extends Controller {
      * @return Response
      */
     public function store() {
+       
         if (\Auth::guard('admin')->user()->can(['productos-crear'])) {
             $data = \Request::all();
-
+        
             $v = $this->validarProducto($data);
 
             if ($v->fails()) {
@@ -119,9 +132,11 @@ class ProductController extends Controller {
      * @return Response
      */
     public function update($id) {
+      
+    
         if (\Auth::guard('admin')->user()->can(['productos-editar'])) {
             $data = \Illuminate\Support\Facades\Request::all();
-
+        
             $producto = Producto::findOrFail($id);
 
             if (!isset($data['imagen']) || is_null($data['imagen']) || $data['imagen'] == '') {

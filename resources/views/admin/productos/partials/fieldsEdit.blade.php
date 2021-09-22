@@ -33,11 +33,15 @@
 <div class="row">
     <div class="col-md-4 form-group">
         {!! Form::label('rubro_id', 'Rubro') !!}
+        <div class="sort-by-wrapper">  
         {!! Form::select('rubro_id', ['0' => 'Seleccionar...']+  $rubros, null, ['class' => 'form-control']) !!}
+        </div>
     </div>
     <div class="col-md-4 form-group">
         {!! Form::label('marca_id', 'Marca') !!}
+        <div class="sort-by-wrapper">  
         {!! Form::select('marca_id', ['0' => 'Ninguna']+  $marcas, null, ['class' => 'form-control']) !!}
+        </div>
     </div>
     <div class="col-md-4 form-group">
         {!! Form::label('stock', 'Stock') !!}

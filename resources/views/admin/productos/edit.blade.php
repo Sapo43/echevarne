@@ -27,7 +27,7 @@
                     @endif
                 </div>
             </div>                
-            {!! Form::model($producto, ['route' => ['admin.productos.update', $producto->id], 'method' => 'PUT', 'files' => 'true'])!!}                
+            {!! Form::model($producto, ['route' => ['admin.productos.update', $producto->id], 'method' => 'post', 'files' => 'true'])!!}                
             @include('admin.productos.partials.fieldsEdit')   
             <div class="row">
                 <div class="col-md-12" style="  text-align: right;">

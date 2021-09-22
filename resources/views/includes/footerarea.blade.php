@@ -5,7 +5,7 @@
                     <div class="col-lg-3">
                         <div class="widget-item">
                             <div class="about-widget">
-                                <a href="index.html"><img src="/assets/img/EchevarneHnos_LogoTexto.png" alt="Logo" /></a>
+                                <a href="/"><img src="/assets/img/EchevarneHnos_LogoTexto.png" alt="Logo" /></a>
                                 <p>Tienda de Repuestos y Accesorios para autos.
 ¿Qué pieza estás necesitando? Seguramente la vas a encontrar navegando la web.
 </p>
@@ -19,7 +19,7 @@
                             <div class="widget-body">
                                 <ul class="widget-list">
                                     <li><a href="/about">La empresa</a></li>
-                                    <li><a href="/contacto">Contactanos</a></li>
+                                   
                                     
                                 </ul>
                             </div>
@@ -33,6 +33,15 @@
                                 <ul class="widget-list">
                                     <li><a href="/shop">Shop</a></li>                       
                                     <li><a href="/contacto">Contacto</a></li>
+                                    <li>
+                                    <a href="https://www.facebook.com/echevarnehnos" target="_blank" class="fa fa-facebook"></a>
+                                    <li>
+
+
+<a href="https://www.instagram.com/echevarnehnos/" target="_blank" class="fa fa-instagram"></a>
+                                  </li>
+                                
+                                    
                                 </ul>
                             </div>
                         </div>

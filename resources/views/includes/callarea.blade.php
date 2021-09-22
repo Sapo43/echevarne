@@ -7,8 +7,8 @@
                             <img src="/assets/img/icons/icon-1.png" alt="fast delivery">
                         </div>
                         <div class="call-to-action-item__info">
-                            <h3>Free Delivery</h3>
-                            <p>Contactate para conocer las promos</p>
+                            <h3>Envíos a Todo el País</h3>
+                            <p>¡LLegamos a donde vos estás!</p>
                         </div>
                     </div>
                 </div>
@@ -19,8 +19,8 @@
                             <img src="/assets/img/icons/icon-2.png" alt="quality">
                         </div>
                         <div class="call-to-action-item__info">
-                            <h3>Quality Products</h3>
-                            <p>Todos nuestros productos certificados</p>
+                            <h3>Productos de Calidad</h3>
+                            <p>Las mejores marcas en un solo lugar</p>
                         </div>
                     </div>
                 </div>
@@ -31,8 +31,8 @@
                             <img src="/assets/img/icons/icon-3.png" alt="return">
                         </div>
                         <div class="call-to-action-item__info">
-                            <h3>Soporte Online</h3>
-                            <p>Para satisfacer las necesidades del cliente</p>
+                            <h3>Pago 100% seguro</h3>
+                            <p>Elegí el medio de pago más conveniente para vos!</p>
                         </div>
                     </div>
                 </div>

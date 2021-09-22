@@ -1,18 +1,21 @@
 // $("#search").on('click', function(){
 
 function f(param) {  
-
+    
     if(param){
+        
         $("input.form-control").val(''); 
         if (document.getElementById('basicModal').style.display){
-            if ($("#basicModal").data('bs.modal').isShown == true){
           
-                setTimeout(function() {
-                    $('#basicModal').modal('hide');
-               }, 500);
+            // if ($("#basicModal").data('bs.modal').isShown == true){
+            //     console.log(param+"PARAMMMm");
+            //     setTimeout(function() {
+            //         $('#basicModal').modal('hide');
+            //    }, 500);
                  
                
-            }   
+            // }
+            cartClick();   
         }
         
     }
@@ -69,7 +72,8 @@ if (rubro==0&marca==0&equivalencia==""&equiv==""&nombre==""){
 
 
             $('.index').css('display', 'none');
-            $('#table_data').html(response);             
+            $('#table_data').html(response);
+            window.scrollTo(0, 0);               
             $('.countBusqueda').css('display', 'block');          
             $('#linksShopContent').css('display', 'none');
             $('#linksShopGrid').css('display', 'block');    
@@ -130,7 +134,8 @@ var _token= $('meta[name="csrf-token"]').attr('content')
         url: '/shopRecentSearch',
         success: function(response)
         {     
-            $('#sidebarProduct').html(response);    
+            $('#sidebarProduct').html(response); 
+             
         }     
     })
 

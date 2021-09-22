@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Helpers\StrHelper;
 use App\Http\Traits\AuditTrait;
 use File;
+use Illuminate\Support\Facades\Validator;
 class FrontController extends Controller {
 
   use PTrait;
@@ -50,7 +51,7 @@ class FrontController extends Controller {
         $csss=array(
             ('/assets/css/iziToast.css'),
             ('/assets/css/addtocartanimation.css'),
-            ('/assets/css/carouselProducto.css')
+            ('/assets/css/carrusel.css')
     );
         $productos=Producto::orWhere('codigo','=','Gul tp x4')
                             ->orWhere('codigo','=','HUT 7 K 1515')
@@ -75,14 +76,14 @@ class FrontController extends Controller {
             ('/assets/js/paginatorshop.js'),
             ('/assets/js/searchInShop.js'),
             ('/assets/js/loadDataToModal.js'),
-            ('/assets/js/carouselProducto.js'),
+            ('/assets/js/carrusel.js'),
             ('/assets/js/deleteFromCart.js'),
             ('/assets/js/onkeyupsearch.js')
          );
         $csss=array(
                 ('/assets/css/iziToast.css'),
                 ('/assets/css/addtocartanimation.css'),
-                ('/assets/css/carouselProducto.css')
+                ('/assets/css/carrusel.css')
         );
         $rubros = Rubro::getRubros()->pluck('nombre', 'id')->toArray();
         $marcas = Marca::getMarcas()->pluck('nombre', 'id')->toArray();
@@ -248,7 +249,10 @@ public function misDatos(Request $request){
          return view('pages.misDatos.tablaPedidos',compact('pedidos'));
      }
 
-    return view('pages.misDatos.index',compact('background','seccion','cart','scripts','pedidos'));
+     
+        $cliente = User::findOrFail(\Auth::user()->id);
+
+    return view('pages.misDatos.index',compact('cliente','background','seccion','cart','scripts','pedidos'));
 }
 
 public function PostMisDatos(Request $request,$id){
@@ -273,6 +277,40 @@ public function PostMisDatos(Request $request,$id){
 }
 
 
+public function updatePassword($userId)
+{
+    if (\Auth::user()->id == $userId) {
+        $data = \Request::all();
+        $v = $this->validarContraseña($data);
+        if ($v->fails()) {
+            return redirect()->back()->withErrors($v->errors())->withInput(\Request::All());
+        }
+
+        $user = User::findOrFail($userId);
+        //Si la Contraseña Actual ingresada es Correcta
+        if (\Hash::check($data['contraseña_actual'], $user->password)) {
+            $user->password = \Hash::make($data['contraseña']);
+            $user->setAudit('web');
+            //Por si viene del cambio de Contraseña
+            if (!isset(\Auth::user()->last_login)) {
+                $user->last_login = \Carbon\Carbon::now();
+            }
+            $user->save();
+        } else {
+            return redirect()->back()->withErrors(['La contraseña ingresada no coincide con su contraseña actual']);
+        }
+
+        return redirect()->route('home');
+
+    } else {
+        return view('errors.503');
+    }
+}
+
+
+
+
+
 public function shopRecentSearch(Request $request){
    
  
@@ -295,6 +333,29 @@ public function shopRecentSearch(Request $request){
 
 
 
+
+
+private function validarContraseña($data)
+{
+
+    $messages = [
+        'contraseña_actual.required' => 'El Campo Contraseña Actual es Obligatorio',
+        'contraseña.min' => 'La Contraseña debe tener como minimo 8 caracteres',
+        'contraseña.required' => 'El campo Nueva Contraseña es obligatorio',
+        'contraseña.regex' => 'La Nueva Contraseña debe contener letras y numeros',
+        'contraseña.different' => 'La Nueva Contraseña debe ser diferente a la Actual',
+        'contraseña_rep.same' => 'La Contraseñas ingresadas no coinciden',
+        'contraseña_rep.required' => 'El campo Repetir Contraseña es obligatorio',
+    ];
+
+    $rules = array(
+        'contraseña_actual' => 'required',
+        'contraseña' => 'required|min:8|regex:/^.*(?=.{2,})(?=.*[a-zA-Z])(?=.*[0-9]).*$/|different:contraseña_actual',
+        'contraseña_rep' => 'required|same:contraseña',
+    );
+
+    return Validator::make($data, $rules, $messages);
+}
     
 
     

@@ -20,11 +20,15 @@
                 {!! Form::model(Request::all(), ['route' => ['admin.productos.index'], 'method' => 'GET'])!!}
                 <div class="col-md-2 form-group">
                     {!! Form::label('rubro', 'Rubro') !!}
+                    <div class="sort-by-wrapper">  
                     {!! Form::select('rubro', ['0' => 'Todos']+$rubros, null, ['class' => 'form-control']) !!}
+                    </div>
                 </div>
                 <div class="col-md-2 form-group">
                     {!! Form::label('marca', 'Marca') !!}
+                    <div class="sort-by-wrapper">  
                     {!! Form::select('marca', ['0' => 'Todas']+$marcas, null, ['class' => 'form-control']) !!}
+                    </div>
                 </div>
                 <div class="col-md-2 form-group">
                     {!! Form::label('nombre', 'Nombre Producto') !!}
@@ -36,7 +40,9 @@
                 </div>
                 <div class="col-md-2 form-group">
                     {!! Form::label('activo', 'Estado Producto') !!}
+                    <div class="sort-by-wrapper">  
                     {!! Form::select('activo', ['' => 'Todos', '1' => 'Activos', '0' => 'Inactivos'], null, ['class' => 'form-control']) !!}
+</div>
                 </div>
                 <div class="col-md-2 form-group">
                     {!! Form::label('', '') !!}
