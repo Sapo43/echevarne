@@ -17,11 +17,7 @@
                         <div class="card-body ">
                             <div class="pb-2 icon-download" >
                             <a class="" href="{{url('file/'.$descarga->archivo)}}" title="Descargar" target="_blank">
-                            
-                            <img class=""src="/assets/iconDownloads/EchevarneHnos_Icono{{random_int(1, $sizeofIconsFolder)}}.png"  style="">
-                          
-                            
-                            
+                            {!! HTML::image($descarga->imagen, $descarga->nombre, array('width'=>'100px')) !!}
                     </a>
                                 <span class="ti-receipt icon-md color-secondary"></span>
                             </div>

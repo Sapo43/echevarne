@@ -4,6 +4,7 @@ var imagenes = new Array();
 $(document).ready(function() {
     var numImages = 6;
     if (numImages <= 3) {
+        cpmspñe
         $('.right-arrow').css('display', 'none');
         $('.left-arrow').css('display', 'none');
     }

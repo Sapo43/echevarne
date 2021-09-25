@@ -22,8 +22,26 @@
                                     </div>
 
                                     <div class="product-details-thumbnail-nav">
+                                         <!-- Stock -->
+                                         <div class="ratting">
+                                         <h6>Stock :
+
+                                        @if(($producto->stock - $producto->stock_minimo) >= 1)
+            <span class="badge stock-disponible product mb-4 ml-xl-0 ml-4">Disponible</span>
+                                                   
+            @endif
+
+            @if( ($producto->stock <= $producto->stock_minimo ) && $producto->stock >0)
+            <span class="badge stock-consultar product mb-4 ml-xl-0 ml-4">Consultar</span>
+            @endif
+
+            @if($producto->stock <=0)
+            <span class="badge stock-nodisponible product mb-4 ml-xl-0 ml-4">No Disponible</span>
+            @endif
+            </h6>                   
                                          
-                                      
+                                        </div>
+                                        <!-- End Stock -->
                                     </div>
                                 </div>
                             </div>
@@ -34,7 +52,7 @@
                                 <div class="product-details-info-content-wrap">
                                     <div class="prod-details-info-content">
                                         <h2>{{$producto->nombre}} - {{$producto->codigo}}</h2>
-                                        <h6>{{$producto->marca->nombre}}</h6>
+                                        <h6>Marca: {{$producto->marca->nombre}}</h6>
                                         <h5><b>Precio:</b> $ {{$producto->precio}} </h5>
                                         <p>Actulizado: {{$producto->actualizado}} </p>
                                         <p>IVA: % {{$producto->iva}} </p>
@@ -45,7 +63,7 @@
                                             <div class="table-responsive">
                                                 <table class="table table-bordered">
                                                     <tr>
-                                                        <th class="config-label">Equivalencias</th>
+                                                        <th class="config-label">Equivalencias*</th>
                                                         <td class="config-option">
                                                             <div class="config-color">
                                                                 @foreach($productosEquivalencia as $dato)
@@ -90,66 +108,94 @@
 
 
                                         <div class="product-meta">
-                                            <!-- <span class="sku_wrapper">SKU: <span class="sku">N/A</span></span>
-
-                                            <span class="posted_in">Categories:
-                                            <a href="#">Best Seller,</a>
-                                            <a href="#">Parts,</a>
-                                            <a href="#">Shop</a>
-                                        </span>
-
-                                            <span class="tagged_as">Tags:
-                                            <a href="#">Seller,</a>
-                                            <a href="#">Modern,</a>
-                                            <a href="#">Parts</a>
-                                        </span> -->
+                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- End Product Info Area -->
                         </div>
-               <br>
-                        <div class="row">
-                           
-                            <div class="col-12">
-                                 <!-- Start carousel -->
-                                 
-                                 <div class="container">
-                                 <div id="carrusel">
-    <a href="#" class="left-arrow"><img src="assets/left-arrow.png" /></a>
-    <a href="#" class="right-arrow"><img src="assets/right-arrow.png" /></a>
-    <div class="carrusel">
-{{sizeof($productosEquivalencias)}}
-    @for ($i = 0; $i < sizeof($productosEquivalencias) ; $i++)
-    <input type="hidden" value="{{$producto=$productosEquivalencias[$i]}}">
-    <div class="product" id="product_{{$i}}">
-        <div class="resize-image">  <a href=""  onclick="f({{$producto->codigo}})"  >
-                                 @include('pages.product.partialsForModal')    
-
-                                 </a></div>
-  
-    
-                                
-                                 <?php echo '<a class="cod-link" href="#" onclick="f(&quot;'.$producto->codigo.'&quot;)">'.$producto->codigo.'</a> '; ?>
-                                 <br>
-                                     <span class="price">$ {{$producto->precio}}</span>
-                                     
-                                
-        </div>
-
-    @endfor 
-        
-    </div>
-</div>
+                      <div class="row">
+                                <div class="col-12">                           
+                                    <div class="container">
+                                    @if(sizeof($productosEquivalencias)>0)
+                                        <h5>Equivalencias disponibles</h5>
+                                        
+                                        <div id="carrusel">
+                                            <a href="" class="left-arrow"><img src="assets/left-arrow.png" /></a>
+                                            <a href="" class="right-arrow"><img src="assets/right-arrow.png" /></a>
+                                            <div class="carrusel">
+                                            @for ($i = 0; $i < sizeof($productosEquivalencias) ; $i++)
+                                            <input type="hidden" value="{{$producto=$productosEquivalencias[$i]}}">
+                                                    <div class="product slides" id="product_{{$i}}">
+                                                            <div class="resize-image"> 
+                                                            <?php echo '<a class="cod-link" href="#" onclick="f(&quot;'.$producto->codigo.'&quot;)">'?>
+                                                             @include('pages.product.partialsForModal')    
+                                                            </a>
+                                                            </div>
+                                                            <?php echo '<a class="cod-link" href="#" onclick="f(&quot;'.$producto->codigo.'&quot;)">'.$producto->codigo.'</a> '; ?>
+                                                        
+                                                            <span class="price">$ {{$producto->precio}}</span>
+                                                    </div>
+                                            @endfor 
+                                            </div>
+                                        </div>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
+    <div>
+<p style='color:red'>* Equivalencias segun otros catalogos / marcas</p>
+    </div>
+<script>
+                        var current = 0;
+var imagenes = new Array();
+ 
+$(document).ready(function() {
+    var numImages={{sizeof($productosEquivalencias)}};
+    if (numImages <= 3) {
+        $('.right-arrow').css('display', 'none');
+        $('.left-arrow').css('display', 'none');
+    }
+ 
+    $('.left-arrow').on('click',function() {
+        console.log(current);
+        if (current > 0) {
+            current = current - 1;
+        } else {
+            current = numImages - 3;
+        }
+ 
+        $(".carrusel").animate({"left": -($('#product_'+current).position().left)}, 600);
+ 
+        return false;
+    });
+ 
+    $('.left-arrow').on('hover', function() {
+        $(this).css('opacity','0.5');
+    }, function() {
+        $(this).css('opacity','1');
+    });
+ 
+    $('.right-arrow').on('hover', function() {
+        $(this).css('opacity','0.5');
+    }, function() {
+        $(this).css('opacity','1');
+    });
+ 
+    $('.right-arrow').on('click', function() {
+        if (numImages > current + 3) {
+            current = current+1;
+        } else {
+            current = 0;
+        }
+ 
+        $(".carrusel").animate({"left": -($('#product_'+current).position().left)}, 600);
+ 
+        return false;
+    }); 
+ });
 
 
-
-   
-                      
-
-
-
+</script>

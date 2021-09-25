@@ -60,7 +60,7 @@
                 <div class="col-12 col-md-7 col-lg-6 col-xl-8 d-none d-lg-block">
 
                     <!-- Image -->
-                    <div class="bg-cover vh-100 ml-n3 background-img" style="background-image: url(img/hero-bg-1.jpg);">
+                    <div class="bg-cover vh-100 ml-n3 background-img" style="background-image: url(img/imagen_login.jpg);">
                         <div class="position-absolute login-signup-content">
                             <div class="position-relative text-white col-md-12 col-lg-7">
                                 <h2 class="text-white">Crea tu cuenta</h2>

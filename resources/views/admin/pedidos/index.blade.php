@@ -16,9 +16,7 @@
                     <tr>
                         <th>Fecha</th>
                         <th>Usuario</th>
-                      
-                        <th>Apellido</th>
-                        <th>Total</th>
+                       <th>Total</th>
                         <th>Cant Productos</th>
                         <th>Notas</th>
                         <th>Status</th>                        

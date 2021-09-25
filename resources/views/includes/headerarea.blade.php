@@ -10,27 +10,9 @@
                 <div class="col-lg-7 d-none d-lg-block">
                     <div class="site-navigation">
                         <ul class="main-menu nav">
-                            <!-- <li class="has-submenu"><a href="/">Home</a>
-                                 <ul class="sub-menu">
-                                    <li><a href="index.html">Home 1</a></li>
-                                    <li><a href="index-2.html">Home 2</a></li>
-                                    <li><a href="index-boxed.html">Home Box Layout</a></li>
-                                </ul> 
-                            </li> -->
-                            <!-- <li><a href="/about">Nosotros</a></li> -->
-                            <li class="has-submenu"><a href="/shop">Shop</a>
-                                
-                            </li>
-                            <!-- <li class="has-submenu"><a href="/servicios">Servicios</a> -->
-                                <!-- <ul class="sub-menu">
-                                    <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                    <li><a href="blog.html">Blog Right Sidebar</a></li>
-                                    <li><a href="blog-details.html">Single Blog</a></li>
-                                    <li><a href="blog-details-sidebar.html">Single Blog Sidebar</a></li>
-                                </ul> -->
-                            </li>
-                            <li><a href="/descargas">Catalogos</a></li>
-                           
+                            <li class="has-submenu"><a href="/shop">Shop</a></li>
+                            <li><a href="/about">Nosotros</a></li>
+                            <li><a href="/descargas">Catalogos</a></li>                           
                             <li><a href="/contacto">Contacto</a></li>
                         </ul>
                     </div>

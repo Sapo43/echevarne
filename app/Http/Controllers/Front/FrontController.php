@@ -46,7 +46,8 @@ class FrontController extends Controller {
             ('/assets/js/addToCart.js'),     
             ('/assets/js/deleteFromCart.js'),
             ('/assets/js/precioslistacompraventa.js'),
-             ('/assets/js/loadDataToModal.js')
+             ('/assets/js/loadDataToModal.js'),
+             ('/assets/js/carrusel.js')
         );
         $csss=array(
             ('/assets/css/iziToast.css'),
@@ -76,9 +77,10 @@ class FrontController extends Controller {
             ('/assets/js/paginatorshop.js'),
             ('/assets/js/searchInShop.js'),
             ('/assets/js/loadDataToModal.js'),
-            ('/assets/js/carrusel.js'),
+            
             ('/assets/js/deleteFromCart.js'),
-            ('/assets/js/onkeyupsearch.js')
+            ('/assets/js/onkeyupsearch.js'),
+         
          );
         $csss=array(
                 ('/assets/css/iziToast.css'),
@@ -164,7 +166,7 @@ class FrontController extends Controller {
     ('/assets/js/deleteFromCart.js') 
     );
     $cart= \Session::get('cart');
-    $seccion="About";
+    $seccion="Nosotros";
        return view('pages.about.index',compact('background','seccion','cart','scripts'));
    }
     

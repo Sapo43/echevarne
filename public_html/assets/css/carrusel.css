@@ -51,3 +51,12 @@
     .resize-image {
         width: 80%;
     }
+
+    .slides {
+  
+        display: grid;
+
+        align-items: self-end;
+        border-radius: 10px;
+     
+      }
