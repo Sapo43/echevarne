@@ -43,7 +43,8 @@ class ClientesController extends Controller
 
             $operatorias = ['CONS FINAL' => 'CONS FINAL', 'MONOTRIBUTO' => 'MONOTRIBUTO', 'INSCRIPTO' => 'INSCRIPTO', 'OTRO' => 'OTRO'];
      		$vendedor= ['1'=>'SI','0'=>'NO'];
-            return view('admin.clientes.create', compact('operatorias','vendedor'));
+      
+            return view('admin.clientes.create', compact('operatorias','vendedor',));
         } else {
             return view('errors.noTienePermisos');
         }
@@ -97,6 +98,7 @@ class ClientesController extends Controller
         $cliente = User::findOrFail($id);
         $operatorias = ['CONS FINAL' => 'CONS FINAL', 'MONOTRIBUTO' => 'MONOTRIBUTO', 'INSCRIPTO' => 'INSCRIPTO', 'OTRO' => 'OTRO'];
      	$vendedor= ['1'=>'SI','0'=>'NO'];
+      
         return view('admin.clientes.edit', compact('cliente', 'operatorias','vendedor'));
     }
 
@@ -200,6 +202,8 @@ class ClientesController extends Controller
             'nombre' => 'required',
             'email' => 'email',
             'dni' => 'required_with:cuit|string|min:7|max:8',
+            'porcentaje_compra' =>'required',
+            'porcentaje_venta' => 'required '
             
         );
 
