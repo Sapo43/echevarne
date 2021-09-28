@@ -21,8 +21,9 @@
                                         
                                     </div>
 
-                                    <div class="product-details-thumbnail-nav">
+                                    <div class="">
                                          <!-- Stock -->
+                                         <br>
                                          <div class="ratting">
                                          <h6>Stock :
 
@@ -51,14 +52,26 @@
                             <div class="col-md-7">
                                 <div class="product-details-info-content-wrap">
                                     <div class="prod-details-info-content">
+                                        <div class="row">
+                                        <div class="col-md-12">
                                         <h2>{{$producto->nombre}} - {{$producto->codigo}}</h2>
-                                        <h6>Marca: {{$producto->marca->nombre}}</h6>
-                                        <h5><b>Precio:</b> $ {{$producto->precio}} </h5>
-                                        <p>Actulizado: {{$producto->actualizado}} </p>
-                                        <p>IVA: % {{$producto->iva}} </p>
+                                        </div>
+                                        </div>
+                                   
+                                  
+                                            <h6>Marca: {{$producto->marca->nombre}}</h6>
+                                            
+                                          
+                                            <h6 style="color:#F76725">Precio: $ {{$producto->precio}} </h6>
+                                       
 
-                                        
+                                 
+                                     
+                                   
+                                 
 
+                                        <div class="row">
+                                        <div class="col-md-12">
                                         <div class="product-config">
                                             <div class="table-responsive">
                                                 <table class="table table-bordered">
@@ -78,28 +91,60 @@
                                                 </table>
                                             </div>
                                         </div>
+                                        </div>
+                                        </div>
                                    
                                         @if(url('/').'/cart' != url()->previous())
 
                                         <div class="product-action">
-                                            <div class="action-top d-sm-flex">
-                                                <div class="pro-qty mr-3 mb-4 mb-sm-0">
+                                            <div class="action-top flex">
+                                            <div class="row">
+                                                    <div class="col-sm-2 col-md-2 col-lg-2">
+
+                                                    </div>
+                                                    
+
+                                                    <div class="col-sm-8 col-md-8 col-lg-8">
+                                                    <div class="pro-qty ">
                                                     <label for="quantity" class="sr-only">Cantidad</label>
                                                     <input type="number" id="quantity" title="Quantity" value="1" />
+                                                    </div>                                          
+                                                       
+                                                        <button class="cart-button btn btn-orange" onclick="selectByName('{{$producto->slug}}',$('#quantity').val());">
+                                                        <span class="add-to-cart">Agregar</span>
+                                                        <span class="added"></span>
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                        </button>
+
+                                                    </div>
+                                                 
+                                                       
+                                                        
                                                 </div>
-
-                                                <button class="cart-button btn btn-orange" onclick="selectByName('{{$producto->slug}}',$('#quantity').val());">
-      <span class="add-to-cart">Agregar</span>
-      <span class="added"></span>
-      <i class="fa fa-shopping-cart"></i>
-    </button>
-
                                                
                                                 
                                             </div>
                                         </div> 
 
+                                        <div class="row">
+                                            <div class="col-md-9">
 
+                                            </div>
+                                            <div class="col-md-3">
+                                            <p style="text-align:right">IVA: {{$producto->iva}} %</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-7">
+
+                                            </div>
+                                            <div class="col-md-5">
+                                                    <p style="text-align:right">Actualizado: {{ $producto->actualizado}} </p>
+                                            </div>
+                                        </div>
+                                   
+                                      
+                                     
                                        @endif
 
   
@@ -146,7 +191,7 @@
                             </div>
 
     <div>
-<p style='color:red'>* Equivalencias segun otros catalogos / marcas</p>
+<p style='color:red'>* Estos códigos se corresponde a equivalencias de productos según otras marcas</p>
     </div>
 <script>
                         var current = 0;

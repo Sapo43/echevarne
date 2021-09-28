@@ -4689,15 +4689,15 @@ input[type=number] {
 
 .stock-disponible{
     color: #fff;
-    background-color: #9EDE7E
+    background-color: #22a89a
 }
 .stock-nodisponible{
     color: #fff;
-    background-color: #DE7E7E
+    background-color: #d2604e
 }
 .stock-consultar{
     color: #fff;
-    background-color: #DDDE7E
+    background-color: #f4da4d
 }
 
 .cod-link{

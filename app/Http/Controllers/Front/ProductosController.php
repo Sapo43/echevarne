@@ -143,6 +143,12 @@ class ProductosController extends Controller {
         if(sizeof($productosEquivalencia)>0){
             $productosEquivalencias=Producto::whereIn('codigo', $productosEquivalencia)->get();
         }
+        // $input  = $producto->actualizado;
+        // $format = 'd/m/Y';
+        // \Carbon\Carbon::setLocale('es');
+        // $date=\Carbon\Carbon::createFromFormat($format, $input);
+        // $producto->actualizado= $date->dayName." ".$date->day." de ".$date->monthName." de ". $date->year;
+        
     return view('includes.productdetailformoda',compact('producto','productosEquivalencia','productosEquivalencias'));
     }
 
