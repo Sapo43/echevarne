@@ -61,8 +61,20 @@
                                   
                                             <h6>Marca: {{$producto->marca->nombre}}</h6>
                                             
+                                            @if(\Auth::check())
+                                                @if(\Auth::user()->porcentaje_compra>0 || \Auth::user()->porcentaje_venta>0)
+                                                 
+                                                <h6 style="color:#F76725" class="precioLista"><p>Precio: ${{number_format( $producto->precio,2, ',','.')}}<p></h6> 
+                                                <h6 style="color:#F76725" class="precioCompra"><p>Precio: ${{number_format($producto->precio- ($producto->precio* Auth::user()->porcentaje_compra   / 100),2, ',','.')}}<p></h6>  
+                                                <h6 style="color:#F76725" class="precioVenta "><p>Precio: ${{number_format($producto->precio- ($producto->precio* Auth::user()->porcentaje_compra  / 100)+( ($producto->precio - ($producto->precio* Auth::user()->porcentaje_compra  / 100)) * Auth::user()->porcentaje_venta  / 100),2, ',','.')}}<p></h5>    
+                                                @else
+                                                <h6 style="color:#F76725" class="precioLista"><p>Precio: ${{number_format( $producto->precio,2, ',','.')}}<p></h6> 
+                                                 @endif
+                                                 @else
+                                                <h6 style="color:#F76725" class="precioLista"><p>Precio: ${{number_format( $producto->precio,2, ',','.')}}<p></h6> 
+                                                 @endif
                                           
-                                            <h6 style="color:#F76725">Precio: $ {{$producto->precio}} </h6>
+                                            
                                        
 
                                  
@@ -198,6 +210,29 @@
 var imagenes = new Array();
  
 $(document).ready(function() {
+
+
+
+    if(sessionStorage.Tipo=='Compra'){
+              $('.precioVenta').css('display', 'none');
+              $('.precioLista').css('display', 'none');
+              $('.precioCompra').css('display', 'block');
+          } 
+          if(sessionStorage.Tipo=='Venta'){
+              $('.precioCompra').css('display', 'none');
+              $('.precioLista').css('display', 'none');
+              $('.precioVenta').css('display', 'block');
+              
+          } 
+          if(sessionStorage.Tipo=='Lista'){
+              $('.precioVenta').css('display', 'none');
+              $('.precioCompra').css('display', 'none');
+              $('.precioLista').css('display', 'block');
+          }
+        
+
+
+
     var numImages={{sizeof($productosEquivalencias)}};
     if (numImages <= 3) {
         $('.right-arrow').css('display', 'none');

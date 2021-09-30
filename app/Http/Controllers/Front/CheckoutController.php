@@ -31,7 +31,8 @@ public function index(){
 
 $csss=array(
         ('/assets/css/iziToast.css'),
-        ('/assets/css/addtocartanimation.css')
+        ('/assets/css/addtocartanimation.css'),
+        ('/assets/css/spinnerloading.css')
 );
 
 $clientes=User::all();

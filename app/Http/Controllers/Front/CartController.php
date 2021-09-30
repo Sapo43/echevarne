@@ -279,17 +279,17 @@ public function cartForCheckout(Request $request){
             
             $usuario=\Auth::user()->nombre.' '.\Auth::user()->apellido;
       
-    //   try {
+       try {
           
-    //     Mail::send('mails.mailPedido', ['detalles' => $detalles,'pedido'=>$pedido,'usuario'=>$usuario], function ($m) use ($arrayPedidos,$pedido,$usuario) {
-    //         $m->from('echevarnehermanos@gmail.com', 'Pedido desde la web');
-            
-    //         $m->bcc('sm.blanco@hotmail.com')
-    //         ->subject('Pedido nuevo'.\Auth::user()->nombre.' '.\Auth::user()->apellido);
-    //     });
-    //   } catch (\Throwable $th) {
-    //       dd($th);
-    //   }
+         Mail::send('mails.mailPedido', ['detalles' => $detalles,'pedido'=>$pedido,'usuario'=>$usuario], function ($m) use ($arrayPedidos,$pedido,$usuario) {
+             $m->from('info@echevarnehnos.com', 'Pedido desde la web');  
+             $m->to(\Auth::user()->email);          
+             $m->bcc('micaela@echevarnehnos.com')
+             ->subject('Pedido nuevo'.\Auth::user()->nombre.' '.\Auth::user()->apellido);
+         });
+       } catch (\Throwable $th) {
+           dd($th);
+       }
       
       
    

@@ -30,11 +30,11 @@ $("#confirmar").on('click',function (e){
         'enNombre_id':enNombre_id,
         '_token':_token
         },
-
+  beforeSend:function(){$('.loading').show();},
 	success: function(data) {
     
     if($.isEmptyObject(data.error)){
-     
+      $('.loading').hide();
       iziToast.show({
         
     title:"Ok",

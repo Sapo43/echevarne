@@ -45,7 +45,8 @@
                                     
                                             <span><strong>Codigo : </strong><a href="#" data-toggle="modal" data-id="{{$producto->slug}}" onclick='loadModal(this)' data-target="#basicModal"  style='color:black'>{{$producto->codigo}}</a></span>
                                             @if(\Auth::check())
-                                                @if(\Auth::user()->porcentaje_compra>0 || \Auth::user()->porcentaje_venta>0)   
+                                                @if(\Auth::user()->porcentaje_compra>0 || \Auth::user()->porcentaje_venta>0)
+                                                 
                                                 <h6 class="precioLista text-center"><p>${{number_format( $producto->precio,2, ',','.')}}<p></h6> 
                                                 <h6 class="precioCompra text-center"><p >${{number_format($producto->precio- ($producto->precio* $porcentaje_compra   / 100),2, ',','.')}}<p></h6>  
                                                 <h6 class="precioVenta text-center"><p >${{number_format($producto->precio- ($producto->precio* $porcentaje_compra  / 100)+( ($producto->precio - ($producto->precio* $porcentaje_compra  / 100)) * $porcentaje_venta  / 100),2, ',','.')}}<p></h5>    
