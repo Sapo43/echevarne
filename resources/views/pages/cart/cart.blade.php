@@ -60,44 +60,11 @@
                                             
                                             <strong>   Total sin IVA :</strong>
                                             </td>
-                                            <td>
-                                            $  {{number_format($totalsi,2, ',','.')}}
+                                            <td >
+                                            $  <span name="totSinIva" id="totSinIva">{{number_format($totalsi,2, ',','.')}}</span>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td colspan="3" style="text-align:right">
-                                           
-                                            
-                                          
-                                            <strong> IVA 10,5% :</strong>
-                                            </td>
-                                            <td>
-                                           $ {{number_format($totalid,2, ',','.')}}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3" style="text-align:right">
-                                                
-                                           
-                                            
-                                            
-                                               <strong> IVA 21% :</strong>
-                                            </td>
-                                            <td>
-                                            $ {{number_format($totaliv,2, ',','.')}}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3" style="text-align:right">
-                                                
-                                          
-                                        
-                                            <strong>  TOTAL :</strong>
-                                            </td>
-                                            <td>
-                                          $ {{number_format($totalci,2, ',','.')}}
-                                            </td>
-                                        </tr>
+                                       
 
                                     </tbody>
                                 </table>
@@ -135,9 +102,13 @@
                                         <td><strong>$</trong> {{number_format($totalsi,2, ',','.')}}</td>
                                     </tr>
                                     <tr class="cart-sub-total">
-                                        <th>IVA</th>
-                                        <td><strong>$</trong> {{number_format($totalid+$totaliv,2, ',','.')}}</td>
+                                        <th>IVA 21 % </th>
+                                        <td><strong>$</trong> {{number_format($totaliv,2, ',','.')}}</td>
+                                    </tr>   <tr class="cart-sub-total">
+                                        <th>IVA 10 % </th>
+                                        <td><strong>$</trong> {{number_format($totalid,2, ',','.')}}</td>
                                     </tr>
+
                                    
                                     <tr class="order-total">
                                         <th>Total</th>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Traits\AuditTrait;
+use DB;
 
 class Producto extends Model
 {
@@ -56,6 +57,22 @@ class Producto extends Model
           
     }
 
+    public static function filterForExcel($nombre, $id_rubro, $id_marca, $codigo, $activo)
+    {
+    $var=11;
+       return  Producto::select('productos.codigo','productos.nombre as nombreProducto','rubros.nombre as nombreRubro','marcas.nombre as nombreMarca','productos.precio',DB::raw('productos.precio -(( productos.precio *'.\Auth::user()->porcentaje_compra.')/100)' ), DB::raw('productos.precio-(productos.precio *'.\Auth::user()->porcentaje_compra.'/100)+(productos.precio-(productos.precio *'.\Auth::user()->porcentaje_compra.'/100))*'.\Auth::user()->porcentaje_venta.'/100'))
+       ->join('rubros','rubros.id','=','productos.rubro_id')
+       ->join('marcas','marcas.id','=','productos.marca_id')
+            ->filterNombre($nombre)
+            ->filterRubro($id_rubro)
+            ->filterMarca($id_marca)
+            ->filterCodigo($codigo)
+            ->filterActivo($activo)     
+            ->orderBy("codigo")->get();
+
+        
+    }
+
     public function scopeFilterNombre($query, $nombre)
     {
         if (trim($nombre) != '') {
@@ -95,7 +112,7 @@ class Producto extends Model
     public function scopeFilterActivo($query, $activo)
     {
         if (trim($activo) != "") {
-            $query->where('activo', $activo);
+            $query->where('productos.activo', $activo);
         }
     }
 

@@ -76,6 +76,7 @@ Route::get('/misDatos',[FrontController::class,'misDatos'])->middleware('auth');
 Route::post('/misDatos',[FrontController::class,'misDatos'])->middleware('auth');
 Route::post('/misDatos/{id}',[FrontController::class,'PostMisDatos'])->middleware('auth');
 Route::post('/downloadPdf',[FrontProductosController::class,'downloadpdf']);
+Route::post('/downloadexcel',[FrontProductosController::class,'downloadexcel']);
 
 
 Route::put('/mi-cuenta/update-password/{userId}',[FrontController::class,'updatePassword'])->middleware('auth')->name('miCuenta.update.password');

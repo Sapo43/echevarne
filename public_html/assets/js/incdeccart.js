@@ -18,7 +18,8 @@ function findTotal(){
     var arr = document.getElementsByName('qty');
         var subtotal=document.getElementsByName('subtotal');
         var scale = document.getElementsByName('num');
-      
+        var spanTotalSinIva = document.getElementById('totSinIva');
+        
 
         for(var i=0;i<arr.length;i++){
             var tot = 0;
@@ -31,7 +32,12 @@ function findTotal(){
                 
             }
         }
+        var totSinIva=0;
+        for(var i=0;i<subtotal.length;i++){
+            totSinIva+=(parseFloat(( (subtotal[i].innerHTML).replace('.','')).replace(',','.')));
+        }
         
+        spanTotalSinIva.innerHTML =new Intl.NumberFormat(["ban", "id"]).format(totSinIva);
 }
 
 

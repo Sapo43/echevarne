@@ -74,6 +74,7 @@ class FrontController extends Controller {
             ('/assets/js/addToCart.js'),
             ('/assets/js/precioslistacompraventa.js'),
             ('/assets/js/downloadpdf.js'),
+            ('/assets/js/downloadexcel.js'),
             ('/assets/js/paginatorshop.js'),
             ('/assets/js/searchInShop.js'),
             ('/assets/js/loadDataToModal.js'),

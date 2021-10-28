@@ -65,6 +65,7 @@ use AuthenticatesUsers,
      * @return User
      */
     protected function create(array $data) {
+       
         return Admin::create([
                     'username' => $data['username'],
                     'nombre' => $data['nombre'],

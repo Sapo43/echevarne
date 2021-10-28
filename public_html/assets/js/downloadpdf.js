@@ -1,4 +1,5 @@
 $(".downloadpdf").on('click', function(){
+    console.log('clicking pdf');
     var rubro = $('#rubro').val();
     var marca = $('#marca').val();
     var codigo = $('#codigo').val();

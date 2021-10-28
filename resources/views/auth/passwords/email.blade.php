@@ -5,19 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- SEO Meta description -->
-    <meta name="description"
-          content="AppCo app landing page template or product landing page template helps you easily create websites for your app or product,  landing page template form promotion and many more.">
-    <meta name="author" content="ThemeTags">
+
+    
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
-    <meta property="og:site_name" content=""/> <!-- website name -->
-    <meta property="og:site" content=""/> <!-- website link -->
-    <meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
-    <meta property="og:description" content=""/> <!-- description shown in the actual shared post -->
-    <meta property="og:image" content=""/> <!-- image link, make sure it's jpg -->
-    <meta property="og:url" content=""/> <!-- where do you want your post to link to -->
-    <meta property="og:type" content="article"/>
+
 
     <!--title-->
     <title>Echevarne hermanos</title>
@@ -45,10 +36,13 @@
     <link rel="stylesheet" href="/assets/login/css/style.css">
     <!--responsive css-->
     <link rel="stylesheet" href="/assets/login/css/responsive.css">
+    <link rel="stylesheet" href="/assets/css/spinnerloading.css">
+    <link rel="stylesheet" href="/assets/css/iziToast.css">
+    
 
 </head>
 <body>
-
+<div class="loading" style="display: none;">Loading&#8230;</div>
  <!--body content wrap start-->
 <div class="main">
 
@@ -78,8 +72,8 @@
                        
                         </p>
 
-                        <!--login form-->
-                        <form method="POST" action="{{ route('password.email') }}">
+                        <!-- form-->
+                        <form id="formRecover" method="POST" action="{{ route('password.email') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -133,5 +127,58 @@
 <script src="/assets/login/js/jquery.countdown.min.js"></script>
 <!--custom js-->
 <script src="/assets/login/js/scripts.js"></script>
+<script src="/assets/js/iziToast.min.js"></script>
+
+<script>
+$("#formRecover").submit(function(event) {
+/* stop form from submitting normally */
+event.preventDefault();
+/* get the action attribute from the <form action=""> element */
+var $form = $(this),
+  url = $form.attr('action');
+$.ajax({
+            type: "post",
+            url: url,
+            data: $form.serialize(),
+            contentType: "application/x-www-form-urlencoded",
+            beforeSend:function(){
+                $('.loading').show();
+            },
+            success: function(responseData, textStatus, jqXHR) { 
+                console.log(responseData.search("We can"));  
+         
+                if(responseData.search("Please wait before retrying")==4024){
+                    iziToast.show({
+   title: 'Error',
+   color: 'red', 
+   message:'Intentelo de nuevo, mas tarde.',
+   timeout: 2000,
+});
+
+
+                }; 
+                if((responseData.search("We can")>400)&&(responseData.search("We can")!=4024) &&(responseData.search("We can")<4100)){
+                    iziToast.show({
+   title: 'Error',
+   color: 'red', 
+   message:'Email incorrecto, por favor ingrese nuevamente.',
+   timeout: 2000,
+});
+
+
+                }; 
+                
+                
+
+                $('.loading').hide();
+            },
+            error: function(responseData, textStatus, jqXHR) {
+                console.log(responseData,textStatus, jqXHR)
+            }
+            
+        })
+});
+    
+</script>
 </body>
 </html>

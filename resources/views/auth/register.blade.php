@@ -82,12 +82,12 @@
                         <!-- Form -->
                         <form class="login-signup-form" method="POST" action="{{ route('register') }}">
                             @csrf
-                            <div class="form-group">
-                                <!-- Label -->
+                            <!-- <div class="form-group">
+                                
                                 <label class="pb-1">
                                     Usuario
                                 </label>
-                                <!-- Input group -->
+                              
                                 <div class="input-group input-group-merge">
                                     <div class="input-icon">
                                         <span class="ti-user color-primary"></span>
@@ -99,7 +99,7 @@
                                     </span>
                                 @enderror
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="form-group">
                                 <!-- Label -->

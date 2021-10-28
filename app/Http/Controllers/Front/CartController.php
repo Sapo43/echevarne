@@ -219,12 +219,23 @@ public function cartForCheckout(Request $request){
             $pedido=new Pedido();
             $date=\Carbon\Carbon::now('America/Argentina/Buenos_Aires');
             $pedido->created_at=$date;
+            $emailParaEnvio='';
+            $usuario='';
+
+           
             if($request->enNombre_id==null){
+               
             $pedido->created_by=\Auth::user()->id;
             $pedido->referido_por=\Auth::user()->id;
+            $emailParaEnvio=\Auth::user()->email;
+            $usuario=\Auth::user()->nombre.' '.\Auth::user()->apellido;
+                
             }else{
                 $pedido->created_by=$request->enNombre_id;
                 $pedido->referido_por=\Auth::user()->id;
+                $user=User::findOrFail($request->enNombre_id);
+                $emailParaEnvio=$user->email;
+                $usuario=$user->nombre.' '.$user->apellido;
             }
            
             foreach ($cart as $key){  
@@ -277,15 +288,15 @@ public function cartForCheckout(Request $request){
      ->where("pedido_id","=",$pedido->id)->get();   
      
             
-            $usuario=\Auth::user()->nombre.' '.\Auth::user()->apellido;
+            
       
        try {
           
-         Mail::send('mails.mailPedido', ['detalles' => $detalles,'pedido'=>$pedido,'usuario'=>$usuario], function ($m) use ($arrayPedidos,$pedido,$usuario) {
+         Mail::send('mails.mailPedido', ['detalles' => $detalles,'pedido'=>$pedido,'usuario'=>$usuario], function ($m) use ($arrayPedidos,$pedido,$usuario,$emailParaEnvio) {
              $m->from('info@echevarnehnos.com', 'Pedido desde la web');  
-             $m->to(\Auth::user()->email);          
-             $m->bcc('micaela@echevarnehnos.com')
-             ->subject('Pedido nuevo'.\Auth::user()->nombre.' '.\Auth::user()->apellido);
+             $m->to($emailParaEnvio);          
+             $m->bcc('sm.blanco@hotmail.com')
+             ->subject('Pedido nuevo de '.$usuario);
          });
        } catch (\Throwable $th) {
            dd($th);

@@ -153,9 +153,17 @@
                                     <div class="">
                                         <ul class="nav" style="margin-left:15px">
                                             <li><i class="fa fa-download downloadpdf"></i></li>                                                                      
-                                        </ul>                                  
+                                        </ul> 
+                                                                            
                                     </div>
-                           
+                                    @if(\Auth::check())
+                                    <div class="">
+                                        <ul class="nav" style="margin-left:15px">
+                                            <li><i class="fa fa-file-excel-o downloadexcel"></i></li>                                                                      
+                                        </ul> 
+                                                                            
+                                    </div>
+                                    @endif
                                 </div>
                                 
                             </div>

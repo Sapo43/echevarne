@@ -9,6 +9,8 @@ use App\Models\Marca;
 use Illuminate\Http\Request;
 use App;
 use PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ProductExport;
 
 
 
@@ -131,7 +133,12 @@ class ProductosController extends Controller {
        
     }
 
+    public function downloadexcel(Request $request){
+        return Excel::download(new ProductExport($request->get('nombre'), $request->get('rubro'), $request->get('marca'), $request->get('codigo')), 'Productos al '.date('d-m-Y').'.xls');
+        
 
+
+    }
 
 
     public function productDetailModal($slug,Request $request){

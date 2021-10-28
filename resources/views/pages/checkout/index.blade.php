@@ -157,41 +157,39 @@
                                     <thead>
                                         <tr>
                                             <th>Productos</th>
-                                            <th>Precio Unit.</th>
+                                            <th class="d-none d-lg-table-cell">Precio Unit.</th>
+                                            <th class="d-block d-sm-block d-md-block"> </th>
                                             <th>Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($cart as $producto)
-                                        <tr class="cart-item">
-                                            <td><span class="product-title">{{$producto->codigo}} {{$producto->nombre}}</span> <span
-                                            class="product-quantity">&#215; {{$producto->cantidad}}</span></td>
-                                            <td>
-
-@if($isAuthZero)
-<h6 class="precioLista"><p>${{number_format( $producto->precio,2, ',','.')}}<p></h6> 
+                                        <tr class="cart-item" >
+                                            <td class="d-none d-lg-table-cell"><span class="product-title">{{$producto->codigo}} {{$producto->nombre}} </span> <span class="product-quantity">&#215; {{$producto->cantidad}}</span></td>                              
+                                            <td class="d-block d-xs-block d-sm-block d-md-block d-lg-none d-xl-none"><span class="product-title">{{$producto->codigo}} </span> <span class="product-quantity">&#215; {{$producto->cantidad}}</span></td>
+                                         
+                                            <td class="d-none d-lg-table-cell">
+                                                    @if($isAuthZero)
+                                                            <h6 class="precioLista"><p>${{number_format( $producto->precio,2, ',','.')}}<p></h6> 
                                     
-@else
-<h6 class="precioLista"><p>${{number_format( $producto->precio*$producto->cantidad,2, ',','.')}}<p></h6> 
-                        <h6 class="precioCompra"><p >${{number_format(($producto->precio- ($producto->precio* $porcentaje_compra  / 100)),2, ',','.')}}<p></h6>  
-                        <h6 class="precioVenta"><p >${{number_format(($producto->precio- ($producto->precio* $porcentaje_compra  / 100)+( ($producto->precio- ($producto->precio* $porcentaje_compra  / 100)) * $porcentaje_venta  / 100)),2, ',','.')}}<p></h6>    
-@endif
-
-                                        </td>
-                                            
-                                            <td>
-
-    @if($isAuthZero)
-    <h6 class="precioLista"><p>${{number_format( $producto->precio*$producto->cantidad,2, ',','.')}}<p></h6> 
-                                        
-@else
-<h6 class="precioLista"><p>${{number_format( $producto->precio*$producto->cantidad,2, ',','.')}}<p></h6> 
-                            <h6 class="precioCompra"><p >${{number_format(($producto->precio- ($producto->precio* $porcentaje_compra  / 100))*$producto->cantidad,2, ',','.')}}<p></h6>  
-                            <h6 class="precioVenta"><p >${{number_format(($producto->precio- ($producto->precio* $porcentaje_compra  / 100)+( ($producto->precio- ($producto->precio* $porcentaje_compra  / 100)) * $porcentaje_venta  / 100))*$producto->cantidad,2, ',','.')}}<p></h6>    
-@endif
-
+                                                    @else
+                                                            <h6 class="precioLista"><p>${{number_format( $producto->precio*$producto->cantidad,2, ',','.')}}<p></h6> 
+                                                            <h6 class="precioCompra"><p >${{number_format(($producto->precio- ($producto->precio* $porcentaje_compra  / 100)),2, ',','.')}}<p></h6>  
+                                                            <h6 class="precioVenta"><p >${{number_format(($producto->precio- ($producto->precio* $porcentaje_compra  / 100)+( ($producto->precio- ($producto->precio* $porcentaje_compra  / 100)) * $porcentaje_venta  / 100)),2, ',','.')}}<p></h6>    
+                                                    @endif
                                             </td>
-                                        </tr>
+                                        
+                                        <td class="d-block d-xs-block d-sm-block d-md-block d-lg-none d-xl-none"></td> 
+                                        <td>
+                                                    @if($isAuthZero)
+                                                            <h6 class="precioLista"><p>${{number_format( $producto->precio*$producto->cantidad,2, ',','.')}}<p></h6> 
+                                                    @else
+                                                            <h6 class="precioLista"><p>${{number_format( $producto->precio*$producto->cantidad,2, ',','.')}}<p></h6> 
+                                                            <h6 class="precioCompra"><p >${{number_format(($producto->precio- ($producto->precio* $porcentaje_compra  / 100))*$producto->cantidad,2, ',','.')}}<p></h6>  
+                                                            <h6 class="precioVenta"><p >${{number_format(($producto->precio- ($producto->precio* $porcentaje_compra  / 100)+( ($producto->precio- ($producto->precio* $porcentaje_compra  / 100)) * $porcentaje_venta  / 100))*$producto->cantidad,2, ',','.')}}<p></h6>    
+                                                    @endif
+                                        </td>
+                                    </tr>
                                       @endforeach
                                     </tbody>
                                     <tfoot>
@@ -223,7 +221,7 @@
                             <h6 class="precioCompra"><p >${{number_format(($totalid- ($totalid* $porcentaje_compra  / 100))*$producto->cantidad,2, ',','.')}}<p></h6>  
                             <h6 class="precioVenta"><p >${{number_format(($totalid- ($totalid* $porcentaje_compra  / 100)+( ($totalid- ($totalid* $porcentaje_compra  / 100)) * $porcentaje_venta  / 100))*$producto->cantidad,2, ',','.')}}<p></h6>    
 @endif
-                                                <span class="total-amount"><b><strong>$</trong> {{number_format($totalid,2, ',','.')}}</b></span>
+                                                
                                             
                                             </td>
                                         </tr>
